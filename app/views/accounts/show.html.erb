@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @account.user_id %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @account.level %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @account.price %>
+</p>
+
+<p>
+  <strong>Deadline:</strong>
+  <%= @account.deadline %>
+</p>
+
+<p>
+  <strong>Expired:</strong>
+  <%= @account.expired %>
+</p>
+
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', accounts_path %>

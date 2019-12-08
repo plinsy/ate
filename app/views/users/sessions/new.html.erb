@@ -1,0 +1,39 @@
+<div class="main full-height" id="scroll-here">
+    <div class="main-inner">
+        <div class="container">
+            <div class="content">
+                <div class="row">
+                    <div class="col-sm-4 col-sm-offset-4">
+                        <div class="page-title">
+                            <h1>Login</h1>
+                        </div><!-- /.page-title -->
+                        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                        <%= render "devise/shared/error_messages", resource: resource %>
+                        <div class="form-group">
+                            <%= f.label :email %>
+                            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+                        </div><!-- /.form-group -->
+                        <div class="form-group">
+                            <%= f.label :password %>
+                            <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+                        </div><!-- /.form-group -->
+                        <% if devise_mapping.rememberable? %>
+                        <div class="field">
+                            <%= f.check_box :remember_me %>
+                            <%= f.label :remember_me %>
+                        </div>
+                        <% end %>
+                        <%= f.submit "Sign up", class: "btn btn-primary pull-right" %>
+                        <% end %>
+                        <%= render "users/shared/links" %>
+                    </div><!-- /.col-sm-4 -->
+                </div><!-- /.row -->
+            </div><!-- /.content -->
+        </div><!-- /.container -->
+    </div><!-- /.main-inner -->
+</div><!-- /.main -->
+<% content_for :foot_js do %>
+<script type="text/javascript">
+scrollHere(where_id = 'scroll-here');
+</script>
+<% end %>

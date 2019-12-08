@@ -4,6 +4,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2">
 <title>
+    <%= user_signed_in? ? '1' : 0 %>
     <%= controller_name %>
     <%= action_name %>
 </title>
@@ -16,6 +17,11 @@
 <link rel="stylesheet" type="text/css" href="/assets/libraries/bootstrap-select/bootstrap-select.min.css">
 <link rel="stylesheet" type="text/css" href="/assets/libraries/bootstrap-fileinput/fileinput.min.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/superlist.css">
+<style type="text/css">
+	.full-height {
+		height: 100vh; overflow: hidden;
+	}
+</style>
 <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 <script type="text/javascript" src="/assets/js/jquery.js"></script>
 <script type="text/javascript" src="/assets/js/map.js"></script>

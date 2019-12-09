@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_08_182933) do
+ActiveRecord::Schema.define(version: 2019_12_09_165417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,11 +19,32 @@ ActiveRecord::Schema.define(version: 2019_12_08_182933) do
     t.bigint "user_id", null: false
     t.string "level", default: "Free", null: false
     t.string "price", default: "0 Ar/mois", null: false
-    t.datetime "deadline", default: "2069-12-08 18:31:45", null: false
+    t.datetime "deadline", default: "2069-12-09 17:09:31", null: false
     t.boolean "expired", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_accounts_on_user_id"
+  end
+
+  create_table "activities", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "activity_id", null: false
+    t.string "title", default: "", null: false
+    t.string "location", default: "", null: false
+    t.float "longitude", default: 0.0, null: false
+    t.float "latitude", default: 0.0, null: false
+    t.text "description", default: "", null: false
+    t.boolean "main", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["activity_id"], name: "index_places_on_activity_id"
+    t.index ["user_id"], name: "index_places_on_user_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -52,5 +73,7 @@ ActiveRecord::Schema.define(version: 2019_12_08_182933) do
   end
 
   add_foreign_key "accounts", "users"
+  add_foreign_key "places", "activities"
+  add_foreign_key "places", "users"
   add_foreign_key "profiles", "users"
 end

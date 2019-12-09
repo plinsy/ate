@@ -2,28 +2,27 @@
 
 <p>
   <strong>User:</strong>
-  <%= @account.user_id %>
+  <%= account.user_id %>
 </p>
 
 <p>
   <strong>Level:</strong>
-  <%= @account.level %>
+  <%= account.level %>
 </p>
 
 <p>
   <strong>Price:</strong>
-  <%= @account.price %>
+  <%= account.price %>
 </p>
 
 <p>
   <strong>Deadline:</strong>
-  <%= @account.deadline %>
+  <%= account.deadline %>
 </p>
 
 <p>
   <strong>Expired:</strong>
-  <%= @account.expired %>
+  <%= account.expired %>
 </p>
 
-<%= link_to 'Edit', edit_account_path(@account) %> |
-<%= link_to 'Back', accounts_path %>
+<% render template: 'pages/pricing' %>

@@ -56,11 +56,10 @@ end
 gem "jquery-rails"
 gem "devise"
 gem "rails_admin"
-gem "friendly_id", '~> 5.2.4'
 gem 'capistrano', '~> 3.11'
 gem 'capistrano-rails', '~> 1.4'
 gem 'capistrano-passenger', '~> 0.2.0'
-# gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
+gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
 gem 'dotenv-rails'
 
 gem "aws-sdk-s3", require: false

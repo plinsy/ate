@@ -10,6 +10,9 @@ class AccountsController < ApplicationController
   # GET /accounts/1
   # GET /accounts/1.json
   def show
+    respond_to do |format|
+      format.js
+    end
   end
 
   # GET /accounts/new

@@ -7457,7 +7457,7 @@ h2.widgettitle {
 [ 12. Map ]
 */
 #map {
-  height: 650px; }
+  height: 100%; }
 
 .marker {
   background-color: #009f8b;

@@ -1,4 +1,6 @@
 class ProfilesController < ApplicationController
+  layout 'free'
+  
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
   # GET /profiles
@@ -10,6 +12,9 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+    respond_to do |format|
+      format.js
+    end
   end
 
   # GET /profiles/new
@@ -19,6 +24,9 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1/edit
   def edit
+    respond_to do |format|
+      format.js
+    end
   end
 
   # POST /profiles

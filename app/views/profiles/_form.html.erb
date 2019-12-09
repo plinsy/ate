@@ -1,47 +1,37 @@
 <%= form_with(model: profile, local: true) do |form| %>
-  <% if profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
-
-      <ul>
+<% if profile.errors.any? %>
+<div id="error_explanation">
+    <h2>
+        <%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+    <ul>
         <% profile.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+        <li>
+            <%= message %>
+        </li>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :firstname %>
-    <%= form.text_field :firstname %>
-  </div>
-
-  <div class="field">
-    <%= form.label :lastname %>
-    <%= form.text_field :lastname %>
-  </div>
-
-  <div class="field">
-    <%= form.label :gender %>
-    <%= form.text_field :gender %>
-  </div>
-
-  <div class="field">
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
-  </div>
-
-  <div class="field">
-    <%= form.label :reputation %>
-    <%= form.number_field :reputation %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    </ul>
+</div>
+<% end %>
+<h3 class="page-title">
+    Contact Information
+    <%= form.submit "Save", class: "btn btn-primary btn-xs pull-right" %>
+</h3>
+<div class="row">
+    <div class="form-group col-sm-6">
+        <%= form.label :firstname %>
+        <%= form.text_field :firstname, class: "form-control" %>
+    </div><!-- /.form-group -->
+    <div class="form-group col-sm-6">
+        <%= form.label :lastname %>
+        <%= form.text_field :lastname, class: "form-control" %>
+    </div><!-- /.form-group -->
+    <div class="form-group col-sm-6">
+        <%= form.label :gender %>
+        <%= form.text_field :gender, class: "form-control" %>
+    </div><!-- /.form-group -->
+    <div class="form-group col-sm-6">
+        <%= form.label :phone %>
+        <%= form.text_field :phone, class: "form-control" %>
+    </div><!-- /.form-group -->
+</div><!-- /.row -->
 <% end %>

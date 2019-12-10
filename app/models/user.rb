@@ -17,4 +17,8 @@ class User < ApplicationRecord
   	Profile.create(user_id: self.id)
   	Account.create(user_id: self.id)
   end
+
+  def has_locations?
+    self.places.any?
+  end
 end

@@ -1,7 +1,9 @@
 <script type="text/javascript" src="/assets/linx-js/scroll-here.js"></script>
 <script type="text/javascript" src="/assets/linx-js/load-page.js"></script>
 <%= yield :foot_js %>
-<%= render 'places/new_place_btn' %>
+<% if user_signed_in? %>
+<%= render 'places/place_btn' %>
+<% end %>
 <footer class="footer">
     <div class="footer-top">
         <div class="container">

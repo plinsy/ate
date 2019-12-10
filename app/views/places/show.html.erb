@@ -1,44 +1,438 @@
-<p id="notice"><%= notice %></p>
+<div class="content">
+    <div class="page-title">
+        <h1>Location Detail</h1>
+    </div><!-- /.page-title -->
+    <div class="posts post-detail">
+        <div class="detail-banner" style="background-image: url(/assets/img/tmp/detail-banner-1.jpg);">
+            <div class="container">
+                <div class="detail-banner-left">
+                    <div class="detail-banner-info">
+                        <div class="detail-label">Restaurant</div>
+                        <div class="detail-verified">Verified</div>
+                    </div><!-- /.detail-banner-info -->
+                    <h2 class="detail-title">
+                        Brazilian Coffe Taste
+                    </h2>
+                    <div class="detail-banner-address">
+                        <i class="fa fa-map-o"></i> 347/26 22nd Avenue, New York City, USA
+                    </div><!-- /.detail-banner-address -->
+                    <div class="detail-banner-rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                    </div><!-- /.detail-banner-rating -->
+                    <div class="detail-banner-btn bookmark">
+                        <i class="fa fa-bookmark-o"></i> <span data-toggle="Bookmarked">Bookmark</span>
+                    </div><!-- /.detail-claim -->
+                    <div class="detail-banner-btn heart">
+                        <i class="fa fa-heart-o"></i> <span data-toggle="I Love It">Give Heart</span>
+                    </div><!-- /.detail-claim -->
+                </div><!-- /.detail-banner-left -->
+            </div><!-- /.container -->
+        </div><!-- /.detail-banner -->
+        <!-- <img src="/assets/img/tmp/blog-1.jpg" alt="A Clockwork Origin"> -->
+        <div class="post-meta clearfix">
+            <div class="post-meta-author">By <a href="blog-detail.html">Eric Yorick</a></div><!-- /.post-meta-author -->
+            <div class="post-meta-date">08/24/2015</div><!-- /.post-meta-date -->
+            <div class="post-meta-categories"><i class="fa fa-tags"></i> <a href="blog-detail.html">Restaurant</a></div><!-- /.post-meta-categories -->
+            <div class="post-meta-comments"><i class="fa fa-comments"></i> <a href="blog-detail.html">3 reviews</a></div><!-- /.post-meta-comments -->
+        </div><!-- /.post-meta -->
+        <div class="post-meta-tags clearfix">
+            Tags:
+            <ul>
+                <li class="tag"><a href="#">Coffee</a></li>
+                <li class="tag"><a href="#">Breakfast</a></li>
+                <li class="tag"><a href="#">Wine</a></li>
+                <li class="tag"><a href="#">Healthy Food</a></li>
+                <li class="tag"><a href="#">Raw Food</a></li>
+            </ul>
+        </div><!-- /.post-meta -->
+    </div><!-- /.post -->
+    <div class="detail-gallery">
+        <h2>What else ?</h2>
+        <div class="detail-gallery-preview">
+            <a href="/assets/img/tmp/gallery-1.jpg">
+                <img src="/assets/img/tmp/gallery-1.jpg">
+            </a>
+        </div>
+        <ul class="detail-gallery-index">
+            <li class="detail-gallery-list-item active">
+                <a data-target="/assets/img/tmp/gallery-1.jpg">
+                    <img src="/assets/img/tmp/gallery-1.jpg" alt="...">
+                </a>
+            </li>
+            <li class="detail-gallery-list-item active">
+                <a data-target="/assets/img/tmp/gallery-2.jpg">
+                    <img src="/assets/img/tmp/gallery-2.jpg" alt="...">
+                </a>
+            </li>
+            <li class="detail-gallery-list-item active">
+                <a data-target="/assets/img/tmp/gallery-3.jpg">
+                    <img src="/assets/img/tmp/gallery-3.jpg" alt="...">
+                </a>
+            </li>
+            <li class="detail-gallery-list-item active">
+                <a data-target="/assets/img/tmp/gallery-4.jpg">
+                    <img src="/assets/img/tmp/gallery-4.jpg" alt="...">
+                </a>
+            </li>
+            <li class="detail-gallery-list-item active">
+                <a data-target="/assets/img/tmp/gallery-5.jpg">
+                    <img src="/assets/img/tmp/gallery-5.jpg" alt="...">
+                </a>
+            </li>
+            <li class="detail-gallery-list-item active">
+                <a data-target="/assets/img/tmp/gallery-6.jpg">
+                    <img src="/assets/img/tmp/gallery-6.jpg" alt="...">
+                </a>
+            </li>
+            <li class="detail-gallery-list-item active">
+                <a data-target="/assets/img/tmp/gallery-7.jpg">
+                    <img src="/assets/img/tmp/gallery-7.jpg" alt="...">
+                </a>
+            </li>
+            <li class="detail-gallery-list-item active">
+                <a data-target="/assets/img/tmp/gallery-8.jpg">
+                    <img src="/assets/img/tmp/gallery-8.jpg" alt="...">
+                </a>
+            </li>
+        </ul>
+    </div><!-- /.detail-gallery -->
+    <h2>We Are Here</h2>
+    <div class="background-white p20">
+        <!-- Nav tabs -->
+        <ul id="listing-detail-location" class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#simple-map-panel" aria-controls="simple-map-panel" role="tab" data-toggle="tab">
+                    <i class="fa fa-map"></i> Map
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="#street-view-panel" aria-controls="street-view-panel" role="tab" data-toggle="tab">
+                    <i class="fa fa-street-view"></i> Street View
+                </a>
+            </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content" style="height: 300px;">
+            <div role="tabpanel" class="tab-pane fade in active h-100" id="simple-map-panel">
+                <div class="detail-map h-100">
+                    <div class="map-position h-100">
+                        <div id="listing-detail-map" class="h-100" data-transparent-marker-image="/assets/img/transparent-marker-image.png" data-styles='[{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi.government","elementType":"labels.text.fill","stylers":[{"color":"#b43b3b"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"hue":"#ff0000"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"lightness":"8"},{"color":"#bcbec0"}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"color":"#5b5b5b"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#7cb3c9"},{"visibility":"on"}]},{"featureType":"water","elementType":"geometry.fill","stylers":[{"color":"#abb9c0"}]},{"featureType":"water","elementType":"labels.text","stylers":[{"color":"#fff1f1"},{"visibility":"off"}]}]' data-zoom="15" data-latitude="40.779995" data-longitude="-73.969133" data-icon="fa fa-coffee">
+                        </div><!-- /#map-property -->
+                    </div><!-- /.map-property -->
+                </div><!-- /.detail-map -->
+            </div>
+            <div role="tabpanel" class="tab-pane fade h-100" id="street-view-panel">
+                <div id="listing-detail-street-view" class="h-100" data-latitude="40.758896" data-longitude="-73.985135" data-heading="225" data-pitch="0" data-zoom="1">
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2>Video</h2>
+    <div class="detail-video text-center bg-dark">
+        <iframe src="https://player.vimeo.com/video/36911719?color=009f8b&byline=0&portrait=0" width="653" height="366" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div><!-- /.detail-video -->
+    <div class="row detail-content">
+        <div class="col-sm-12">
+            <h2 id="reviews">All Reviews</h2>
+            <div class="reviews">
+                <div class="review">
+                    <div class="review-image">
+                        <img src="/assets/img/tmp/agent-1.jpg" alt="">
+                    </div><!-- /.review-image -->
+                    <div class="review-inner">
+                        <div class="review-title">
+                            <h2>Nancy Collins</h2>
+                            <span class="report">
+                                <span class="separator">&#8226;</span><i class="fa fa-flag" title="Report" data-toggle="tooltip" data-placement="top"></i>
+                            </span>
+                            <div class="review-overall-rating">
+                                <span class="overall-rating-title">Total Score:</span>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div><!-- /.review-rating -->
+                        </div><!-- /.review-title -->
+                        <div class="review-content-wrapper">
+                            <div class="review-content">
+                                <div class="review-pros">
+                                    <p>Quisque aliquet ornare nunc in viverra. Nullam ornare molestie ligula in luctus. Suspendisse ac cursus elit. In congue mattis felis, non hendrerit orci dictum id.</p>
+                                </div><!-- /.pros -->
+                                <div class="review-cons">
+                                    <p>Duis et magna vel est tempus vehicula vitae sit amet enim. Sed vitae ligula congue.</p>
+                                </div><!-- /.cons -->
+                            </div><!-- /.review-content -->
+                            <div class="review-rating">
+                                <dl>
+                                    <dt>Food</dt>
+                                    <dd>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </dd>
+                                    <dt>Staff</dt>
+                                    <dd>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </dd>
+                                    <dt>Value</dt>
+                                    <dd>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </dd>
+                                    <dt>Atmosphere</dt>
+                                    <dd>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </dd>
+                                </dl>
+                            </div><!-- /.review-rating -->
+                        </div><!-- /.review-content-wrapper -->
+                    </div><!-- /.review-inner -->
+                </div><!-- /.review -->
+                <div class="review">
+                    <div class="review-image">
+                        <img src="/assets/img/tmp/agent-2.jpg" alt="">
+                    </div><!-- /.review-image -->
+                    <div class="review-inner">
+                        <div class="review-title">
+                            <h2>Kim Glove</h2>
+                            <span class="report">
+                                <span class="separator">&#8226;</span><i class="fa fa-flag" title="Report" data-toggle="tooltip" data-placement="top"></i>
+                            </span>
+                            <div class="review-overall-rating">
+                                <span class="overall-rating-title">Total Score:</span>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div><!-- /.review-rating -->
+                        </div><!-- /.review-title -->
+                        <div class="review-content-wrapper">
+                            <div class="review-content">
+                                <div class="review-pros">
+                                    <p>Quisque aliquet ornare nunc in viverra. Nullam ornare molestie ligula in luctus.</p>
+                                </div><!-- /.pros -->
+                                <div class="review-cons">
+                                    <p>Suspendisse ac cursus elit. In congue mattis felis, non hendrerit orci dictum id. Duis et magna vel est tempus vehicula vitae sit amet enim. Sed vitae ligula congue.</p>
+                                </div><!-- /.cons -->
+                            </div><!-- /.review-content -->
+                            <div class="review-rating">
+                                <dl>
+                                    <dt>Food</dt>
+                                    <dd>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </dd>
+                                    <dt>Staff</dt>
+                                    <dd>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </dd>
+                                    <dt>Value</dt>
+                                    <dd>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </dd>
+                                    <dt>Atmosphere</dt>
+                                    <dd>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </dd>
+                                </dl>
+                            </div><!-- /.review-rating -->
+                        </div><!-- /.review-content-wrapper -->
+                    </div><!-- /.review-inner -->
+                </div><!-- /.review -->
+                <div class="review">
+                    <div class="review-image">
+                        <img src="/assets/img/tmp/agent-5.jpg" alt="">
+                    </div><!-- /.review-image -->
+                    <div class="review-inner">
+                        <div class="review-title">
+                            <h2>Richard Peterson</h2>
+                            <span class="report">
+                                <span class="separator">&#8226;</span><i class="fa fa-flag" title="Report" data-toggle="tooltip" data-placement="top"></i>
+                            </span>
+                            <div class="review-overall-rating">
+                                <span class="overall-rating-title">Total Score:</span>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div><!-- /.review-rating -->
+                        </div><!-- /.review-title -->
+                        <div class="review-content-wrapper">
+                            <div class="review-content">
+                                <div class="review-pros">
+                                    <p>Quisque aliquet ornare nunc in viverra. Nullam ornare molestie ligula in luctus. Suspendisse ac cursus elit. In congue mattis felis, non hendrerit orci dictum id.</p>
+                                </div><!-- /.pros -->
+                                <div class="review-cons">
+                                    <p>Duis et magna vel est tempus vehicula vitae sit amet enim. Sed vitae ligula congue.</p>
+                                </div><!-- /.cons -->
+                            </div><!-- /.review-content -->
+                            <div class="review-rating">
+                                <dl>
+                                    <dt>Food</dt>
+                                    <dd>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </dd>
+                                    <dt>Staff</dt>
+                                    <dd>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </dd>
+                                    <dt>Value</dt>
+                                    <dd>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </dd>
+                                    <dt>Atmosphere</dt>
+                                    <dd>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </dd>
+                                </dl>
+                            </div><!-- /.review-rating -->
+                        </div><!-- /.review-content-wrapper -->
+                    </div><!-- /.review-inner -->
+                </div><!-- /.review -->
+            </div><!-- /.reviews -->
+            <h2>Submit a Review</h2>
+            <form class="background-white p20 add-review" method="post" action="?">
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <label for="">Name <span class="required">*</span></label>
+                        <input type="text" class="form-control" id="" required>
+                    </div><!-- /.col-sm-6 -->
+                    <div class="form-group col-sm-6">
+                        <label for="">Email <span class="required">*</span></label>
+                        <input type="email" class="form-control" id="" required>
+                    </div><!-- /.col-sm-6 -->
+                </div><!-- /.row -->
+                <div class="row">
+                    <div class="form-group input-rating col-sm-3">
+                        <div class="rating-title">Food</div>
+                        <input type="radio" value="1" name="food" id="rating-food-1">
+                        <label for="rating-food-1"></label>
+                        <input type="radio" value="2" name="food" id="rating-food-2">
+                        <label for="rating-food-2"></label>
+                        <input type="radio" value="3" name="food" id="rating-food-3">
+                        <label for="rating-food-3"></label>
+                        <input type="radio" value="4" name="food" id="rating-food-4">
+                        <label for="rating-food-4"></label>
+                        <input type="radio" value="5" name="food" id="rating-food-5">
+                        <label for="rating-food-5"></label>
+                    </div><!-- /.col-sm-3 -->
+                    <div class="form-group input-rating col-sm-3">
+                        <div class="rating-title">Staff</div>
+                        <input type="radio" value="1" name="staff" id="rating-staff-1">
+                        <label for="rating-staff-1"></label>
+                        <input type="radio" value="2" name="staff" id="rating-staff-2">
+                        <label for="rating-staff-2"></label>
+                        <input type="radio" value="3" name="staff" id="rating-staff-3">
+                        <label for="rating-staff-3"></label>
+                        <input type="radio" value="4" name="staff" id="rating-staff-4">
+                        <label for="rating-staff-4"></label>
+                        <input type="radio" value="5" name="staff" id="rating-staff-5">
+                        <label for="rating-staff-5"></label>
+                    </div><!-- /.col-sm-3 -->
+                    <div class="form-group input-rating col-sm-3">
+                        <div class="rating-title">Value</div>
+                        <input type="radio" value="1" name="value" id="rating-value-1">
+                        <label for="rating-value-1"></label>
+                        <input type="radio" value="2" name="value" id="rating-value-2">
+                        <label for="rating-value-2"></label>
+                        <input type="radio" value="3" name="value" id="rating-value-3">
+                        <label for="rating-value-3"></label>
+                        <input type="radio" value="4" name="value" id="rating-value-4">
+                        <label for="rating-value-4"></label>
+                        <input type="radio" value="5" name="value" id="rating-value-5">
+                        <label for="rating-value-5"></label>
+                    </div><!-- /.col-sm-3 -->
+                    <div class="form-group input-rating col-sm-3">
+                        <div class="rating-title">Atmosphere</div>
+                        <input type="radio" value="1" name="atmosphere" id="rating-atmosphere-1">
+                        <label for="rating-atmosphere-1"></label>
+                        <input type="radio" value="2" name="atmosphere" id="rating-atmosphere-2">
+                        <label for="rating-atmosphere-2"></label>
+                        <input type="radio" value="3" name="atmosphere" id="rating-atmosphere-3">
+                        <label for="rating-atmosphere-3"></label>
+                        <input type="radio" value="4" name="atmosphere" id="rating-atmosphere-4">
+                        <label for="rating-atmosphere-4"></label>
+                        <input type="radio" value="5" name="atmosphere" id="rating-atmosphere-5">
+                        <label for="rating-atmosphere-5"></label>
+                    </div><!-- /.col-sm-3 -->
+                </div><!-- /.row -->
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <label for="">Pros</label>
+                        <textarea class="form-control" rows="5" id=""></textarea>
+                    </div><!-- /.col-sm-6 -->
+                    <div class="form-group col-sm-6">
+                        <label for="">Cons</label>
+                        <textarea class="form-control" rows="5" id=""></textarea>
+                    </div><!-- /.col-sm-6 -->
+                    <div class="col-sm-8">
+                        <p>Required fields are marked <span class="required">*</span></p>
+                    </div><!-- /.col-sm-8 -->
+                    <div class="col-sm-4">
+                        <button class="btn btn-primary btn-block" type="submit"><i class="fa fa-star"></i>Submit Review</button>
+                    </div><!-- /.col-sm-4 -->
+                </div><!-- /.row -->
+            </form>
+        </div><!-- /.col-* -->
+    </div><!-- /.row -->
+</div><!-- /.content -->
+<style type="text/css">
+.h-100 {
+    height: 100%;
+}
 
-<p>
-  <strong>User:</strong>
-  <%= @place.user_id %>
-</p>
-
-<p>
-  <strong>Activity:</strong>
-  <%= @place.activity_id %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @place.title %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @place.location %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @place.longitude %>
-</p>
-
-<p>
-  <strong>Latitude:</strong>
-  <%= @place.latitude %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @place.description %>
-</p>
-
-<p>
-  <strong>Main:</strong>
-  <%= @place.main %>
-</p>
-
-<%= link_to 'Edit', edit_place_path(@place) %> |
-<%= link_to 'Back', places_path %>
+.bg-dark {
+    background-color: black;
+}
+</style>

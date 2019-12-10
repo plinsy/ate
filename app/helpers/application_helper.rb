@@ -17,4 +17,12 @@ module ApplicationHelper
     session[:page_id] ||= 'page-content'
     @page_id = session[:page_id]
 	end
+
+	def page_need_google_map?
+		if (controller_name=="pages" && action_name=="index")
+			return true
+		else
+			return false
+		end
+	end
 end

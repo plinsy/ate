@@ -1,0 +1,49 @@
+<% flash.each do |key, value| %>
+<div class="alert alert-icon alert-dismissible alert-<%= key %>" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <i class="fa fa-times" aria-hidden="true"></i>
+    </button>
+    <% if key=="success" || key=="notice" %>
+    <strong>Well done!</strong>
+    <% elsif key=="alert" || key=="danger" %>
+    <strong>Oh snap!</strong>
+    <% elsif key=="info" %>
+    <strong>Heads up!</strong>
+    <% elsif key=="warning" %>
+    <strong>Warning!</strong>
+    <% end %>
+    <%= value %>
+</div>
+<% end %>
+<!-- <div class="alert alert-icon alert-dismissible alert-success" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <i class="fa fa-times" aria-hidden="true"></i>
+    </button>
+    <strong>Well done!</strong> You successfully read this important alert message.
+</div>
+<div class="alert alert-icon alert-dismissible alert-info" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <i class="fa fa-times" aria-hidden="true"></i>
+    </button>
+    <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+</div>
+<div class="alert alert-icon alert-dismissible alert-warning" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <i class="fa fa-times" aria-hidden="true"></i>
+    </button>
+    <strong>Warning!</strong> Better check yourself, you're not looking too good.
+</div>
+<div class="alert alert-icon alert-dismissible alert-danger" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <i class="fa fa-times" aria-hidden="true"></i>
+    </button>
+    <strong>Oh snap!</strong> Change a few things up and try submitting again.
+</div> -->
+<style type="text/css">
+.alert {
+    z-index: 999;
+    position: fixed;
+    top: 1%;
+    right: 1%;
+}
+</style>

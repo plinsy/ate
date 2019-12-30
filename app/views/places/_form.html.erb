@@ -20,7 +20,7 @@
 <div class="row">
     <div class="form-group col-sm-6">
         <%= form.label :activity_id %>
-        <select class="form-control" title="Select Activity" name="place[activity_id]" id="place_activity_id" required="">
+        <select class="form-control" title="Select Activity" name="place[activity_id]" id="place_activity_id">
             <% Activity.all.each do |activity| %>
             <option value="<%= activity.id %>" <%=action_name=="edit" && place.activity==activity ? 'selected=""' : "" %>>
                 <%= activity.name %>

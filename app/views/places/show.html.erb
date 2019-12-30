@@ -7,14 +7,14 @@
             <div class="container">
                 <div class="detail-banner-left">
                     <div class="detail-banner-info">
-                        <div class="detail-label">Restaurant</div>
+                        <div class="detail-label"><%= @place.activity.name %></div>
                         <div class="detail-verified">Verified</div>
                     </div><!-- /.detail-banner-info -->
                     <h2 class="detail-title">
-                        Brazilian Coffe Taste
+                        <%= @place.title %>
                     </h2>
                     <div class="detail-banner-address">
-                        <i class="fa fa-map-o"></i> 347/26 22nd Avenue, New York City, USA
+                        <i class="fa fa-map-o"></i> <%= @place.location %>
                     </div><!-- /.detail-banner-address -->
                     <div class="detail-banner-rating">
                         <i class="fa fa-star"></i>
@@ -34,9 +34,9 @@
         </div><!-- /.detail-banner -->
         <!-- <img src="/assets/img/tmp/blog-1.jpg" alt="A Clockwork Origin"> -->
         <div class="post-meta clearfix">
-            <div class="post-meta-author">By <a href="blog-detail.html">Eric Yorick</a></div><!-- /.post-meta-author -->
-            <div class="post-meta-date">08/24/2015</div><!-- /.post-meta-date -->
-            <div class="post-meta-categories"><i class="fa fa-tags"></i> <a href="blog-detail.html">Restaurant</a></div><!-- /.post-meta-categories -->
+            <div class="post-meta-author">By <a href="blog-detail.html"><%= @place.user.fullname %></a></div><!-- /.post-meta-author -->
+            <div class="post-meta-date"><%= @place.created_at.strftime("%d/%m/%Y") %></div><!-- /.post-meta-date -->
+            <div class="post-meta-categories"><i class="fa fa-tags"></i> <a href="blog-detail.html"><%= @place.activity.name %></a></div><!-- /.post-meta-categories -->
             <div class="post-meta-comments"><i class="fa fa-comments"></i> <a href="blog-detail.html">3 reviews</a></div><!-- /.post-meta-comments -->
         </div><!-- /.post-meta -->
         <div class="post-meta-tags clearfix">
@@ -132,7 +132,7 @@
         </div>
     </div>
     <h2>Video</h2>
-    <div class="detail-video text-center bg-dark">
+    <div class="detail-video text-center bg-dark" style="width: 100%;padding: 5px 0 0 0;overflow-x: auto;">
         <iframe src="https://player.vimeo.com/video/36911719?color=009f8b&byline=0&portrait=0" width="653" height="366" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
     </div><!-- /.detail-video -->
     <div class="row detail-content">

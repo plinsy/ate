@@ -1,9 +1,17 @@
-<% if action_name=="show" %>
-<a href="<%= edit_place_path(@place) %>" class="header-action-inner" title="Edit my location" data-toggle="tooltip" data-placement="auto" style="position: fixed; bottom: 3%; right: 3%; border-radius: 50%; overflow: hidden; width: 50px; height: 50px;">
-    <i class="fa fa-pencil" style="vertical-align: bottom;"></i>
-</a><!-- /.header-action-inner -->
+<% if action_name == "show" %>
+	<%= link_to [:edit, @place], data: {reload:"false", toggle:"tooltip", placement:"auto"}, class: "header-action-inner", title:"Edit my location", style:"position: fixed; bottom: 3%; right: 3%; border-radius: 50%; overflow: hidden; width: 50px; height: 50px;" do %>
+	    <i class="fa fa-pencil" style="vertical-align: bottom;"></i>
+	<% end %>
+<% elsif user_signed_in? && action_name != "new" %>
+	<%= link_to [:new, :place], data: {reload:"false", toggle:"tooltip", placement:"auto"}, class: "header-action-inner", title:"Share my location", style:"position: fixed; bottom: 3%; right: 3%; border-radius: 50%; overflow: hidden; width: 50px; height: 50px;" do %>
+	    <i class="fa fa-plus" style="vertical-align: bottom;"></i>
+	<% end %>
+<% elsif !user_signed_in? %>
+	<%= link_to [:new, :user, :session], data: {toggle:"tooltip", placement:"auto"}, class: "header-action-inner", title:"Sign in", style:"position: fixed; bottom: 3%; right: 3%; border-radius: 50%; overflow: hidden; width: 50px; height: 50px;" do %>
+	    <i class="fa fa-sign-in" style="vertical-align: bottom;"></i>
+	<% end %>
 <% else %>
-<a href="<%= new_place_path %>" class="header-action-inner" title="Share my location" data-toggle="tooltip" data-placement="auto" style="position: fixed; bottom: 3%; right: 3%; border-radius: 50%; overflow: hidden; width: 50px; height: 50px;">
-    <i class="fa fa-plus" style="vertical-align: bottom;"></i>
-</a><!-- /.header-action-inner -->
+	<%= link_to [:pages], data: {toggle:"tooltip", placement:"auto"}, class: "header-action-inner", title:"Home", style:"position: fixed; bottom: 3%; right: 3%; border-radius: 50%; overflow: hidden; width: 50px; height: 50px;" do %>
+	    <i class="fa fa-home" style="vertical-align: bottom;"></i>
+	<% end %>
 <% end %>

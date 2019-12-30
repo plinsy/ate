@@ -23,6 +23,27 @@
                         <div class="col-sm-4 col-lg-3">
                             <div class="sidebar">
                                 <div class="widget">
+                                    <h2 class="widgettitle">My locations</h2>
+                                    <ul class="list-unstyled">
+                                        <% if action_name == "show" %>
+                                        <li>
+                                            <a data-reload="false" class="btn-link w-100" href="<%= edit_place_path(@place) %>">Edit
+                                                <%= @place.location %></a>
+                                        </li>
+                                        <li>
+                                            <a data-reload="false" class="btn-link w-100" href="<%= place_services_path(@place) %>">My services</a>
+                                        </li>
+                                        <li>
+                                            <a data-reload="false" class="btn-link w-100" href="<%= new_place_service_path(@place) %>">New service</a>
+                                        </li>
+                                        <% else %>
+                                        <li>
+                                            <a data-reload="false" class="btn-link w-100" href="<%= new_place_path %>">Share a new location</a>
+                                        </li>
+                                        <% end %>
+                                    </ul>
+                                </div><!-- /.widget -->
+                                <div class="widget">
                                     <h2 class="widgettitle">Associated services</h2>
                                     <div class="cards-small">
                                         <div class="card-small">

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :places
+  resources :categories
+  resources :places do
+    resources :services
+  end
   resources :activities
   resources :accounts, only: %i[show edit update]
   resources :profiles, only: %i[show edit update]

@@ -21,4 +21,16 @@ class User < ApplicationRecord
   def has_locations?
     self.places.any?
   end
+
+  def fullname
+    self.firstname + " " + self.lastname
+  end
+
+  def firstname
+    self.profile.firstname
+  end
+
+  def lastname
+    self.profile.lastname
+  end
 end

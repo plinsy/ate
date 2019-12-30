@@ -19,10 +19,14 @@ module ApplicationHelper
 	end
 
 	def page_need_google_map?
-		if (controller_name=="pages" && action_name=="index")
+		if (controller_name=="pages" && action_name=="index") || (controller_name=="pages" && action_name=="show")
 			return true
 		else
 			return false
 		end
+	end
+
+	def get_place
+		@place = Place.find(params[:place_id])
 	end
 end

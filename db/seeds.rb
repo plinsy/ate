@@ -19,9 +19,12 @@ def create_user(admin=false, user_data=[])
 		user.profile.update(
 			firstname: data[2],
 			lastname: data[3],
-			phone: data[4],
-			avatar: data[5]
+			phone: data[4]
 		)
+		File.open(data[5]) do |f|
+			user.profile.avatar = f
+		end
+		user.profile.save
 		print '.'
 	else
 		print user.errors.full_messages
@@ -38,10 +41,13 @@ def create_place(place_data=[])
 		latitude: data[4],
 		description: data[5],
 		main: data[6],
-		image: data[7],
 		activity_list: data[8]
 	)
 	if place.save
+		File.open(data[7]) do |f|
+			place.image = f
+		end
+		place.save
 		print '.'
 	else
 		print place.errors.full_messages
@@ -55,10 +61,13 @@ def create_service(service_data=[])
 		title: data[1],
 		description: data[2],
 		price: data[3],
-		image: data[4],
 		category_list: data[5]
 	)
 	if service.save
+		File.open(data[4]) do |f|
+			service.image = f
+		end
+		service.save
 		print '.'
 	else
 		print service.errors.full_messages
@@ -78,7 +87,7 @@ def create_comment(comment_data=[])
 end
 
 def create_admins
-	linx = ['plinsy2@gmail.com', 'Lins#01111998', 'Princy', 'A.N.Tsimanarson', '0347739305']
+	linx = ['plinsy2@gmail.com', 'Lins#01111998', 'Princy', 'A.N.Tsimanarson', '0347739305', "/home/linx/Music/Soprano/soprano_289.jpg"]
 	admins = [linx]
 	admins.each do |admin|
 		create_user(true, admin)
@@ -88,7 +97,7 @@ end
 
 def create_users
 	users = []
-	5.times { |n| users.push([Faker::Internet.email, '000000', Faker::Name.first_name_men, Faker::Name.last_name, Faker::PhoneNumber.phone_number, Faker::Avatar.image])  }
+	5.times { |n| users.push([Faker::Internet.email, '000000', Faker::Name.first_name_men, Faker::Name.last_name, Faker::PhoneNumber.phone_number, "#{Rails.root}/app/assets/one/img/tmp/agent-#{rand(1..5)}.jpg"])  }
 	users.each do |user|
 		create_user(false, user)
 	end
@@ -110,7 +119,7 @@ def create_places
 				Faker::Address.latitude,
 				descriptions.sample,
 				false,
-				Faker::LoremFlickr.image,
+				"#{Rails.root}/app/assets/one/img/tmp/product-#{rand(2..11)}.jpg",
 				activities
 			]
 		)}
@@ -132,7 +141,7 @@ def create_services
 				Faker::Commerce.product_name,
 				descriptions.sample,
 				Faker::Commerce.price,
-				Faker::LoremFlickr.image,
+				"#{Rails.root}/app/assets/one/img/tmp/gallery-#{rand(1..8)}.jpg",
 				categories
 			]
 		)}

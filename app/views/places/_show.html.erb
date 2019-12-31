@@ -1,9 +1,9 @@
 <div class="content">
     <div class="page-title">
-        <h1>Location Detail</h1>
+        <h1>Location detail</h1>
     </div><!-- /.page-title -->
     <div class="posts post-detail">
-        <div class="detail-banner" style="background-image: url(/assets/img/tmp/detail-banner-1.jpg);">
+        <div class="detail-banner" style="background-image: url(<%= place.image.url %>);">
             <div class="container">
                 <div class="detail-banner-left">
                     <div class="detail-banner-info">
@@ -44,7 +44,7 @@
             </div><!-- /.post-meta-date -->
             <div class="post-meta-categories"><i class="fa fa-tags"></i> <a href="blog-detail.html">
                     <%= place.activity_list.sample %></a></div><!-- /.post-meta-categories -->
-            <div class="post-meta-comments"><i class="fa fa-comments"></i> <a href="blog-detail.html">3 reviews</a></div><!-- /.post-meta-comments -->
+            <div class="post-meta-comments"><i class="fa fa-comments"></i> <a href="blog-detail.html"><%= render 'votes/length', votes_length: 10 %></a></div><!-- /.post-meta-comments -->
         </div><!-- /.post-meta -->
         <div class="post-meta-tags clearfix">
             Tags:
@@ -59,8 +59,8 @@
     <div class="detail-gallery">
         <h2>What else ?</h2>
         <div class="detail-gallery-preview">
-            <a href="/assets/img/tmp/gallery-1.jpg">
-                <img src="/assets/img/tmp/gallery-1.jpg">
+            <a href="<%= place.services.first.image.url %>">
+                <img src="<%= place.services.first.image.url %>" alt="---">
             </a>
         </div>
         <ul class="detail-gallery-index">
@@ -71,7 +71,7 @@
                 </a>
             </li>
             <% end %>
-            <li class="detail-gallery-list-item active">
+            <!-- <li class="detail-gallery-list-item active">
                 <a data-target="/assets/img/tmp/gallery-1.jpg">
                     <img src="/assets/img/tmp/gallery-1.jpg" alt="---">
                 </a>
@@ -110,10 +110,10 @@
                 <a data-target="/assets/img/tmp/gallery-8.jpg">
                     <img src="/assets/img/tmp/gallery-8.jpg" alt="---">
                 </a>
-            </li>
+            </li> -->
         </ul>
     </div><!-- /.detail-gallery -->
-    <h2>We Are Here</h2>
+    <h2>We are here</h2>
     <div class="background-white p20">
         <!-- Nav tabs -->
         <ul id="listing-detail-location" class="nav nav-tabs" role="tablist">
@@ -150,7 +150,7 @@
     </div><!-- /.detail-video -->
     <div class="row detail-content">
         <div class="col-sm-12">
-            <h2 id="reviews">All Reviews <%= @comments.length %></h2>
+            <h2 id="reviews">All reviews <%= @comments.length %></h2>
             <div class="reviews" id="comments-list">
                 <% if @comments.any? %>
                 <% @comments.each do |comment| %>
@@ -169,11 +169,7 @@
                             </span>
                             <div class="review-overall-rating">
                                 <span class="overall-rating-title">Total Score:</span>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-o"></i>
-                                <i class="fa fa-star-o"></i>
+                                <%= render 'votes/ratings', ratings_length: 4.5 %>
                             </div><!-- /.review-rating -->
                         </div><!-- /.review-title -->
                         <div class="review-content-wrapper">
@@ -359,7 +355,7 @@
                     </div><!-- /.review-inner -->
                 </div><!-- /.review -->
             </div><!-- /.reviews -->
-            <h2>Submit a Review</h2>
+            <h2>Submit a review</h2>
             <div id="comment-form">
                 <%= render 'comments/form', comment: Comment.new(commentable: @place, user: current_user, body: "No comment") %>
             </div>

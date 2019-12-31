@@ -7,7 +7,8 @@ class CommentsController < ApplicationController
   def create
     @user_who_commented = current_user
     @place = Place.find(params[:comment][:commentable_id])
-    if @comment = Comment.build_from(@place, @user_who_commented.id,"",params[:comment][:pos_body],params[:comment][:neg_body] )
+    @comment = Comment.build_from(@place, @user_who_commented.id,"#{params[:comment][:pos_body]} #{params[:comment][:neg_body]}",params[:comment][:pos_body],params[:comment][:neg_body] )
+    if @comment.save
       @comment.vote_by voter: @user_who_commented, vote_scope: "review", vote_weight: params[:comment][:vote_weight]
     end
   	respond_to do |format|

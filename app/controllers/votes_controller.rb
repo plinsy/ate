@@ -9,7 +9,7 @@ class VotesController < ApplicationController
   end
 
   def destroy
-    @item.downvote_from current_user, vote_scope: @vote_type
+    @item.dislike_by current_user, vote_scope: @vote_type
   	respond_to do |format|
   		format.js
   	end

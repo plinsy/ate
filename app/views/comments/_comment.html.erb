@@ -12,19 +12,7 @@
             </span>
             <div class="review-overall-rating">
                 <span class="overall-rating-title">Total Score:</span>
-                <% ratings_length = comment.find_votes_for(:vote_scope => 'review').sum(:vote_weight) %>
-                <% ratings_length.to_i.times do |n| %>
-                <i class="fa fa-star"></i>
-                <% end %>
-                <% if ratings_length.to_i < ratings_length %>
-                <i class="fa fa-star-half-o"></i>
-                    <% left = 4 - ratings_length.to_i %>
-                <% else %>
-                    <% left = 5 - ratings_length.to_i %>
-                <% end %>
-                <% left.times do |n| %>
-                <i class="fa fa-star-o"></i>
-                <% end %>
+                <%= render 'votes/ratings', ratings_length: comment.find_votes_for(:vote_scope => 'review').sum(:vote_weight) %>
             </div><!-- /.review-rating -->
         </div><!-- /.review-title -->
         <div class="review-content-wrapper">

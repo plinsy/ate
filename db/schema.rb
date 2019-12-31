@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2019_12_31_150531) do
     t.bigint "user_id", null: false
     t.string "level", default: "Free", null: false
     t.string "price", default: "0 Ar/mois", null: false
-    t.datetime "deadline", default: "2069-12-31 17:40:24", null: false
+    t.datetime "deadline", default: "2069-12-31 18:57:57", null: false
     t.boolean "expired", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

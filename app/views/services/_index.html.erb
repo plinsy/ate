@@ -66,7 +66,7 @@
                 <div class="card-simple" data-background-image="<%= service.image.url %>">
                     <div class="card-simple-background">
                         <div class="card-simple-content">
-                            <h2><a href="listing-detail.html"><%= service.title %></a></h2>
+                            <h2><a href="<%= place_service_path(@place, service) %>"><%= service.title %></a></h2>
                             <div class="card-simple-rating">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>

@@ -1,2 +1,2 @@
 $(`#comments-list`).append(`<%= render 'comments/comment', comment: @comment %>`);
-$(`#comment-form`).append(`<%= render 'comments/form', comment: Comment.new(commentable: @place, user: current_user, body: "No comment") %>`);
+$(`#comment-form`).html(`<%= render 'comments/form', comment: Comment.new(commentable: @place, user: current_user, body: "No comment") %>`);

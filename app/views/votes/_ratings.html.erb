@@ -1,0 +1,12 @@
+<% ratings_length.to_i.times do |n| %>
+<i class="fa fa-star"></i>
+<% end %>
+<% if ratings_length.to_i < ratings_length %>
+<i class="fa fa-star-half-o"></i>
+<% left = 4 - ratings_length.to_i %>
+<% else %>
+<% left = 5 - ratings_length.to_i %>
+<% end %>
+<% left.times do |n| %>
+<i class="fa fa-star-o"></i>
+<% end %>

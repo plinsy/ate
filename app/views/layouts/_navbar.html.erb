@@ -67,7 +67,7 @@
                             </li>
                             <% if user_signed_in? && current_user.has_locations? %>
                             <li>
-                                <a>My locations <i class="fa fa-chevron-down"></i></a>
+                                <a href="javascript:;">My locations <i class="fa fa-chevron-down"></i></a>
                                 <ul class="sub-menu">
                                     <% current_user.places.limit(5).each do |place| %>
                                     <li><a href="<%= place_path(place) %>">

@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def index
+  	@places = Place.ordered
   end
   def pricing
   end

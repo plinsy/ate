@@ -1,26 +1,31 @@
 class PlacesController < ApplicationController
   layout 'places'
   
-  before_action :set_place, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user! 
+  before_action :set_place, :get_services, only: [:edit, :update, :destroy]
 
   # GET /places
   # GET /places.json
   def index
-    @places = Place.all
+    @places = current_user.places
   end
 
   # GET /places/1
   # GET /places/1.json
   def show
+    @place = Place.find(params[:id])
+    get_services
   end
 
   # GET /places/new
   def new
-    @place = Place.new
+    @places = current_user.places
+    @place = current_user.places.new
   end
 
   # GET /places/1/edit
   def edit
+    @places = current_user.places
     respond_to do |format|
       format.js
     end
@@ -29,7 +34,8 @@ class PlacesController < ApplicationController
   # POST /places
   # POST /places.json
   def create
-    @place = Place.new(place_params)
+    @places = current_user.places
+    @place = current_user.places.new(place_params)
     @place.user = current_user
     
     respond_to do |format|
@@ -70,11 +76,11 @@ class PlacesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_place
-      @place = Place.find(params[:id])
+      @place = current_user.places.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def place_params
-      params.require(:place).permit(:user_id, :activity_id, :title, :location, :longitude, :latitude, :description, :main)
+      params.require(:place).permit(:user_id, :activity_list, :title, :location, :longitude, :latitude, :description, :main, :tag_list)
     end
 end

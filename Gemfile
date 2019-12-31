@@ -54,6 +54,7 @@ end
 # gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "jquery-rails"
+gem 'bootstrap'
 gem "devise"
 gem "rails_admin"
 gem 'capistrano', '~> 3.11'
@@ -63,3 +64,50 @@ gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
 gem 'dotenv-rails'
 
 gem "aws-sdk-s3", require: false
+gem 'acts-as-taggable-on'
+gem "faker"
+gem 'carrierwave', '~> 2.0'
+gem 'acts_as_votable'
+
+#B# TVM = [183.25, 695.25]
+# MATV = [487.25, 506.25]
+# RTA = [567.25]
+# DreamIn = [511.25, 615.25]
+# TVRecord = [583.25]
+## VIVATV = [727.25, 759.25]
+# TVPlus = [551.25, 575.25]
+## TNTV = [471.25]
+# KOLOTV = [527.25]
+# IBC = [535.25]
+# AmitieTV = [623.25]
+#?# MBSTV = [631.25, 663.25]
+# ONAIRTV = [671.25]
+# LA7 = [647.25]
+## TVHFF = [655.25]
+#?X OTHERS = [543.25, 703.25]
+
+# ALL = [
+#   183.25, # TVM B
+#   471.25, # TNTV
+#   487.25, # MATV
+#   506.25, # X
+#   511.25, 
+#   527.25, 
+#   535.25, 
+#   543.25,
+#   551.25, 
+#   567.25, 
+#   575.25, 
+#   583.25, 
+#   615.25, 
+#   623.25, 
+#   631.25, 
+#   647.25, # LA7
+#   655.25, # TVHFF
+#   663.25, # MBS B
+#   671.25, # MBS
+#   695.25, # TVM
+#   703.25, # X
+#   727.25, # VIVA
+#   759.25  # VIVA
+# ]

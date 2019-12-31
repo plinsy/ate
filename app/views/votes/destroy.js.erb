@@ -1,0 +1,1 @@
+$(`#<%= @item_type.to_s + "-" + @item.id.to_s %>`).html(`<%= render 'votes/like', item: @item, item_type: @item_type %>`)

@@ -1,6 +1,8 @@
 class Service < ApplicationRecord
   belongs_to :place
-  belongs_to :category
 
-  has_one_attached :image
+ 	acts_as_taggable 
+  acts_as_taggable_on :categories
+
+  mount_uploader :image, ImageUploader
 end

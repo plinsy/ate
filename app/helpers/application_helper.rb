@@ -29,4 +29,25 @@ module ApplicationHelper
 	def get_place
 		@place = Place.find(params[:place_id])
 	end
+
+	def get_services
+		@services = @place.services
+	end
+
+	def activities
+		["Personal activity",
+		"Hospital",
+		"School",
+		"Bus stop",
+		"Hotel",
+		"Restaurant",
+		"Coffee",
+		"Cyber",
+		"Pub",
+		"Airport"]
+	end
+
+	def categories
+		activities
+	end
 end

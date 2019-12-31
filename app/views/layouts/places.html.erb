@@ -26,25 +26,45 @@
                                     <h2 class="widgettitle">My locations</h2>
                                     <ul class="list-unstyled">
                                         <% if action_name == "show" %>
-                                        <li>
-                                            <a data-reload="false" class="btn-link w-100" href="<%= edit_place_path(@place) %>">Edit
+                                        <li class="w-100">
+                                            <a data-reload="false" class="btn btn-primary w-100" href="<%= place_path(@place) %>">Show
+                                                <%= @place.title %></a>
+                                        </li>
+                                        <li class="w-100">
+                                            <a data-reload="false" class="btn btn-primary w-100" href="<%= edit_place_path(@place) %>">Edit
                                                 <%= @place.location %></a>
                                         </li>
-                                        <li>
-                                            <a data-reload="false" class="btn-link w-100" href="<%= place_services_path(@place) %>">My services</a>
+                                        <li class="w-100">
+                                            <a data-reload="false" class="btn btn-primary w-100" href="<%= place_services_path(@place) %>">My services</a>
                                         </li>
-                                        <li>
-                                            <a data-reload="false" class="btn-link w-100" href="<%= new_place_service_path(@place) %>">New service</a>
+                                        <li class="w-100">
+                                            <a data-reload="false" class="btn btn-primary w-100" href="<%= new_place_service_path(@place) %>">New service</a>
                                         </li>
                                         <% else %>
-                                        <li>
-                                            <a data-reload="false" class="btn-link w-100" href="<%= new_place_path %>">Share a new location</a>
+                                        <li class="w-100">
+                                            <a data-reload="false" class="btn btn-primary w-100" href="<%= new_place_path %>">Share a new location</a>
                                         </li>
                                         <% end %>
                                     </ul>
                                 </div><!-- /.widget -->
                                 <div class="widget">
                                     <h2 class="widgettitle">Associated services</h2>
+                                    <% @services.each do |service| %>
+                                    <div class="cards-small">
+                                        <div class="card-small">
+                                            <div class="card-small-image">
+                                                <a href="<%= place_service_path(@place, service) %>">
+                                                    <img src="<%= service.image.url %>" alt="---">
+                                                </a>
+                                            </div><!-- /.card-small-image -->
+                                            <div class="card-small-content">
+                                                <h3><a href="<%= place_service_path(@place, service) %>"><%= service.title %></a></h3>
+                                                <h4><a href="<%= place_path(@place) %>"><%= service.place.location %></a></h4>
+                                                <div class="card-small-price"><%= service.price %></div>
+                                            </div><!-- /.card-small-content -->
+                                        </div><!-- /.card-small -->
+                                    </div><!-- /.cards-small -->
+                                    <% end %>
                                     <div class="cards-small">
                                         <div class="card-small">
                                             <div class="card-small-image">

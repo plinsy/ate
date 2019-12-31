@@ -61,6 +61,31 @@
     </h2><!-- /.page-title -->
     <div class="cards-simple-wrapper">
         <div class="row">
+            <% @services.each do |service| %>
+            <div class="col-sm-6 col-lg-4">
+                <div class="card-simple" data-background-image="<%= service.image.url %>">
+                    <div class="card-simple-background">
+                        <div class="card-simple-content">
+                            <h2><a href="listing-detail.html"><%= service.title %></a></h2>
+                            <div class="card-simple-rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div><!-- /.card-rating -->
+                            <div class="card-simple-actions">
+                                <a href="#" class="fa fa-star-o"></a>
+                                <a href="<%= place_service_path(@place, service) %>" class="fa fa-search"></a>
+                                <a href="#" class="fa fa-heart-o"></a>
+                            </div><!-- /.card-simple-actions -->
+                        </div><!-- /.card-simple-content -->
+                        <div class="card-simple-label"><%= service.category_list.sample %></div>
+                        <div class="card-simple-price"><%= service.price %></div>
+                    </div><!-- /.card-simple-background -->
+                </div><!-- /.card-simple -->
+            </div><!-- /.col-* -->
+            <% end %>
             <div class="col-sm-6 col-lg-4">
                 <div class="card-simple" data-background-image="/assets/img/tmp/product-1.jpg">
                     <div class="card-simple-background">

@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_one :account, dependent: :destroy
   has_many :places, dependent: :destroy
 
+  acts_as_voter
+
   def is_admin?
   	return self.admin
   end

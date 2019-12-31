@@ -7,7 +7,7 @@ class ServicesController < ApplicationController
   # GET /services
   # GET /services.json
   def index
-    @services = Service.all
+    @services = @place.services.all
     respond_to do |format|
       format.js
     end
@@ -20,7 +20,7 @@ class ServicesController < ApplicationController
 
   # GET /services/new
   def new
-    @service = Service.new
+    @service = @place.services.new
   end
 
   # GET /services/1/edit
@@ -30,16 +30,15 @@ class ServicesController < ApplicationController
   # POST /services
   # POST /services.json
   def create
-    @service = Service.new(service_params)
+    @service = @place.services.new(service_params)
 
     respond_to do |format|
       if @service.save
-        format.html { redirect_to @service, success: 'Service was successfully created.' }
+        format.html { redirect_to [@place, @service], success: 'Service was successfully created.' }
         format.json { render :show, status: :created, location: @service }
+        format.js
       else
-        format.html {}
         format.json { render json: @service.errors, status: :unprocessable_entity }
-        format.js { render :new }
       end
     end
   end
@@ -49,7 +48,7 @@ class ServicesController < ApplicationController
   def update
     respond_to do |format|
       if @service.update(service_params)
-        format.html { redirect_to @service, success: 'Service was successfully updated.' }
+        format.html { redirect_to [@place, @service], success: 'Service was successfully updated.' }
         format.json { render :show, status: :ok, location: @service }
       else
         format.html { render :edit }
@@ -71,11 +70,11 @@ class ServicesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_service
-      @service = Service.find(params[:id])
+      @service = @place.services.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:place_id, :title, :category_id, :description, :price, :image)
+      params.require(:service).permit(:place_id, :title, :category_list, :description, :price, :image)
     end
 end

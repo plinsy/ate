@@ -1,4 +1,4 @@
-<% if action_name == "show" %>
+<% if (controller_name == "places" && action_name == "show") %>
 	<%= link_to [:edit, @place], data: {reload:"false", toggle:"tooltip", placement:"auto"}, class: "header-action-inner", title:"Edit my location", style:"position: fixed; bottom: 3%; right: 3%; border-radius: 50%; overflow: hidden; width: 50px; height: 50px;" do %>
 	    <i class="fa fa-pencil" style="vertical-align: bottom;"></i>
 	<% end %>

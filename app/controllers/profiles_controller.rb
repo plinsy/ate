@@ -12,6 +12,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+    @tab = params[:tab]
     respond_to do |format|
       format.js
     end

@@ -1,18 +1,6 @@
 <div class="background-white p20 mb30">
     <%= form_with(model: service, url: url) do |f| %>
-    <% if service.errors.any? %>
-    <div id="error_explanation">
-        <h2>
-            <%= pluralize(service.errors.count, "error") %> prohibited this service from being saved:</h2>
-        <ul>
-            <% service.errors.full_messages.each do |message| %>
-            <li>
-                <%= message %>
-            </li>
-            <% end %>
-        </ul>
-    </div>
-    <% end %>
+    <%= render 'shared/error_messages', item: service %>
     <div class="form-group">
         <%= f.label :place_id %>
         <%= f.text_field :place_id, class: "form-control", readonly: true %>
@@ -21,22 +9,20 @@
         <div class="row">
             <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                 <%= f.label :title %>
-                <%= f.text_field :title, class: "form-control" %>
+                <%= f.text_field :title, placeholder: "Give a title for your new service", class: "form-control" %>
             </div>
             <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                <%= f.label :category_id %>
-                <select class="form-control" title="Select Category" name="service[category_id]" id="service_category_id" required="">
-                    <option>No category</option>
-                    <% place.activity.categories.each do |category| %>
-                    <option value="<%= category.id %>" <%=action_name=="edit" && service.category==category ? 'selected=""' : "" %>>
-                        <%= category.name %>
-                    </option>
+                <%= f.label :category_list %>
+                <select class="form-control" name="service[category_id]" id="service_category_id" required="">
+                    <option selected="" disabled="" label="In which category is it ?"></option>
+                    <% categories.each do |category| %>
+                    <option><%= category %></option>
                     <% end %>
                 </select>
             </div>
             <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                 <%= f.label :price %>
-                <%= f.text_field :price, min: "0.00", max: "10000.00", step: "0.01", currency: true, class: "form-control" %>
+                <%= f.number_field :price, min: "0.00", max: "10000.00", step: "0.01", currency: true, placeholder: "€ 0.5 / person", class: "form-control" %>
             </div>
         </div>
     </div>

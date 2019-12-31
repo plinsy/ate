@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  resources :categories
+  post '/votes/:item_type/:item_id', to: "votes#create", as: "votes"
+  delete '/votes/:item_type/:item_id', to: "votes#destroy", as: "vote"
+
   resources :places do
     resources :services
   end
-  resources :activities
   resources :accounts, only: %i[show edit update]
   resources :profiles, only: %i[show edit update]
 	devise_for :users, controllers: {

@@ -26,11 +26,11 @@
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star-half-o"></i>
                     </div><!-- /.detail-banner-rating -->
-                    <div class="detail-banner-btn bookmark">
-                        <i class="fa fa-bookmark-o"></i> <span data-toggle="Bookmarked">Bookmark</span>
+                    <div class="detail-banner-btn bookmark p-0" id="place-<%= place.id %>-bookmark">
+                        <%= render 'votes/vote', vote_type: "bookmark", item: place, item_type: "place", first_content: "Bookmark", second_content: "Bookmarked", vote_weight: 1, color: "info" %>
                     </div><!-- /.detail-claim -->
-                    <div class="detail-banner-btn heart p-0" id="place-<%= place.id %>">
-                        <%= render 'votes/like', item: place, item_type: "place" %>
+                    <div class="detail-banner-btn heart p-0" id="place-<%= place.id %>-heart">
+                        <%= render 'votes/vote', vote_type: "heart", item: place, item_type: "place", first_content: "Give Heart", second_content: "I Love It", vote_weight: 1, color: "danger" %>
                     </div><!-- /.detail-claim -->
                 </div><!-- /.detail-banner-left -->
             </div><!-- /.container -->

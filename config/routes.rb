@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  post '/votes/:item_type/:item_id', to: "votes#create", as: "votes"
-  delete '/votes/:item_type/:item_id', to: "votes#destroy", as: "vote"
+  post '/votes/:vote_type/:item_type/:item_id/:short', to: "votes#create", as: "votes"
+  delete '/votes/:vote_type/:item_type/:item_id/:short', to: "votes#destroy", as: "vote"
 
   resources :places do
     resources :services

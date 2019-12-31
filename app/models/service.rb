@@ -5,4 +5,6 @@ class Service < ApplicationRecord
   acts_as_taggable_on :categories
 
   mount_uploader :image, ImageUploader
+
+  acts_as_votable
 end

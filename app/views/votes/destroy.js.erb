@@ -1,1 +1,7 @@
-$(`#<%= @item_type.to_s + "-" + @item.id.to_s %>`).html(`<%= render 'votes/like', item: @item, item_type: @item_type %>`)
+$(`#<%= @item_type.to_s + "-" + @item.id.to_s + "-" + @vote_type %>`).html(`
+<% if @short && @short != "false" %>
+	<%= render 'votes/short_vote', vote_type: @vote_type, item: @item, item_type: @item_type, vote_weight: @vote_weight, color: @color %>
+<% else %>
+	<%= render 'votes/vote', vote_type: @vote_type, item: @item, item_type: @item_type, vote_weight: @vote_weight, color: @color, first_content: @first_content, second_content: @second_content  %>
+<% end %>
+`)

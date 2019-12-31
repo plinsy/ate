@@ -1,0 +1,13 @@
+<% if item.get_upvotes(voter: current_user, vote_scope: vote_type).any? %>
+	<%= form_with(url: vote_path(vote_type: vote_type, item_id: item.id, item_type: item_type, short: true, vote_weight: vote_weight, color: color), method: :delete, html: { class: "display-0" }) do |f| %>
+		<button type="submit" class="m-0 p-0 w-100 btn-light bg-transparent" style="padding: 9px 15px; border-color: transparent;">
+			<span class="fa fa-<%= vote_type %> text-<%= color %> m-0"></span>
+		</button>
+	<% end %>
+<% else %>
+	<%= form_with(url: votes_path(vote_type: vote_type, item_id: item.id, item_type: item_type, short: true, vote_weight: vote_weight, color: color), html: { class: "display-0" }) do |f| %>
+		<button type="submit" class="m-0 p-0 w-100 btn-dark bg-transparent" style="padding: 9px 15px; border-color: transparent;">
+			<span class="fa fa-<%= vote_type %>-o m-0"></span>
+		</button>
+	<% end %>
+<% end %>

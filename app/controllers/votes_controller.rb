@@ -1,28 +1,33 @@
 class VotesController < ApplicationController
-	before_action :authenticate_user!
-
-  def new
-  end
+	before_action :authenticate_user!, :set_item
 
   def create
-    @item_type = params[:item_type]
-  	if @item_type == "place"
-	  	@item = Place.find(params[:item_id])
-  	end
-	  @item.liked_by current_user
+    @item.vote_by voter: current_user, vote_scope: @vote_type
   	respond_to do |format|
   		format.js
   	end
   end
 
   def destroy
-    @item_type = params[:item_type]
-  	if @item_type == "place"
-	  	@item = Place.find(params[:item_id])
-  	end
-	  @item.disliked_by current_user
+    @item.downvote_from current_user, vote_scope: @vote_type
   	respond_to do |format|
   		format.js
   	end
   end
+
+  protected
+    def set_item
+      @vote_type = params[:vote_type]
+      @short = params[:short]
+      @item_type = params[:item_type]
+      @first_content = params[:first_content]
+      @second_content = params[:second_content]
+      @vote_weight = params[:vote_weight]
+      @color = params[:color]
+      if @item_type == "place"
+        @item = Place.find(params[:item_id])
+      elsif @item_type == "service"
+        @item = Service.find(params[:item_id])
+      end
+    end
 end

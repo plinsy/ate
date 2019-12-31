@@ -19,7 +19,8 @@ def create_user(admin=false, user_data=[])
 		user.profile.update(
 			firstname: data[2],
 			lastname: data[3],
-			phone: data[4]
+			phone: data[4],
+			avatar: data[5]
 		)
 		print '.'
 	else
@@ -64,6 +65,18 @@ def create_service(service_data=[])
 	end
 end
 
+def create_comment(comment_data=[])
+	data = comment_data
+	comment = Comment.build_from(data[0], data[1], data[2], data[3], data[4])
+	if comment.save
+		print '.'
+    comment.vote_by voter: User.find(data[1]), vote_scope: "review", vote_weight: rand(1..5)
+	else
+		print "X"
+		print comment.errors.full_messages
+	end
+end
+
 def create_admins
 	linx = ['plinsy2@gmail.com', 'Lins#01111998', 'Princy', 'A.N.Tsimanarson', '0347739305']
 	admins = [linx]
@@ -75,7 +88,7 @@ end
 
 def create_users
 	users = []
-	10.times { |n| users.push([Faker::Internet.email, '000000', Faker::Name.first_name_men, Faker::Name.last_name, Faker::PhoneNumber.phone_number])  }
+	5.times { |n| users.push([Faker::Internet.email, '000000', Faker::Name.first_name_men, Faker::Name.last_name, Faker::PhoneNumber.phone_number, Faker::Avatar.image])  }
 	users.each do |user|
 		create_user(false, user)
 	end
@@ -97,7 +110,7 @@ def create_places
 				Faker::Address.latitude,
 				descriptions.sample,
 				false,
-				Faker::Placeholdit.image,
+				Faker::LoremFlickr.image,
 				activities
 			]
 		)}
@@ -119,12 +132,32 @@ def create_services
 				Faker::Commerce.product_name,
 				descriptions.sample,
 				Faker::Commerce.price,
-				Faker::Placeholdit.image,
+				Faker::LoremFlickr.image,
 				categories
 			]
 		)}
 		services.each do |service|
 			create_service(service)
+		end
+	end
+	puts 'done'
+end
+
+def create_comments
+	Place.all.each do |place|
+		comments = []
+		5.times { |n| 
+			comments.push(
+			[
+				place, 
+				User.all.sample.id,
+				"No comment",
+				Faker::Lorem.paragraphs.join(' '),
+				Faker::Lorem.paragraphs.join(' ')
+			]
+		)}
+		comments.each do |comment|
+			create_comment(comment)
 		end
 	end
 	puts 'done'
@@ -143,3 +176,6 @@ create_places
 
 puts "~> Creating services"
 create_services
+
+puts "~> Creating comments"
+create_comments

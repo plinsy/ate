@@ -15,6 +15,7 @@ class PlacesController < ApplicationController
   def show
     @place = Place.find(params[:id])
     get_services
+    @comments = @place.comment_threads
   end
 
   # GET /places/new

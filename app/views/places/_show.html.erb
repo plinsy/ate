@@ -66,49 +66,49 @@
         <ul class="detail-gallery-index">
             <% place.services.each do |service| %>
             <li class="detail-gallery-list-item active">
-                <a data-target="<%= service.image %>">
-                    <img src="<%= service.image %>" alt="...">
+                <a data-target="<%= service.image.url %>">
+                    <img src="<%= service.image.url %>" alt="---">
                 </a>
             </li>
             <% end %>
             <li class="detail-gallery-list-item active">
                 <a data-target="/assets/img/tmp/gallery-1.jpg">
-                    <img src="/assets/img/tmp/gallery-1.jpg" alt="...">
+                    <img src="/assets/img/tmp/gallery-1.jpg" alt="---">
                 </a>
             </li>
             <li class="detail-gallery-list-item active">
                 <a data-target="/assets/img/tmp/gallery-2.jpg">
-                    <img src="/assets/img/tmp/gallery-2.jpg" alt="...">
+                    <img src="/assets/img/tmp/gallery-2.jpg" alt="---">
                 </a>
             </li>
             <li class="detail-gallery-list-item active">
                 <a data-target="/assets/img/tmp/gallery-3.jpg">
-                    <img src="/assets/img/tmp/gallery-3.jpg" alt="...">
+                    <img src="/assets/img/tmp/gallery-3.jpg" alt="---">
                 </a>
             </li>
             <li class="detail-gallery-list-item active">
                 <a data-target="/assets/img/tmp/gallery-4.jpg">
-                    <img src="/assets/img/tmp/gallery-4.jpg" alt="...">
+                    <img src="/assets/img/tmp/gallery-4.jpg" alt="---">
                 </a>
             </li>
             <li class="detail-gallery-list-item active">
                 <a data-target="/assets/img/tmp/gallery-5.jpg">
-                    <img src="/assets/img/tmp/gallery-5.jpg" alt="...">
+                    <img src="/assets/img/tmp/gallery-5.jpg" alt="---">
                 </a>
             </li>
             <li class="detail-gallery-list-item active">
                 <a data-target="/assets/img/tmp/gallery-6.jpg">
-                    <img src="/assets/img/tmp/gallery-6.jpg" alt="...">
+                    <img src="/assets/img/tmp/gallery-6.jpg" alt="---">
                 </a>
             </li>
             <li class="detail-gallery-list-item active">
                 <a data-target="/assets/img/tmp/gallery-7.jpg">
-                    <img src="/assets/img/tmp/gallery-7.jpg" alt="...">
+                    <img src="/assets/img/tmp/gallery-7.jpg" alt="---">
                 </a>
             </li>
             <li class="detail-gallery-list-item active">
                 <a data-target="/assets/img/tmp/gallery-8.jpg">
-                    <img src="/assets/img/tmp/gallery-8.jpg" alt="...">
+                    <img src="/assets/img/tmp/gallery-8.jpg" alt="---">
                 </a>
             </li>
         </ul>
@@ -150,8 +150,13 @@
     </div><!-- /.detail-video -->
     <div class="row detail-content">
         <div class="col-sm-12">
-            <h2 id="reviews">All Reviews</h2>
-            <div class="reviews">
+            <h2 id="reviews">All Reviews <%= @comments.length %></h2>
+            <div class="reviews" id="comments-list">
+                <% if @comments.any? %>
+                <% @comments.each do |comment| %>
+                <%= render 'comments/comment', comment: comment %>
+                <% end %>
+                <% end %>
                 <div class="review">
                     <div class="review-image">
                         <img src="/assets/img/tmp/agent-1.jpg" alt="">
@@ -355,88 +360,9 @@
                 </div><!-- /.review -->
             </div><!-- /.reviews -->
             <h2>Submit a Review</h2>
-            <form class="background-white p20 add-review" method="post" action="?">
-                <div class="row">
-                    <div class="form-group col-sm-6">
-                        <label for="">Name <span class="required">*</span></label>
-                        <input type="text" class="form-control" id="" required>
-                    </div><!-- /.col-sm-6 -->
-                    <div class="form-group col-sm-6">
-                        <label for="">Email <span class="required">*</span></label>
-                        <input type="email" class="form-control" id="" required>
-                    </div><!-- /.col-sm-6 -->
-                </div><!-- /.row -->
-                <div class="row">
-                    <div class="form-group input-rating col-sm-3">
-                        <div class="rating-title">Food</div>
-                        <input type="radio" value="1" name="food" id="rating-food-1">
-                        <label for="rating-food-1"></label>
-                        <input type="radio" value="2" name="food" id="rating-food-2">
-                        <label for="rating-food-2"></label>
-                        <input type="radio" value="3" name="food" id="rating-food-3">
-                        <label for="rating-food-3"></label>
-                        <input type="radio" value="4" name="food" id="rating-food-4">
-                        <label for="rating-food-4"></label>
-                        <input type="radio" value="5" name="food" id="rating-food-5">
-                        <label for="rating-food-5"></label>
-                    </div><!-- /.col-sm-3 -->
-                    <div class="form-group input-rating col-sm-3">
-                        <div class="rating-title">Staff</div>
-                        <input type="radio" value="1" name="staff" id="rating-staff-1">
-                        <label for="rating-staff-1"></label>
-                        <input type="radio" value="2" name="staff" id="rating-staff-2">
-                        <label for="rating-staff-2"></label>
-                        <input type="radio" value="3" name="staff" id="rating-staff-3">
-                        <label for="rating-staff-3"></label>
-                        <input type="radio" value="4" name="staff" id="rating-staff-4">
-                        <label for="rating-staff-4"></label>
-                        <input type="radio" value="5" name="staff" id="rating-staff-5">
-                        <label for="rating-staff-5"></label>
-                    </div><!-- /.col-sm-3 -->
-                    <div class="form-group input-rating col-sm-3">
-                        <div class="rating-title">Value</div>
-                        <input type="radio" value="1" name="value" id="rating-value-1">
-                        <label for="rating-value-1"></label>
-                        <input type="radio" value="2" name="value" id="rating-value-2">
-                        <label for="rating-value-2"></label>
-                        <input type="radio" value="3" name="value" id="rating-value-3">
-                        <label for="rating-value-3"></label>
-                        <input type="radio" value="4" name="value" id="rating-value-4">
-                        <label for="rating-value-4"></label>
-                        <input type="radio" value="5" name="value" id="rating-value-5">
-                        <label for="rating-value-5"></label>
-                    </div><!-- /.col-sm-3 -->
-                    <div class="form-group input-rating col-sm-3">
-                        <div class="rating-title">Atmosphere</div>
-                        <input type="radio" value="1" name="atmosphere" id="rating-atmosphere-1">
-                        <label for="rating-atmosphere-1"></label>
-                        <input type="radio" value="2" name="atmosphere" id="rating-atmosphere-2">
-                        <label for="rating-atmosphere-2"></label>
-                        <input type="radio" value="3" name="atmosphere" id="rating-atmosphere-3">
-                        <label for="rating-atmosphere-3"></label>
-                        <input type="radio" value="4" name="atmosphere" id="rating-atmosphere-4">
-                        <label for="rating-atmosphere-4"></label>
-                        <input type="radio" value="5" name="atmosphere" id="rating-atmosphere-5">
-                        <label for="rating-atmosphere-5"></label>
-                    </div><!-- /.col-sm-3 -->
-                </div><!-- /.row -->
-                <div class="row">
-                    <div class="form-group col-sm-6">
-                        <label for="">Pros</label>
-                        <textarea class="form-control" rows="5" id=""></textarea>
-                    </div><!-- /.col-sm-6 -->
-                    <div class="form-group col-sm-6">
-                        <label for="">Cons</label>
-                        <textarea class="form-control" rows="5" id=""></textarea>
-                    </div><!-- /.col-sm-6 -->
-                    <div class="col-sm-8">
-                        <p>Required fields are marked <span class="required">*</span></p>
-                    </div><!-- /.col-sm-8 -->
-                    <div class="col-sm-4">
-                        <button class="btn btn-primary btn-block" type="submit"><i class="fa fa-star"></i>Submit Review</button>
-                    </div><!-- /.col-sm-4 -->
-                </div><!-- /.row -->
-            </form>
+            <div id="comment-form">
+                <%= render 'comments/form', comment: Comment.new(commentable: @place, user: current_user, body: "No comment") %>
+            </div>
         </div><!-- /.col-* -->
     </div><!-- /.row -->
 </div><!-- /.content -->

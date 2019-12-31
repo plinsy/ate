@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/acts_as_commentable_with_threading/acts_as_commentable_with_threading.git
+  revision: a579b92b497cbb2b5b5e8be78b760cf1c652dfa3
+  branch: master
+  specs:
+    acts_as_commentable_with_threading (2.0.1)
+      activerecord (>= 4.0)
+      activesupport (>= 4.0)
+      awesome_nested_set (>= 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -69,6 +79,8 @@ GEM
       sshkit (>= 1.6.1, != 1.7.0)
     autoprefixer-rails (9.7.3)
       execjs
+    awesome_nested_set (3.2.0)
+      activerecord (>= 4.0.0, < 7.0)
     aws-eventstream (1.0.3)
     aws-partitions (1.242.0)
     aws-sdk-core (3.80.0)
@@ -327,6 +339,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on
+  acts_as_commentable_with_threading!
   acts_as_votable
   aws-sdk-s3
   bootsnap (>= 1.4.2)

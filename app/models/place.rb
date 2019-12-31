@@ -10,4 +10,6 @@ class Place < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   acts_as_votable
+
+  acts_as_commentable
 end

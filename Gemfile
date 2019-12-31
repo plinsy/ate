@@ -68,6 +68,7 @@ gem 'acts-as-taggable-on'
 gem "faker"
 gem 'carrierwave', '~> 2.0'
 gem 'acts_as_votable'
+gem 'acts_as_commentable_with_threading', github: "acts_as_commentable_with_threading/acts_as_commentable_with_threading", branch: "master"
 
 #B# TVM = [183.25, 695.25]
 # MATV = [487.25, 506.25]

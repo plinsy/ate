@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :comments, only: [:index, :create, :update]
+
   post '/votes/:vote_type/:item_type/:item_id/:short', to: "votes#create", as: "votes"
   delete '/votes/:vote_type/:item_type/:item_id/:short', to: "votes#destroy", as: "vote"
 

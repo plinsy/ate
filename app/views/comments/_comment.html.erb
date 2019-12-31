@@ -1,0 +1,85 @@
+<div class="review">
+    <div class="review-image">
+        <img src="<%= comment.user.profile.avatar.url %>" alt="">
+    </div><!-- /.review-image -->
+    <div class="review-inner">
+        <div class="review-title">
+            <h2>
+                <%= comment.user.fullname %>
+            </h2>
+            <span class="report">
+                <span class="separator">&#8226;</span><i class="fa fa-flag" title="Report" data-toggle="tooltip" data-placement="top"></i>
+            </span>
+            <div class="review-overall-rating">
+                <span class="overall-rating-title">Total Score:</span>
+                <% ratings_length = comment.find_votes_for(:vote_scope => 'review').sum(:vote_weight) %>
+                <% ratings_length.to_i.times do |n| %>
+                <i class="fa fa-star"></i>
+                <% end %>
+                <% if ratings_length.to_i < ratings_length %>
+                <i class="fa fa-star-half-o"></i>
+                    <% left = 4 - ratings_length.to_i %>
+                <% else %>
+                    <% left = 5 - ratings_length.to_i %>
+                <% end %>
+                <% left.times do |n| %>
+                <i class="fa fa-star-o"></i>
+                <% end %>
+            </div><!-- /.review-rating -->
+        </div><!-- /.review-title -->
+        <div class="review-content-wrapper">
+            <div class="review-content">
+                <% if comment.pos_body != "" %>
+                <div class="review-pros">
+                    <p>
+                        <%= comment.pos_body %>
+                    </p>
+                </div><!-- /.pros -->
+                <% end %>
+                <% if comment.neg_body != "" %>
+                <div class="review-cons">
+                    <p>
+                        <%= comment.neg_body %>
+                    </p>
+                </div><!-- /.cons -->
+                <% end %>
+            </div><!-- /.review-content -->
+            <div class="review-rating">
+                <dl>
+                    <dt>Food</dt>
+                    <dd>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </dd>
+                    <dt>Staff</dt>
+                    <dd>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                    </dd>
+                    <dt>Value</dt>
+                    <dd>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                    </dd>
+                    <dt>Atmosphere</dt>
+                    <dd>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                    </dd>
+                </dl>
+            </div><!-- /.review-rating -->
+        </div><!-- /.review-content-wrapper -->
+    </div><!-- /.review-inner -->
+</div><!-- /.review -->

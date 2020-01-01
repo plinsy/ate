@@ -35,4 +35,8 @@ class User < ApplicationRecord
   def lastname
     self.profile.lastname
   end
+
+  def commented?(commentable_id)
+    Comment.where(user_id: self.id, commentable_id: commentable_id).any?
+  end
 end

@@ -9,3 +9,11 @@ $(`#<%= @item_type.to_s + "-" + @item.id.to_s + "-" + @vote_type %>`).html(`
 	<%= render 'votes/vote', vote_type: @vote_type, item: @item, item_type: @item_type, vote_weight: @vote_weight, color: @color, first_content: @first_content, second_content: @second_content  %>
 <% end %>
 `)
+
+// <% @parent = @item %>
+// <% @votes_length = @parent.get_upvotes(vote_scope: @vote_type).length %>
+// <% @item_list = "" %>
+// <% @div_form_id = "" %>
+// <% @new_item = "" %>
+
+// <%= render 'shared/reload', format: :js %>

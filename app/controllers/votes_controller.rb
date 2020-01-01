@@ -24,6 +24,7 @@ class VotesController < ApplicationController
       @second_content = params[:second_content]
       @vote_weight = params[:vote_weight]
       @color = params[:color]
+
       if @item_type == "place"
         @item = Place.find(params[:item_id])
       elsif @item_type == "service"

@@ -20,22 +20,51 @@
                             </script>
                             <% end %>
                         </div><!-- /.col-* -->
-                        <div class="col-sm-4 col-lg-3">
+                        <div class="col-sm-4 col-lg-3 detail-content">
                             <div class="sidebar">
+                                <div class="background-white p20">
+                                    <div class="detail-overview-hearts">
+                                        <i class="fa fa-heart"></i> <strong class="place-<%= @place.id %>-heart-length"><%= render 'votes/length', votes_length: @place.get_upvotes(vote_scope: "heart").length %></strong> people love it
+                                    </div>
+                                    <div class="detail-overview-rating">
+                                        <i class="fa fa-star"></i> <strong>4.7 / 5 </strong>from <a href="#reviews"><span class="place-<%= @place.id %>-review-length"><%= render 'votes/length', votes_length: @place.reviews.length %></span> reviews</a>
+                                    </div>
+                                    <div class="detail-actions row">
+                                        <div class="col-sm-4">
+                                            <div class="btn btn-primary btn-book"><i class="fa fa-shopping-cart"></i></div>
+                                        </div><!-- /.col-sm-4 -->
+                                        <div class="col-sm-4">
+                                            <div class="btn btn-secondary btn-share"><i class="fa fa-share-square-o"></i>
+                                                <div class="share-wrapper">
+                                                    <ul class="share">
+                                                        <li><i class="fa fa-facebook"></i> Facebook</li>
+                                                        <li><i class="fa fa-twitter"></i> Twitter</li>
+                                                        <li><i class="fa fa-google-plus"></i> Google+</li>
+                                                        <li><i class="fa fa-pinterest"></i> Pinterest</li>
+                                                        <li><i class="fa fa-chain"></i> Link</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div><!-- /.col-sm-4 -->
+                                        <div class="col-sm-4">
+                                            <div class="btn btn-secondary btn-claim"><i class="fa fa-hand-peace-o"></i></div>
+                                        </div><!-- /.col-sm-4 -->
+                                    </div><!-- /.detail-actions -->
+                                </div>
                                 <div class="widget">
                                     <h2 class="widgettitle">My locations</h2>
                                     <ul class="list-unstyled">
                                         <% if action_name == "show" %>
                                         <li class="w-100">
-                                            <a data-reload="false" class="btn btn-primary w-100" href="<%= place_path(@place) %>">Show
+                                            <a data-reload="false" class="btn btn-primary w-100" href="<%= place_path(@place) %>">
                                                 <%= @place.title %></a>
+                                        </li>
+                                        <li class="w-100">
+                                            <a data-reload="false" class="btn btn-primary w-100" href="<%= place_services_path(@place) %>">Its services</a>
                                         </li>
                                         <li class="w-100">
                                             <a data-reload="false" class="btn btn-primary w-100" href="<%= edit_place_path(@place) %>">Edit
                                                 <%= @place.location %></a>
-                                        </li>
-                                        <li class="w-100">
-                                            <a data-reload="false" class="btn btn-primary w-100" href="<%= place_services_path(@place) %>">My services</a>
                                         </li>
                                         <li class="w-100">
                                             <a data-reload="false" class="btn btn-primary w-100" href="<%= new_place_service_path(@place) %>">New service</a>
@@ -58,9 +87,13 @@
                                                 </a>
                                             </div><!-- /.card-small-image -->
                                             <div class="card-small-content">
-                                                <h3><a href="<%= place_service_path(@place, service) %>"><%= service.title %></a></h3>
-                                                <h4><a href="<%= place_path(@place) %>"><%= service.place.location %></a></h4>
-                                                <div class="card-small-price"><%= service.price %></div>
+                                                <h3><a href="<%= place_service_path(@place, service) %>">
+                                                        <%= service.title %></a></h3>
+                                                <h4><a href="<%= place_path(@place) %>">
+                                                        <%= service.place.location %></a></h4>
+                                                <div class="card-small-price">
+                                                    <%= service.price %>
+                                                </div>
                                             </div><!-- /.card-small-content -->
                                         </div><!-- /.card-small -->
                                     </div><!-- /.cards-small -->

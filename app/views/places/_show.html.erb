@@ -44,7 +44,14 @@
             </div><!-- /.post-meta-date -->
             <div class="post-meta-categories"><i class="fa fa-tags"></i> <a href="blog-detail.html">
                     <%= place.activity_list.sample %></a></div><!-- /.post-meta-categories -->
-            <div class="post-meta-comments"><i class="fa fa-comments"></i> <a href="blog-detail.html"><%= render 'votes/length', votes_length: 10 %></a></div><!-- /.post-meta-comments -->
+            <div class="post-meta-comments"><i class="fa fa-comments"></i> <a href="#reviews">
+                <span class="place-<%= place.id %>-review-length">
+                    <%= render 'votes/length', votes_length: place.comment_threads.length %>
+                </span>
+                <span>
+                    reviews
+                </span>
+            </a></div><!-- /.post-meta-comments -->
         </div><!-- /.post-meta -->
         <div class="post-meta-tags clearfix">
             Tags:
@@ -71,46 +78,6 @@
                 </a>
             </li>
             <% end %>
-            <!-- <li class="detail-gallery-list-item active">
-                <a data-target="/assets/img/tmp/gallery-1.jpg">
-                    <img src="/assets/img/tmp/gallery-1.jpg" alt="---">
-                </a>
-            </li>
-            <li class="detail-gallery-list-item active">
-                <a data-target="/assets/img/tmp/gallery-2.jpg">
-                    <img src="/assets/img/tmp/gallery-2.jpg" alt="---">
-                </a>
-            </li>
-            <li class="detail-gallery-list-item active">
-                <a data-target="/assets/img/tmp/gallery-3.jpg">
-                    <img src="/assets/img/tmp/gallery-3.jpg" alt="---">
-                </a>
-            </li>
-            <li class="detail-gallery-list-item active">
-                <a data-target="/assets/img/tmp/gallery-4.jpg">
-                    <img src="/assets/img/tmp/gallery-4.jpg" alt="---">
-                </a>
-            </li>
-            <li class="detail-gallery-list-item active">
-                <a data-target="/assets/img/tmp/gallery-5.jpg">
-                    <img src="/assets/img/tmp/gallery-5.jpg" alt="---">
-                </a>
-            </li>
-            <li class="detail-gallery-list-item active">
-                <a data-target="/assets/img/tmp/gallery-6.jpg">
-                    <img src="/assets/img/tmp/gallery-6.jpg" alt="---">
-                </a>
-            </li>
-            <li class="detail-gallery-list-item active">
-                <a data-target="/assets/img/tmp/gallery-7.jpg">
-                    <img src="/assets/img/tmp/gallery-7.jpg" alt="---">
-                </a>
-            </li>
-            <li class="detail-gallery-list-item active">
-                <a data-target="/assets/img/tmp/gallery-8.jpg">
-                    <img src="/assets/img/tmp/gallery-8.jpg" alt="---">
-                </a>
-            </li> -->
         </ul>
     </div><!-- /.detail-gallery -->
     <h2>We are here</h2>
@@ -150,213 +117,18 @@
     </div><!-- /.detail-video -->
     <div class="row detail-content">
         <div class="col-sm-12">
-            <h2 id="reviews">All reviews <%= @comments.length %></h2>
+            <h2 id="reviews">All reviews <span class="place-<%= place.id %>-review-length">
+                <%= render 'votes/length', votes_length: place.comment_threads.length %>
+            </span></h2>
             <div class="reviews" id="comments-list">
                 <% if @comments.any? %>
                 <% @comments.each do |comment| %>
                 <%= render 'comments/comment', comment: comment %>
                 <% end %>
                 <% end %>
-                <div class="review">
-                    <div class="review-image">
-                        <img src="/assets/img/tmp/agent-1.jpg" alt="">
-                    </div><!-- /.review-image -->
-                    <div class="review-inner">
-                        <div class="review-title">
-                            <h2>Nancy Collins</h2>
-                            <span class="report">
-                                <span class="separator">&#8226;</span><i class="fa fa-flag" title="Report" data-toggle="tooltip" data-placement="top"></i>
-                            </span>
-                            <div class="review-overall-rating">
-                                <span class="overall-rating-title">Total Score:</span>
-                                <%= render 'votes/ratings', ratings_length: 4.5 %>
-                            </div><!-- /.review-rating -->
-                        </div><!-- /.review-title -->
-                        <div class="review-content-wrapper">
-                            <div class="review-content">
-                                <div class="review-pros">
-                                    <p>Quisque aliquet ornare nunc in viverra. Nullam ornare molestie ligula in luctus. Suspendisse ac cursus elit. In congue mattis felis, non hendrerit orci dictum id.</p>
-                                </div><!-- /.pros -->
-                                <div class="review-cons">
-                                    <p>Duis et magna vel est tempus vehicula vitae sit amet enim. Sed vitae ligula congue.</p>
-                                </div><!-- /.cons -->
-                            </div><!-- /.review-content -->
-                            <div class="review-rating">
-                                <dl>
-                                    <dt>Food</dt>
-                                    <dd>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </dd>
-                                    <dt>Staff</dt>
-                                    <dd>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </dd>
-                                    <dt>Value</dt>
-                                    <dd>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </dd>
-                                    <dt>Atmosphere</dt>
-                                    <dd>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </dd>
-                                </dl>
-                            </div><!-- /.review-rating -->
-                        </div><!-- /.review-content-wrapper -->
-                    </div><!-- /.review-inner -->
-                </div><!-- /.review -->
-                <div class="review">
-                    <div class="review-image">
-                        <img src="/assets/img/tmp/agent-2.jpg" alt="">
-                    </div><!-- /.review-image -->
-                    <div class="review-inner">
-                        <div class="review-title">
-                            <h2>Kim Glove</h2>
-                            <span class="report">
-                                <span class="separator">&#8226;</span><i class="fa fa-flag" title="Report" data-toggle="tooltip" data-placement="top"></i>
-                            </span>
-                            <div class="review-overall-rating">
-                                <span class="overall-rating-title">Total Score:</span>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div><!-- /.review-rating -->
-                        </div><!-- /.review-title -->
-                        <div class="review-content-wrapper">
-                            <div class="review-content">
-                                <div class="review-pros">
-                                    <p>Quisque aliquet ornare nunc in viverra. Nullam ornare molestie ligula in luctus.</p>
-                                </div><!-- /.pros -->
-                                <div class="review-cons">
-                                    <p>Suspendisse ac cursus elit. In congue mattis felis, non hendrerit orci dictum id. Duis et magna vel est tempus vehicula vitae sit amet enim. Sed vitae ligula congue.</p>
-                                </div><!-- /.cons -->
-                            </div><!-- /.review-content -->
-                            <div class="review-rating">
-                                <dl>
-                                    <dt>Food</dt>
-                                    <dd>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </dd>
-                                    <dt>Staff</dt>
-                                    <dd>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </dd>
-                                    <dt>Value</dt>
-                                    <dd>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </dd>
-                                    <dt>Atmosphere</dt>
-                                    <dd>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </dd>
-                                </dl>
-                            </div><!-- /.review-rating -->
-                        </div><!-- /.review-content-wrapper -->
-                    </div><!-- /.review-inner -->
-                </div><!-- /.review -->
-                <div class="review">
-                    <div class="review-image">
-                        <img src="/assets/img/tmp/agent-5.jpg" alt="">
-                    </div><!-- /.review-image -->
-                    <div class="review-inner">
-                        <div class="review-title">
-                            <h2>Richard Peterson</h2>
-                            <span class="report">
-                                <span class="separator">&#8226;</span><i class="fa fa-flag" title="Report" data-toggle="tooltip" data-placement="top"></i>
-                            </span>
-                            <div class="review-overall-rating">
-                                <span class="overall-rating-title">Total Score:</span>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div><!-- /.review-rating -->
-                        </div><!-- /.review-title -->
-                        <div class="review-content-wrapper">
-                            <div class="review-content">
-                                <div class="review-pros">
-                                    <p>Quisque aliquet ornare nunc in viverra. Nullam ornare molestie ligula in luctus. Suspendisse ac cursus elit. In congue mattis felis, non hendrerit orci dictum id.</p>
-                                </div><!-- /.pros -->
-                                <div class="review-cons">
-                                    <p>Duis et magna vel est tempus vehicula vitae sit amet enim. Sed vitae ligula congue.</p>
-                                </div><!-- /.cons -->
-                            </div><!-- /.review-content -->
-                            <div class="review-rating">
-                                <dl>
-                                    <dt>Food</dt>
-                                    <dd>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </dd>
-                                    <dt>Staff</dt>
-                                    <dd>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </dd>
-                                    <dt>Value</dt>
-                                    <dd>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </dd>
-                                    <dt>Atmosphere</dt>
-                                    <dd>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </dd>
-                                </dl>
-                            </div><!-- /.review-rating -->
-                        </div><!-- /.review-content-wrapper -->
-                    </div><!-- /.review-inner -->
-                </div><!-- /.review -->
             </div><!-- /.reviews -->
             <h2>Submit a review</h2>
-            <div id="comment-form">
+            <div id="">
                 <%= render 'comments/form', comment: Comment.new(commentable: @place, user: current_user, body: "No comment") %>
             </div>
         </div><!-- /.col-* -->

@@ -28,6 +28,8 @@ class VotesController < ApplicationController
         @item = Place.find(params[:item_id])
       elsif @item_type == "service"
         @item = Service.find(params[:item_id])
+      elsif @item_type == "comment"
+        @item = Comment.find(params[:item_id])
       end
     end
 end

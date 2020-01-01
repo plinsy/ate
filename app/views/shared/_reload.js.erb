@@ -1,0 +1,5 @@
+// <% parent = @parent.class.to_s.downcase.underscore %>
+// <% item = @item.class.to_s.downcase.underscore %>
+$(`.<%= parent %>-<%= @parent.id %>-<%= @vote_type %>-length`).html(`<%= render 'votes/length', votes_length: @votes_length %>`);
+$(`#<%= @item_list %>`).append(`<%= render ("#{item.pluralize}/#{item}"), "#{item}": @item %>`);
+$(`#<%= @div_form_id %>`).html(`<%= render ("#{item.pluralize}/form"), "#{item}": @new_item %>`);

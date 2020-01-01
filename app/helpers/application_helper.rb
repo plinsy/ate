@@ -50,4 +50,17 @@ module ApplicationHelper
 	def categories
 		activities
 	end
+
+	def reload(parent, item, votes_length, vote_type, item_list, div_form_id, new_item)
+		@parent = parent
+		@item = item
+		@votes_length = votes_length
+		@vote_type = vote_type
+		@item_list = item_list
+		@div_form_id = div_form_id
+		@new_item = new_item
+		respond_to do |format|
+			format.js{ render partial: 'shared/reload' }
+		end
+	end
 end

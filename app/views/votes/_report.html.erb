@@ -1,0 +1,9 @@
+<% if vote_type.include?("positive_") %>
+	<%= form_with(url: vote_path(vote_type: vote_type, item_id: item.id, item_type: item_type, short: true, vote_weight: vote_weight, color: color), html: { class: "display-0" }) do |f| %>
+		<button type="submit" class="well-sm fa fa-chevron-up fa-2x text-<%= color %> bg-transparent" style="border-color: transparent;"></button> <i class="fa <%= item.class.to_s.downcase %>-<%= item.id %>-upvotes-length"><%= item.get_upvotes(vote_scope: vote_type).length %></i>
+	<% end %>
+<% elsif vote_type.include?("negative_") %>
+	<%= form_with(url: votes_path(vote_type: vote_type, item_id: item.id, item_type: item_type, short: true, vote_weight: vote_weight, color: color), method: :delete, html: { class: "display-0" }) do |f| %>
+		<button type="submit" class="well-sm fa fa-chevron-down fa-2x text-<%= color %> bg-transparent" style="border-color: transparent;"></button> <i class="fa <%= item.class.to_s.downcase %>-<%= item.id %>-downvotes-length va-super"><%= item.get_downvotes(vote_scope: vote_type).length %></i>
+	<% end %>
+<% end %>

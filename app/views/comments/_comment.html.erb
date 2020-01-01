@@ -34,37 +34,11 @@
             </div><!-- /.review-content -->
             <div class="review-rating">
                 <dl>
-                    <dt>Food</dt>
-                    <dd>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
+                    <dd id="comment-<%= comment.id %>-positive_report">
+                        <%= render 'votes/report', vote_type: "positive_report", item: comment, item_type: "comment", vote_weight: 1, color: "success" %>
                     </dd>
-                    <dt>Staff</dt>
-                    <dd>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
-                    </dd>
-                    <dt>Value</dt>
-                    <dd>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
-                        <i class="fa fa-star-o"></i>
-                    </dd>
-                    <dt>Atmosphere</dt>
-                    <dd>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
-                        <i class="fa fa-star-o"></i>
+                    <dd id="comment-<%= comment.id %>-negative_report">
+                        <%= render 'votes/report', vote_type: "negative_report", item: comment, item_type: "comment", vote_weight: 1, color: "danger" %>
                     </dd>
                 </dl>
             </div><!-- /.review-rating -->

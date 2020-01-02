@@ -2,7 +2,8 @@ class PlacesController < ApplicationController
   layout 'places'
   
   before_action :authenticate_user! 
-  before_action :set_place, :get_services, only: [:edit, :update, :destroy]
+  before_action :set_place, only: [:edit, :update, :destroy]
+  before_action :get_services, only: %i[index new create edit update destroy]
 
   # GET /places
   # GET /places.json
@@ -21,7 +22,7 @@ class PlacesController < ApplicationController
   # GET /places/new
   def new
     @places = current_user.places
-    @place = current_user.places.new
+    @new_place = current_user.places.new
   end
 
   # GET /places/1/edit

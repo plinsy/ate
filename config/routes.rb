@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get '/dashboard', to: 'dashboard#index', as: "dashboard"
+  get 'dashboard/show', as: "dashboard_show"
+  get 'dashboard/edit', as: "dashboard_edit"
+  patch 'dashboard/update', as: "dashboard_update"
+  delete 'dashboard/destroy', as: "dashboard_destroy"
+
+  get '/search', to: 'searches#index', as: 'search'
+  get '/new/search', to: 'searches#new', as: 'new_search'
+  post '/searches', to: 'searches#create', as: 'searches'
+
   resources :comments, only: [:index, :create, :update]
 
   post '/votes/:vote_type/:item_type/:item_id/:short', to: "votes#create", as: "votes"

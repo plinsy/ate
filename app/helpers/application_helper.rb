@@ -31,7 +31,9 @@ module ApplicationHelper
 	end
 
 	def get_services
+		@place ||= current_user.places.first
 		@services = @place.services
+		return @services
 	end
 
 	def activities
@@ -63,4 +65,8 @@ module ApplicationHelper
 			format.js{ render partial: 'shared/reload' }
 		end
 	end
+
+	def add_activity(obj, key)
+    obj.create_activity key: key, owner: obj.user
+  end
 end

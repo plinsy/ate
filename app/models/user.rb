@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  include PublicActivity::Model
+  tracked
+  
 	after_create :complete_user
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -8,6 +11,7 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   has_one :account, dependent: :destroy
   has_many :places, dependent: :destroy
+  has_many :services, through: :places, dependent: :destroy
 
   acts_as_voter
 
@@ -34,6 +38,10 @@ class User < ApplicationRecord
 
   def lastname
     self.profile.lastname
+  end
+
+  def avatar
+    self.profile.avatar
   end
 
   def commented?(commentable_id)

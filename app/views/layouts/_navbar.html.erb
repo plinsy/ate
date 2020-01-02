@@ -11,7 +11,10 @@
                 <div class="header-content">
                     <div class="header-top">
                         <div class="header-search">
-                            <input type="text" class="form-control" placeholder="Search for...">
+                            <%= form_with(scope: :search, url: searches_path, data: {remote: false}) do |f| %>
+                            <%= f.text_field :keyword, placeholder: "Search for...", class: "form-control" %>
+                            <%= f.submit "Submit", :disable_with => 'Submiting...', class: "hide collapse" %>
+                            <% end %>
                         </div><!-- /.header-search -->
                         <ul class="header-nav-social social-links nav nav-pills">
                             <% if user_signed_in? %>
@@ -65,7 +68,8 @@
                                     <li><a href="/pages/terms-conditions">Terms &amp; conditions</a></li>
                                 </ul>
                             </li>
-                            <% if user_signed_in? && current_user.has_locations? %>
+                            <% if user_signed_in? %>
+                            <% if current_user.has_locations? %>
                             <li>
                                 <a href="javascript:;">My locations <i class="fa fa-chevron-down"></i></a>
                                 <ul class="sub-menu">
@@ -74,63 +78,21 @@
                                             <%= place.title %></a></li>
                                     <% end %>
                                     <li>
-                                        <a href="<%= my_profile_path(tab: places_path) %>">All</a>
+                                        <a href="<%= dashboard_path %>">All</a>
                                     </li>
                                     <li><a href="<%= new_place_path %>">New place</a></li>
                                 </ul>
                             </li>
                             <% end %>
-                            <li class="has-mega-menu ">
-                                <a href="#">Pages <i class="fa fa-chevron-down"></i></a>
-                                <ul class="mega-menu">
-                                    <li>
-                                        <a href="#">General</a>
-                                        <ul>
-                                            <li><a href="faq.html">FAQ</a></li>
-                                            <li><a href="invoice.html">Invoice</a></li>
-                                            <li><a href="pricing.html">Pricing</a></li>
-                                            <li><a href="grid.html">Grid System</a></li>
-                                            <li><a href="testimonials.html">Testimonials</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#">User Account</a>
-                                        <ul>
-                                            <li><a href="user-profile-edit.html">Profile Edit</a></li>
-                                            <li><a href="login.html">Login Form</a></li>
-                                            <li><a href="register.html">Register Form</a></li>
-                                            <li><a href="change-password.html">Change Password Form</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#">Miscellaneous</a>
-                                        <ul>
-                                            <li><a href="sticky-footer.html">Sticky Footer</a></li>
-                                            <li><a href="terms-conditions.html">Terms &amp; Conditions</a></li>
-                                            <li><a href="error-403.html">403 - Forbidden</a></li>
-                                            <li><a href="error-404.html">404 - Not Found</a></li>
-                                            <li><a href="error-500.html">500 - Internal Error</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="hidden-xs">
-                                        <div class="special">
-                                            <a href="register.html">Sign Up Now</a>
-                                        </div><!-- /.special-->
-                                    </li>
-                                </ul>
-                            </li>
                             <li>
-                                <a href="#">Blog <i class="fa fa-chevron-down"></i></a>
+                                <a href="#">Admin <i class="fa fa-chevron-down"></i></a>
                                 <ul class="sub-menu">
-                                    <li><a href="blog-standard-right-sidebar.html">Standard Right Sidebar</a></li>
-                                    <li><a href="blog-standard-left-sidebar.html">Standard Left Sidebar</a></li>
-                                    <li><a href="blog-boxed.html">Boxed Style</a></li>
-                                    <li><a href="blog-condensed.html">Condensed Style</a></li>
-                                    <li><a href="blog-detail.html">Detail Fullwidth</a></li>
-                                    <li><a href="blog-detail-right-sidebar.html">Detail Right Sidebar</a></li>
-                                    <li><a href="blog-detail-left-sidebar.html">Detail Left Sidebar</a></li>
+                                    <li><a href="/dashboard">Dashboard</a></li>
+                                    <li><a href="<%= dashboard_path(index: 'bookmark') %>">My favorites</a></li>
+                                    <li><a href="<%= dashboard_path(index: 'heart') %>">My loves</a></li>
                                 </ul>
                             </li>
+                            <% end %>
                             <li>
                                 <a href="#">User <i class="fa fa-chevron-down"></i></a>
                                 <ul class="sub-menu">
@@ -147,7 +109,7 @@
                             <li>
                                 <a href="#">Admin <i class="fa fa-chevron-down"></i></a>
                                 <ul class="sub-menu">
-                                    <li><a href="admin-dashboard.html">Dashboard</a></li>
+                                    <li><a href="/admin">Dashboard</a></li>
                                     <li><a href="admin-grid.html">Grid System</a></li>
                                     <li><a href="admin-tables.html">Tables</a></li>
                                     <li><a href="admin-forms.html">Forms</a></li>

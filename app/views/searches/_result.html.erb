@@ -1,0 +1,9 @@
+<div class="row">
+	<% items.each do |item| %>
+	<div class="col-sm-6 col-md-4 col-lg-3">
+        <%= item.is?(Place) ? (render 'places/card', place: item) : (render 'services/card', service: item) %>
+    </div><!-- /.col-* -->
+	<% end %>
+</div><!-- /.row -->
+<%== pagy_nav(@pagy) %>
+<%# render partial: 'shared/pagy', locals: {pagy: @pagy} %>

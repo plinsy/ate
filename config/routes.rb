@@ -6,8 +6,7 @@ Rails.application.routes.draw do
   delete 'dashboard/destroy', as: "dashboard_destroy"
 
   get '/search', to: 'searches#index', as: 'search'
-  get '/new/search', to: 'searches#new', as: 'new_search'
-  post '/searches', to: 'searches#create', as: 'searches'
+  post '/searches', to: 'searches#index', as: 'searches'
 
   resources :comments, only: [:index, :create, :update]
 

@@ -1,4 +1,6 @@
 module ApplicationHelper
+	include Pagy::Frontend
+	
 	def authenticate_user
 		if authenticate_user!
 			@user = current_user
@@ -68,5 +70,11 @@ module ApplicationHelper
 
 	def add_activity(obj, key)
     obj.create_activity key: key, owner: obj.user
+  end
+
+  def reindex_all
+  	Place.reindex
+  	Service.reindex
+  	# Profile.reindex
   end
 end

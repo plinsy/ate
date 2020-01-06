@@ -10,4 +10,6 @@ class Service < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   acts_as_votable
+
+  searchkick word_start: [:title, :price]
 end

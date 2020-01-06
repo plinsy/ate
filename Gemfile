@@ -73,6 +73,8 @@ gem 'acts_as_commentable_with_threading', github: "acts_as_commentable_with_thre
 gem 'public_activity', github: "public_activity/public_activity", branch: "1-6-stable"
 # gem 'sunspot_rails'
 # gem 'sunspot', github: "sunspot/sunspot", branch: "master"
+gem 'searchkick'
+gem 'pagy'
 
 #B# TVM = [183.25, 695.25]
 # MATV = [487.25, 506.25]

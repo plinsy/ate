@@ -8,4 +8,8 @@ class ApplicationRecord < ActiveRecord::Base
   	end
   	return r
   end
+
+  def is?(obj)
+  	self.class == obj
+  end
 end

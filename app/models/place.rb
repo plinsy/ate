@@ -16,4 +16,6 @@ class Place < ApplicationRecord
 	
   include PublicActivity::Model
   tracked
+
+  searchkick word_start: [:title, :location]
 end

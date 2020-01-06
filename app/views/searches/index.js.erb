@@ -1,0 +1,5 @@
+$(`.result-length`).html(`<%= @search.total_count %>`);
+$(`.result-took`).html(`<%= @search.took %> ms`);
+$(`#result`).html(`
+<%= render 'searches/result', items: @search %>
+`);

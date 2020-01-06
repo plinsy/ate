@@ -30,17 +30,17 @@
 <div class="row">
     <div class="col-sm-8">
         <div class="filter-actions">
-            <a href="#"><i class="fa fa-close"></i> Reset Filter</a>
+            <button type="reset" class="btn-link"><i class="fa fa-close"></i> Reset Filter</button>
             <a href="#"><i class="fa fa-save"></i> Save Search</a>
         </div><!-- /.filter-actions -->
     </div><!-- /.col-* -->
     <div class="col-sm-4">
-        <button type="submit" class="btn btn-primary">Redefine Search Result</button>
+        <button type="submit" class="btn btn-primary w-100">Redefine Search Result</button>
     </div><!-- /.col-* -->
 </div><!-- /.row -->
 <hr>
 <h2 class="page-title mt-0 mb-0">
-    1802 results matching your query
+    <span class="result-length"><%= items.length %></span> results found in <span class="result-took">0 ms</span>
     <div class="filter-sort">
         <div class="form-group">
             <select name="search[sort_by]" id="search_sort_by" title="Sort by">

@@ -1,25 +1,3 @@
-<div class="sidebar-secondary-admin">
-    <ul>
-        <li class="active">
-            <a href="<%= dashboard_edit_path %>" data-remote="true">
-                <span class="icon"><i class="fa fa-tachometer"></i></span>
-                <span class="title">Edit</span>
-                <span class="subtitle">Manage your locations</span>
-            </a>
-        </li>
-        <% current_user.places.each do |place| %>
-        <li>
-            <a href="<%= dashboard_edit_path(place_id: place.id) %>" data-remote="true">
-                <span class="icon"><i class="fa fa-map-marker"></i></span>
-                <span class="title">
-                    <%= place.title %> <span class="notification">
-                        <%= place.services.length %></span> </span>
-                <span class="subtitle">View form styles</span>
-            </a>
-        </li>
-        <% end %>
-    </ul>
-</div>
 <div class="content-admin">
     <h1>Dashboard#edit</h1>
     <p>Find me in app/views/dashboard/edit.html.erb</p>

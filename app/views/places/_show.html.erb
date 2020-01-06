@@ -32,6 +32,9 @@
                     <div class="detail-banner-btn heart p-0" id="place-<%= place.id %>-heart">
                         <%= render 'votes/vote', vote_type: "heart", item: place, item_type: "place", first_content: "Give Heart", second_content: "I Love It", vote_weight: 1, color: "danger" %>
                     </div><!-- /.detail-claim -->
+                    <div class="detail-banner-btn">
+                        <%= link_to "Go to", go_to_path(place.id) %>
+                    </div><!-- /.detail-claim -->
                 </div><!-- /.detail-banner-left -->
             </div><!-- /.container -->
         </div><!-- /.detail-banner -->

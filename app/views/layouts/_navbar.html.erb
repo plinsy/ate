@@ -3,7 +3,7 @@
         <div class="container">
             <div class="header-inner">
                 <div class="header-logo">
-                    <a href="index.html">
+                    <a href="/">
                         <img src="/assets/img/logo.png" alt="Logo">
                         <span>Superlist</span>
                     </a>
@@ -18,17 +18,17 @@
                         </div><!-- /.header-search -->
                         <ul class="header-nav-social social-links nav nav-pills">
                             <% if user_signed_in? %>
-                            <li><a href="javascript:;" title="Share on facebook" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="javascript:;" title="Share on twitter" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-twitter"></i></a></li>
+                            <li><a title="Share on facebook" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-facebook"></i></a></li>
+                            <li><a title="Share on twitter" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-twitter"></i></a></li>
                             <% else %>
-                            <li><a href="javascript:;" title="Login by facebook" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="javascript:;" title="Login by google" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-google"></i></a></li>
-                            <li><a href="javascript:;" title="Login by twitter" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-twitter"></i></a></li>
+                            <li><a title="Login by facebook" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-facebook"></i></a></li>
+                            <li><a title="Login by google" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-google"></i></a></li>
+                            <li><a title="Login by twitter" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-twitter"></i></a></li>
                             <% end %>
                         </ul><!-- /.header-nav-social -->
                         <ul class="header-nav-secondary nav nav-pills">
                             <% if user_signed_in? %>
-                            <li><a href="javascript:;" class="text-success">Connected</a></li>
+                            <li><a class="text-success">Connected</a></li>
                             <% else %>
                             <li><a href="<%= new_user_session_path %>">Login</a></li>
                             <li><a href="<%= new_user_registration_path %>">Register</a></li>
@@ -38,13 +38,13 @@
                     <div class="header-bottom">
                         <% if user_signed_in? %>
                         <div class="header-action">
-                            <a href="javascript:;" class="header-action-inner" title="Share my location" data-toggle="tooltip" data-placement="bottom">
+                            <a href="<%= new_place_path %>" class="header-action-inner" title="Share my location" data-toggle="tooltip" data-placement="bottom">
                                 <i class="fa fa-plus"></i>
                             </a><!-- /.header-action-inner -->
                         </div><!-- /.header-action -->
                         <% else %>
                         <div class="header-action">
-                            <a href="javascript:;" class="header-action-inner" title="Help us to grow" data-toggle="tooltip" data-placement="bottom">
+                            <a class="header-action-inner" title="Help us to grow" data-toggle="tooltip" data-placement="bottom">
                                 <i class="fa fa-share"></i>
                             </a><!-- /.header-action-inner -->
                             <!-- <div class="share-wrapper">
@@ -60,18 +60,19 @@
                         <% end %>
                         <ul class="header-nav-primary nav nav-pills collapse navbar-collapse">
                             <li class="active">
-                                <a href="#">Home <i class="fa fa-chevron-down"></i></a>
+                                <a class="btn-link">Home <i class="fa fa-chevron-down"></i></a>
                                 <ul class="sub-menu">
                                     <li><a href="/">Home</a></li>
                                     <li><a href="/pages/pricing">Pricing</a></li>
                                     <li><a href="/pages/contact">Contact</a></li>
                                     <li><a href="/pages/terms-conditions">Terms &amp; conditions</a></li>
+                                    <li><a href="/pages/faq">Faq</a></li>
                                 </ul>
                             </li>
                             <% if user_signed_in? %>
                             <% if current_user.has_locations? %>
                             <li>
-                                <a href="javascript:;">My locations <i class="fa fa-chevron-down"></i></a>
+                                <a>My locations <i class="fa fa-chevron-down"></i></a>
                                 <ul class="sub-menu">
                                     <% current_user.places.limit(5).each do |place| %>
                                     <li><a href="<%= place_path(place) %>">
@@ -85,7 +86,7 @@
                             </li>
                             <% end %>
                             <li>
-                                <a href="#">Admin <i class="fa fa-chevron-down"></i></a>
+                                <a class="btn-link">Admin <i class="fa fa-chevron-down"></i></a>
                                 <ul class="sub-menu">
                                     <li><a href="/dashboard">Dashboard</a></li>
                                     <li><a href="<%= dashboard_path(index: 'bookmark') %>">My favorites</a></li>
@@ -94,7 +95,7 @@
                             </li>
                             <% end %>
                             <li>
-                                <a href="#">User <i class="fa fa-chevron-down"></i></a>
+                                <a class="btn-link">User <i class="fa fa-chevron-down"></i></a>
                                 <ul class="sub-menu">
                                     <% if user_signed_in? %>
                                     <li><a href="<%= my_profile_path %>">My profile</a></li>
@@ -107,7 +108,7 @@
                             </li>
                             <% if user_signed_in? && current_user.is_admin? %>
                             <li>
-                                <a href="#">Admin <i class="fa fa-chevron-down"></i></a>
+                                <a class="btn-link">Admin <i class="fa fa-chevron-down"></i></a>
                                 <ul class="sub-menu">
                                     <li><a href="/admin">Dashboard</a></li>
                                     <li><a href="admin-grid.html">Grid System</a></li>

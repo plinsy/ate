@@ -16,10 +16,4 @@ class Place < ApplicationRecord
 	
   include PublicActivity::Model
   tracked
-
-  searchable do
-    text :title, :location, :description
-    float :longitude, :latitude
-    time :created_at
-  end
 end

@@ -40,7 +40,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'sunspot_solr'
+  # gem 'sunspot_solr'
 end
 
 group :test do
@@ -71,7 +71,7 @@ gem 'carrierwave', '~> 2.0'
 gem 'acts_as_votable'
 gem 'acts_as_commentable_with_threading', github: "acts_as_commentable_with_threading/acts_as_commentable_with_threading", branch: "master"
 gem 'public_activity', github: "public_activity/public_activity", branch: "1-6-stable"
-gem 'sunspot_rails'
+# gem 'sunspot_rails'
 # gem 'sunspot', github: "sunspot/sunspot", branch: "master"
 
 #B# TVM = [183.25, 695.25]

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :places do
     resources :services
   end
+  get '/go_to/:place_id', to: 'places#go_to', as: 'go_to'
   resources :accounts, only: %i[show edit update]
   resources :profiles, only: %i[show edit update]
 	devise_for :users, controllers: {
@@ -29,6 +30,7 @@ Rails.application.routes.draw do
   get 'pages/pricing'
   get 'pages/terms-conditions'
   get 'pages/contact'
+  get 'pages/faq'
 
   get '/my-profile', to: 'users#profile', as: 'my_profile'
   get '/user/edit', to: 'users#edit', as: 'user_edit'

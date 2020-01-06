@@ -10,14 +10,4 @@ class Service < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   acts_as_votable
-
-  searchable do
-    text :title, :description
-    float :price
-    time :created_at
-
-    string :place_title do
-      place.title.downcase
-    end
-  end
 end

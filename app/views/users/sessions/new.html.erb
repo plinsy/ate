@@ -3,12 +3,16 @@
         <div class="container">
             <div class="content">
                 <div class="row">
-                    <div class="col-sm-4 col-sm-offset-4">
-                        <div class="page-title">
+                    <div class="mx-auto col-sm-8 col-md-6 col-lg-6 col-xl-6">
+                        <div class="message">
+                            You will unlock more functionnality if you sign in using facebook or twitter. If you have any questions, feel free to ask your question <a href="#">here</a>. Before asking don't forget to check the <a href="#">faq</a>.
+                        </div><!-- /.message -->
+                        <!-- <div class="page-title">
                             <h1>Login</h1>
-                        </div><!-- /.page-title -->
+                        </div> --><!-- /.page-title -->
                         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                         <%= render "devise/shared/error_messages", resource: resource %>
+                        <%= render 'users/shared/omniauth' %>
                         <div class="form-group">
                             <%= f.label :email %>
                             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>

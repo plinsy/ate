@@ -19,14 +19,8 @@
 </h3>
 <div class="row">
     <div class="form-group col-sm-12">
-        <%= form.label :activity_list %>
-        <select class="form-control" title="Select Activity" name="place[activity_list]" id="place_activity_id" multiple="true">
-            <% activities.each do |activity| %>
-            <option <%= action_name=="edit" && place.activity_list.include?(activity) ? 'selected=""' : "" %>>
-                <%= activity %>
-            </option>
-            <% end %>
-        </select>
+        <%= form.label :category_id %>
+        <%= collection_select(:place, :category_id, Category.all, :id, :name, {}, {class: 'form-control'}) %>
     </div>
     <div class="form-group col-sm-6">
         <%= form.label :title %>
@@ -35,9 +29,9 @@
     <div class="form-group col-sm-6">
         <%= form.label :tag_list %>
         <select class="form-control" title="Select Activity" name="place[tag_list]" id="place_tag_list" multiple="true">
-            <% activities.each do |tag| %>
-            <option <%= action_name=="edit" && place.tag_list.include?(tag) ? 'selected=""' : "" %>>
-                <%= tag %>
+            <% categories.each do |category| %>
+            <option <%= action_name=="edit" && place.category == (category) ? 'selected=""' : "" %>>
+                <%= category.tag_list %>
             </option>
             <% end %>
         </select>

@@ -1,4 +1,5 @@
-<%= form_with(scope: :search, url: searches_path, html: {class: "filter"}) do |f| %>
+<link rel="stylesheet" type="text/css" href="/assets/typeahead.css">
+<%= form_with(scope: :search, url: searches_path, data: {remote: false}, html: {class: "filter"}) do |f| %>
 <div class="row">
     <div class="col-sm-12 col-md-4">
         <div class="form-group">
@@ -16,10 +17,10 @@
     </div><!-- /.col-* -->
     <div class="col-sm-12 col-md-4">
         <div class="form-group">
-            <select name="search[category]" id="search_category" class="form-control" title="Select Category">
-                <% categories.each do |category| %>
-                <option value="<%= category %>">
-                    <%= category %>
+            <select name="search[tag]" id="search_tag" class="form-control" title="Select Tag">
+                <% tags.each do |tag| %>
+                <option value="<%= tag %>">
+                    <%= tag %>
                 </option>
                 <% end %>
             </select>
@@ -31,7 +32,7 @@
     <div class="col-sm-8">
         <div class="filter-actions">
             <button type="reset" class="btn-link"><i class="fa fa-close"></i> Reset Filter</button>
-            <a href="#"><i class="fa fa-save"></i> Save Search</a>
+            <!-- <a href="#"><i class="fa fa-save"></i> Save Search</a> -->
         </div><!-- /.filter-actions -->
     </div><!-- /.col-* -->
     <div class="col-sm-4">
@@ -40,7 +41,8 @@
 </div><!-- /.row -->
 <hr>
 <h2 class="page-title mt-0 mb-0">
-    <span class="result-length"><%= items.length %></span> results found in <span class="result-took">0 ms</span>
+    <span class="result-length">
+        <%= items.length %></span> results found in <span class="result-took"><%= items.took %> ms</span>
     <div class="filter-sort">
         <div class="form-group">
             <select name="search[sort_by]" id="search_sort_by" title="Sort by">
@@ -58,3 +60,49 @@
     </div>
 </h2><!-- /.page-title -->
 <% end %>
+<script src="/assets/typeahead.bundle.js"></script>
+<script>
+(function() {
+
+    let substringMatcher = function(strs) {
+        return function findMatches(q, cb) {
+            let matches, substringRegex;
+
+            // an array that will be populated with substring matches
+            matches = [];
+
+            // regex used to determine if a string contains the substring `q`
+            substrRegex = new RegExp(q, 'i');
+
+            // iterate through the pool of strings and for any string that
+            // contains the substring `q`, add it to the `matches` array
+            $.each(strs, function(i, str) {
+                if (substrRegex.test(str)) {
+                    matches.push(str);
+                }
+            });
+
+            cb(matches);
+        };
+    };
+
+    let states = [];
+
+    // <% Place.all.each do |place| %>
+            states.push("<%= place.title %>");
+    // <% end %>
+    // <% Service.all.each do |place| %>
+            states.push("<%= place.title %>");
+    // <% end %>
+
+
+    $('input#search_keyword').typeahead({
+        hint: true,
+        highlight: true,
+        minLength: 1
+    }, {
+        name: 'states',
+        source: substringMatcher(states)
+    });
+})();
+</script>

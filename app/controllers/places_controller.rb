@@ -29,6 +29,7 @@ class PlacesController < ApplicationController
   def edit
     @places = current_user.places
     respond_to do |format|
+      format.html
       format.js
     end
   end
@@ -88,6 +89,6 @@ class PlacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def place_params
-      params.require(:place).permit(:user_id, :activity_list, :title, :location, :longitude, :latitude, :description, :main, :tag_list)
+      params.require(:place).permit(:user_id, :category_id, :title, :location, :longitude, :latitude, :description, :main, :tag_list)
     end
 end

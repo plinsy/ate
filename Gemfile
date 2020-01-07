@@ -75,6 +75,10 @@ gem 'public_activity', github: "public_activity/public_activity", branch: "1-6-s
 # gem 'sunspot', github: "sunspot/sunspot", branch: "master"
 gem 'searchkick'
 gem 'pagy'
+gem 'autosuggest'
+gem 'font-awesome-rails'
+gem 'gmaps4rails'
+gem 'rails_admin'
 
 #B# TVM = [183.25, 695.25]
 # MATV = [487.25, 506.25]

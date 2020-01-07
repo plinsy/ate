@@ -4,22 +4,12 @@
   The link variable is set to a proc that returns the link tag.
   Usage: link.call( page_number [, text [, extra_attributes_string ]])
 -%>
-<!-- <div class="pager">
-                    <ul>
-                        <li><a href="#">Prev</a></li>
-                        <li><a href="#">5</a></li>
-                        <li class="active"><a>6</a></li>
-                        <li><a href="#">7</a></li>
-                        <li><a href="#">Next</a></li>
-                    </ul>
-                </div> -->
-<!-- /.pagination -->
 <% link = pagy_link_proc(pagy, 'class="page-link"') -%>
-<div class="pagination-area">
-    <ul class="pagination justify-content-center text-center">
-        <li class="page-item">
+<div class="pager">
+    <ul class="justify-content-center text-center">
+        <li class="">
             <% if pagy.prev %>
-            <%== link.call(pagy.prev, "<<", 'aria-label="previous"') %>
+            <%== link.call(pagy.prev, (fa_icon 'chevron-left'), 'aria-label="previous"') %>
             <% else %>
             <span class="page prev disabled">
                 <%== pagy_t('pagy.nav.prev') %></span>
@@ -27,25 +17,25 @@
         </li>
         <% pagy.series.each do |item| # series example: [1, :gap, 7, 8, "9", 10, 11, :gap, 36] -%>
         <% if item.is_a?(Integer) -%>
-        <li class="page-item">
+        <li class="">
             <%== link.call(item) %>
         </li>
         <%   elsif item.is_a?(String) -%>
-        <li class="active page-item">
-            <a href="javascript:;" class="page-link">
+        <li class="active">
+            <a class="page-link">
                 <%= item %>
             </a>
         </li>
         <%   elsif item == :gap -%>
-        <li class="page-item">
+        <li class="">
             <span class="page disabled" class="page-link">
                 <%== pagy_t('pagy.nav.gap') %></span>
         </li>
         <% end %>
         <% end %>
-        <li class="page-item">
+        <li class="">
             <% if pagy.next %>
-            <%== link.call(pagy.next, ">>", 'aria-label="next"') %>
+            <%== link.call(pagy.next, (fa_icon 'chevron-right'), 'aria-label="next"') %>
             <% else %>
             <span class="page next disabled">
                 <%== pagy_t('pagy.nav.next') %></span>
@@ -53,8 +43,3 @@
         </li>
     </ul>
 </div>
-<style type="text/css">
-a {
-    color: grey !important;
-}
-</style>

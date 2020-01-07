@@ -1,27 +1,23 @@
 <div class="card-simple" data-background-image="<%= service.image.url %>">
     <div class="card-simple-background">
         <div class="card-simple-content">
-            <h2><a href="<%= place_service_path(@place, service) %>">
+            <h2><a href="<%= place_service_path(service.place, service) %>">
                     <%= service.title %></a></h2>
             <div class="card-simple-rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
+                <%= render 'votes/ratings', ratings_length: service.get_upvotes(vote_scope: 'reviews').count %>
             </div><!-- /.card-rating -->
             <div class="card-simple-actions">
-                <a href="javascript:;" class="p-0 disabled fa" id="service-<%= service.id %>-bookmark" style="border: 0 none;">
+                <a class="p-0 disabled fa" id="service-<%= service.id %>-bookmark" style="border: 0 none;">
                     <%= render 'votes/short_vote', vote_type: "bookmark", item: service, item_type: "service", vote_weight: 1, color: "info" %>
                 </a>
-                <a href="<%= place_service_path(@place, service) %>" class="fa fa-search"></a>
-                <a href="javascript:;" class="p-0 disabled fa" id="service-<%= service.id %>-heart" style="border: 0 none;">
+                <a href="<%= place_service_path(service.place, service) %>" class="fa fa-search"></a>
+                <a class="p-0 disabled fa" id="service-<%= service.id %>-heart" style="border: 0 none;">
                     <%= render 'votes/short_vote', vote_type: "heart", item: service, item_type: "service", vote_weight: 1, color: "danger" %>
                 </a>
             </div><!-- /.card-simple-actions -->
         </div><!-- /.card-simple-content -->
         <div class="card-simple-label">
-            <%= service.category_list.sample %>
+            <%= service.tag_list.sample %>
         </div>
         <div class="card-simple-price">
             <%= service.price %>

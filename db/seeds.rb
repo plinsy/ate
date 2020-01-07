@@ -31,8 +31,34 @@ def create_user(admin=false, user_data=[])
 	end
 end
 
+def create_category(category_data=[])
+	data = category_data
+	category = Category.new(
+		icon: data[0],
+		name: data[1]
+	)
+	if category.save
+		print '.'
+	else
+		print category.errors.full_messages
+	end
+end
+
+def create_tag(tag_data=[])
+	data = tag_data
+	category = Category.find(data[0])
+	tag = data[1]
+	category.tag_list.push(tag)
+	if category.save
+		print '.'
+	else
+		print 'X'
+	end
+end
+
 def create_place(place_data=[])
 	data = place_data
+	category = categories.sample
 	place = Place.new(
 		user_id: data[0],
 		title: data[1],
@@ -41,7 +67,8 @@ def create_place(place_data=[])
 		latitude: data[4],
 		description: data[5],
 		main: data[6],
-		activity_list: data[8]
+		category_id: category.id,
+		tag_list: category.tag_list
 	)
 	if place.save
 		File.open(data[7]) do |f|
@@ -56,12 +83,13 @@ end
 
 def create_service(service_data=[])
 	data = service_data
+	category = categories.sample
 	service = Service.new(
 		place_id: data[0],
 		title: data[1],
 		description: data[2],
 		price: data[3],
-		category_list: data[5]
+		tag_list: category.tag_list
 	)
 	if service.save
 		File.open(data[4]) do |f|
@@ -97,9 +125,25 @@ end
 
 def create_users
 	users = []
-	5.times { |n| users.push([Faker::Internet.email, '000000', Faker::Name.first_name_men, Faker::Name.last_name, Faker::PhoneNumber.phone_number, "#{Rails.root}/app/assets/one/img/tmp/agent-#{rand(1..5)}.jpg"])  }
+	10.times { |n| users.push([Faker::Internet.email, '000000', Faker::Name.first_name_men, Faker::Name.last_name, Faker::PhoneNumber.phone_number, "#{Rails.root}/app/assets/one/img/tmp/agent-#{rand(1..5)}.jpg"])  }
 	users.each do |user|
 		create_user(false, user)
+	end
+	puts 'done'
+end
+
+def create_categories
+	categories_csv_file = File.join Rails.root, 'db', 'categories.csv'
+	CSV.foreach(categories_csv_file, headers: false) do |line|
+		create_category(line)
+	end
+	puts 'done'
+end
+
+def create_tags
+	tags_csv_file = File.join Rails.root, 'db', 'tags.csv'
+	CSV.foreach(tags_csv_file, headers: false) do |line|
+		create_tag(line)
 	end
 	puts 'done'
 end
@@ -107,7 +151,7 @@ end
 def create_places
 	User.all.each do |user|
 		places = []
-		5.times { |n| 
+		7.times { |n| 
 			names = [Faker::App.name, Faker::Restaurant.name]
 			descriptions = [Faker::Food.description, Faker::Restaurant.description]
 			places.push(
@@ -120,7 +164,7 @@ def create_places
 				descriptions.sample,
 				false,
 				"#{Rails.root}/app/assets/one/img/tmp/product-#{rand(2..11)}.jpg",
-				activities
+				categories
 			]
 		)}
 		places.each do |place|
@@ -133,7 +177,7 @@ end
 def create_services
 	Place.all.each do |place|
 		services = []
-		5.times { |n| 
+		7.times { |n| 
 			descriptions = [Faker::Food.description, Faker::Restaurant.description]
 			services.push(
 			[
@@ -155,7 +199,7 @@ end
 def create_comments
 	Place.all.each do |place|
 		comments = []
-		5.times { |n| 
+		7.times { |n| 
 			comments.push(
 			[
 				place, 
@@ -179,6 +223,12 @@ create_admins
 
 puts "~> Creating users"
 create_users
+
+puts "~> Creating categories"
+create_categories
+
+puts "~> Creating tags"
+create_tags
 
 puts "~> Creating places"
 create_places

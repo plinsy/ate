@@ -1,4 +1,6 @@
 class ApplicationRecord < ActiveRecord::Base
+  scope :ordered, -> { order("created_at DESC") }
+
   self.abstract_class = true
 
   def reviews

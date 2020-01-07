@@ -1,12 +1,22 @@
 class Place < ApplicationRecord
 
-	scope :ordered, -> { order("created_at DESC") }
+  acts_as_taggable # Alias for acts_as_taggable_on :tags
+
+  belongs_to :category
+  
+  scope :search_import, -> { includes(:tags) }
+
+  def search_data
+    { name_tagged: "#{title} #{tags.map(&:name).join(" ")}" }
+  end
+
+  def activity
+    self.category.name
+  end
 
   belongs_to :user
   has_many :services
 
-  acts_as_taggable # Alias for acts_as_taggable_on :tags
-  acts_as_taggable_on :activities
 
   mount_uploader :image, ImageUploader
 
@@ -17,5 +27,5 @@ class Place < ApplicationRecord
   include PublicActivity::Model
   tracked
 
-  searchkick word_start: [:title, :location]
+  searchkick word_start: [:title, :location], suggest: [:title, :location]
 end

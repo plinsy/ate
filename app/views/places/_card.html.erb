@@ -4,24 +4,21 @@
             <h2><a href="<%= place_path(place) %>">
                     <%= place.title %></a></h2>
             <div class="card-simple-rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
+                <%= render 'votes/ratings', ratings_length: 4.7 %>
+                
             </div><!-- /.card-rating -->
             <div class="card-simple-actions">
-                <a href="javascript:;" class="p-0 disabled fa" id="place-<%= place.id %>-bookmark" style="border: 0 none;">
+                <a class="p-0 disabled fa" id="place-<%= place.id %>-bookmark" style="border: 0 none;">
                     <%= render 'votes/short_vote', vote_type: "bookmark", item: place, item_type: "place", vote_weight: 1, color: "info" %>
                 </a>
                 <a href="<%= place_path(place) %>" class="fa fa-search"></a>
-                <a href="javascript:;" class="p-0 disabled fa" id="place-<%= place.id %>-heart" style="border: 0 none;">
+                <a class="p-0 disabled fa" id="place-<%= place.id %>-heart" style="border: 0 none;">
                     <%= render 'votes/short_vote', vote_type: "heart", item: place, item_type: "place", vote_weight: 1, color: "danger" %>
                 </a>
             </div><!-- /.card-simple-actions -->
         </div><!-- /.card-simple-content -->
         <div class="card-simple-label">
-            <%= place.activity_list.sample %>
+            <%= place.tag_list.sample %>
         </div>
     </div><!-- /.card-simple-background -->
 </div><!-- /.card-simple -->

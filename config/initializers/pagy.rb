@@ -20,7 +20,7 @@
 # See https://ddnexus.github.io/pagy/extras/countless
 # require 'pagy/extras/countless'
 # Pagy::VARS[:cycle] = false    # default
-Pagy::VARS[:link_extra] = 'data-remote="true"'
+Pagy::VARS[:link_extra] = 'data-remote="false"'
 
 # Elasticsearch Rails extra: Paginate `ElasticsearchRails::Results` objects
 # See https://ddnexus.github.io/pagy/extras/elasticsearch_rails

@@ -24,10 +24,12 @@
                             <div class="sidebar">
                                 <div class="background-white p20">
                                     <div class="detail-overview-hearts">
-                                        <i class="fa fa-heart"></i> <strong class="place-<%= @place.id %>-heart-length"><%= render 'votes/length', votes_length: @place.get_upvotes(vote_scope: "heart").length %></strong> people love it
+                                        <i class="fa fa-heart"></i> <strong class="place-<%= @place.id %>-heart-length">
+                                            <%= render 'votes/length', votes_length: @place.get_upvotes(vote_scope: "heart").length %></strong> people love it
                                     </div>
                                     <div class="detail-overview-rating">
-                                        <i class="fa fa-star"></i> <strong>4.7 / 5 </strong>from <a href="#reviews"><span class="place-<%= @place.id %>-review-length"><%= render 'votes/length', votes_length: @place.reviews.length %></span> reviews</a>
+                                        <i class="fa fa-star"></i> <strong>4.7 / 5 </strong>from <a href="#reviews"><span class="place-<%= @place.id %>-review-length">
+                                                <%= render 'votes/length', votes_length: @place.reviews.length %></span> reviews</a>
                                     </div>
                                     <div class="detail-actions row">
                                         <div class="col-sm-4">
@@ -56,22 +58,22 @@
                                     <ul class="list-unstyled">
                                         <% if action_name == "show" %>
                                         <li class="w-100">
-                                            <a data-reload="false" class="btn btn-primary w-100" href="<%= place_path(@place) %>">
+                                            <a class="btn btn-primary w-100" href="<%= place_path(@place) %>">
                                                 <%= @place.title %></a>
                                         </li>
                                         <li class="w-100">
-                                            <a data-reload="false" class="btn btn-primary w-100" href="<%= place_services_path(@place) %>">Its services</a>
+                                            <a class="btn btn-primary w-100" href="<%= place_services_path(@place) %>">Its services</a>
                                         </li>
                                         <li class="w-100">
-                                            <a data-reload="false" class="btn btn-primary w-100" href="<%= edit_place_path(@place) %>">Edit
+                                            <a class="btn btn-primary w-100" href="<%= edit_place_path(@place) %>">Edit
                                                 <%= @place.location %></a>
                                         </li>
                                         <li class="w-100">
-                                            <a data-reload="false" class="btn btn-primary w-100" href="<%= new_place_service_path(@place) %>">New service</a>
+                                            <a class="btn btn-primary w-100" href="<%= new_place_service_path(@place) %>">New service</a>
                                         </li>
                                         <% else %>
                                         <li class="w-100">
-                                            <a data-reload="false" class="btn btn-primary w-100" href="<%= new_place_path %>">Share a new location</a>
+                                            <a class="btn btn-primary w-100" href="<%= new_place_path %>">Share a new location</a>
                                         </li>
                                         <% end %>
                                     </ul>
@@ -98,48 +100,9 @@
                                         </div><!-- /.card-small -->
                                     </div><!-- /.cards-small -->
                                     <% end %>
-                                    <div class="cards-small">
-                                        <div class="card-small">
-                                            <div class="card-small-image">
-                                                <a href="listing-detail.html">
-                                                    <img src="/assets/img/tmp/product-2.jpg" alt="Tasty Brazil Coffee">
-                                                </a>
-                                            </div><!-- /.card-small-image -->
-                                            <div class="card-small-content">
-                                                <h3><a href="listing-detail.html">Tasty Brazil Coffee</a></h3>
-                                                <h4><a href="listing-detail.html">New York / Village</a></h4>
-                                                <div class="card-small-price">$180 / person</div>
-                                            </div><!-- /.card-small-content -->
-                                        </div><!-- /.card-small -->
-                                    </div><!-- /.cards-small -->
-                                    <div class="cards-small">
-                                        <div class="card-small">
-                                            <div class="card-small-image">
-                                                <a href="listing-detail.html">
-                                                    <img src="/assets/img/tmp/product-3.jpg" alt="Healthy Breakfast">
-                                                </a>
-                                            </div><!-- /.card-small-image -->
-                                            <div class="card-small-content">
-                                                <h3><a href="listing-detail.html">Healthy Breakfast</a></h3>
-                                                <h4><a href="listing-detail.html">New York / Village</a></h4>
-                                                <div class="card-small-price">$180 / person</div>
-                                            </div><!-- /.card-small-content -->
-                                        </div><!-- /.card-small -->
-                                    </div><!-- /.cards-small -->
-                                    <div class="cards-small">
-                                        <div class="card-small">
-                                            <div class="card-small-image">
-                                                <a href="listing-detail.html">
-                                                    <img src="/assets/img/tmp/product-4.jpg" alt="Coffee &amp; Newspaper">
-                                                </a>
-                                            </div><!-- /.card-small-image -->
-                                            <div class="card-small-content">
-                                                <h3><a href="listing-detail.html">Coffee &amp; Newspaper</a></h3>
-                                                <h4><a href="listing-detail.html">New York / Village</a></h4>
-                                                <div class="card-small-price">$180 / person</div>
-                                            </div><!-- /.card-small-content -->
-                                        </div><!-- /.card-small -->
-                                    </div><!-- /.cards-small -->
+                                    <div class="w-100">
+                                        <a href="<%= place_services_path(@place) %>" class="text-center">See more</a>
+                                    </div>
                                     <h2 class="widgettitle">Recent Locations</h2>
                                     <div class="cards-small">
                                         <div class="card-small">
@@ -199,36 +162,6 @@
                                             <li class="no">Reservations</li>
                                         </ul>
                                     </div><!-- /.detail-amenities -->
-                                </div><!-- /.widget -->
-                                <div class="widget">
-                                    <h2 class="widgettitle">Filter</h2>
-                                    <div class="background-white p20">
-                                        <form method="post" action="?">
-                                            <div class="form-group">
-                                                <label for="">Keyword</label>
-                                                <input type="text" class="form-control" name="" id="">
-                                            </div><!-- /.form-group -->
-                                            <div class="form-group">
-                                                <label for="">Category</label>
-                                                <select class="form-control" title="Select Category">
-                                                    <option>Automotive</option>
-                                                    <option>Real Estate</option>
-                                                </select>
-                                            </div><!-- /.form-group -->
-                                            <div class="form-group">
-                                                <label for="">Location</label>
-                                                <select class="form-control" title="Select Location">
-                                                    <option>New York</option>
-                                                    <option>San Francisco</option>
-                                                </select>
-                                            </div><!-- /.form-group -->
-                                            <div class="form-group">
-                                                <label for="">Starting Price</label>
-                                                <input type="text" class="form-control" name="" id="">
-                                            </div><!-- /.form-group -->
-                                            <button class="btn btn-primary btn-block" type="submit">Search</button>
-                                        </form>
-                                    </div>
                                 </div><!-- /.widget -->
                                 <div class="widget">
                                     <h2 class="widgettitle">Working Hours</h2>

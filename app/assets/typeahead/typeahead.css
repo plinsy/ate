@@ -1,0 +1,14 @@
+.twitter-typeahead {
+    width: 100%
+}
+
+.tt-menu {
+    width: 100%;
+    line-height: 1.5;
+    background: #f7f8f9;
+    padding: 2% 4%;
+}
+
+.tt-menu .tt-dataset {
+	cursor: pointer;
+}

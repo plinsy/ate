@@ -11,7 +11,7 @@
                 <div class="header-content">
                     <div class="header-top">
                         <div class="header-search">
-                            <%= form_with(scope: :search, url: search_path, data: {remote: false, method: :get}) do |f| %>
+                            <%= form_with(scope: :search, url: search_path, method: :get, data: {remote: false}) do |f| %>
                             <%= f.text_field :keyword, placeholder: "Search for...", class: "form-control" %>
                             <%= f.submit "Submit", :disable_with => 'Submiting...', class: "hide collapse" %>
                             <% end %>

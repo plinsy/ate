@@ -8,7 +8,7 @@
                 <div class="detail-banner-left">
                     <div class="detail-banner-info">
                         <div class="detail-label">
-                            <%= place.activity_list.sample %>
+                            <%= place.activity %>
                         </div>
                         <div class="detail-verified">Verified</div>
                     </div><!-- /.detail-banner-info -->
@@ -45,8 +45,10 @@
             <div class="post-meta-date">
                 <%= place.created_at.strftime("%d/%m/%Y") %>
             </div><!-- /.post-meta-date -->
-            <div class="post-meta-categories"><i class="fa fa-tags"></i> <a href="blog-detail.html">
-                    <%= place.activity_list.sample %></a></div><!-- /.post-meta-categories -->
+            <div class="post-meta-categories">
+                <% tag = place.tag_list.sample %>
+                <i class="fa fa-tags"></i> <a href="<%= search_path(search: {tag: tag}) %>"><%= tag %></a>
+            </div><!-- /.post-meta-categories -->
             <div class="post-meta-comments"><i class="fa fa-comments"></i> <a href="#reviews">
                 <span class="place-<%= place.id %>-review-length">
                     <%= render 'votes/length', votes_length: place.comment_threads.length %>
@@ -59,9 +61,9 @@
         <div class="post-meta-tags clearfix">
             Tags:
             <ul>
-                <% place.activity_list.each do |activity| %>
-                <li class="tag"><a href="#">
-                        <%= activity %></a></li>
+                <% place.tag_list.each do |tag| %>
+                <li class="tag"><a href="<%= search_path(search:{tag: tag}) %>">
+                        <%= tag %></a></li>
                 <% end %>
             </ul>
         </div><!-- /.post-meta -->

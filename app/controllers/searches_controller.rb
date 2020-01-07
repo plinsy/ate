@@ -1,11 +1,11 @@
 class SearchesController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_user!, :reindex_all
 
   def index
     if !params[:search].nil?
       @keyword = params[:search][:keyword]
       @type = params[:search][:type]
-      @category = params[:search][:category]
+      @tag = params[:search][:tag]
 
       if @type == "service"
         @class = Service
@@ -15,14 +15,27 @@ class SearchesController < ApplicationController
     end
 
     @class ||= Place
-    @keyword ||= "*"
 
-    @class.reindex
+    case @keyword
+    when nil || "" || " "
+      @keyword = "*"
+    end
 
-    @search = @class.search(@keyword, per_page: 12)
-    @pagy = Pagy.new_from_searchkick(@search)
+    case @tag
+    when nil || "" || " "
+      @tag = "*"
+    end
+
+    @search = @class.search([@keyword, @tag], fields: [:title, :location, :name_tagged], suggest: true, per_page: 12)
+    
+    if params[:page].nil?
+      @pagy = Pagy.new_from_searchkick(@search, params: search_params)
+    else
+      @pagy = Pagy.new_from_searchkick(@search, params: search_params, page: params[:page])
+    end
 
     @item = @search.first
+    
     respond_to do |format|
       format.html{ render :index }
       format.js
@@ -34,5 +47,10 @@ class SearchesController < ApplicationController
 
   def create
   	# add_activity(@item, "searches.for.#{@item.class.downcase.underscore}")
+  end
+
+  protected
+  def search_params
+    params[:search].nil? ? {} : params.require(:search).permit(:keyword, :type, :tag)
   end
 end

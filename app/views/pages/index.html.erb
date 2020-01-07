@@ -1,216 +1,26 @@
+<script type="text/javascript" src="/assets/underscore.js"></script>
+<script type="text/javascript" src="../javascripts/gmaps_google.js"></script>
+<script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+<script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'></script> <!-- only if you need custom infoboxes -->
 <div class="main">
     <div class="main-inner">
         <div class="content">
-            <div id="scroll-here" class="full-height mt-80">
-                <div id="map" class="google-map" data-transparent-marker-image="/assets/img/transparent-marker-image.png" data-styles='[{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi.government","elementType":"labels.text.fill","stylers":[{"color":"#b43b3b"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"hue":"#ff0000"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"lightness":"8"},{"color":"#bcbec0"}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"color":"#5b5b5b"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#7cb3c9"},{"visibility":"on"}]},{"featureType":"water","elementType":"geometry.fill","stylers":[{"color":"#abb9c0"}]},{"featureType":"water","elementType":"labels.text","stylers":[{"color":"#fff1f1"},{"visibility":"off"}]}]'>
+            <div id="scroll-here" class="full-height mt-80" style='width: 100%'>
+                <div id="all-place-map" class="google-map" style='width: 100%'>
                 </div><!-- /.google-map -->
             </div>
             <div class="container">
-                <div class="block background-white fullwidth pt0 pb0">
-                    <div class="partners">
-                        <a href="javascript:;">
-                            <img src="/assets/img/tmp/partner-1.jpg" alt="">
-                        </a>
-                        <a href="javascript:;">
-                            <img src="/assets/img/tmp/partner-2.jpg" alt="">
-                        </a>
-                        <a href="javascript:;">
-                            <img src="/assets/img/tmp/partner-3.jpg" alt="">
-                        </a>
-                        <a href="javascript:;">
-                            <img src="/assets/img/tmp/partner-4.jpg" alt="">
-                        </a>
-                        <a href="javascript:;">
-                            <img src="/assets/img/tmp/partner-5.jpg" alt="">
-                        </a>
-                    </div><!-- /.partners -->
-                </div>
                 <div class="page-header">
                     <h1>Most Recent Places &amp; Events</h1>
                     <p>List of most recent interesting places and events in our directory submitted <br>by our users. Check whats going on in the city now.</p>
                 </div><!-- /.page-header -->
                 <div class="cards-simple-wrapper">
                     <div class="row">
+                        <% @services.each do |service| %>
                         <div class="col-sm-6 col-md-3">
-                            <div class="card-simple" data-background-image="/assets/img/tmp/product-2.jpg">
-                                <div class="card-simple-background">
-                                    <div class="card-simple-content">
-                                        <h2><a href="listing-detail.html">Tasty Brazil Coffee</a></h2>
-                                        <div class="card-simple-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div><!-- /.card-rating -->
-                                        <div class="card-simple-actions">
-                                            <a href="javascript:;" class="fa fa-bookmark-o"></a>
-                                            <a href="listing-detail.html" class="fa fa-search"></a>
-                                            <a href="javascript:;" class="fa fa-heart-o"></a>
-                                        </div><!-- /.card-simple-actions -->
-                                    </div><!-- /.card-simple-content -->
-                                    <div class="card-simple-label">Coffee</div>
-                                </div><!-- /.card-simple-background -->
-                            </div><!-- /.card-simple -->
+                            <%= render 'services/card', service: service %>
                         </div><!-- /.col-* -->
-                        <div class="col-sm-6 col-md-3">
-                            <div class="card-simple" data-background-image="/assets/img/tmp/product-3.jpg">
-                                <div class="card-simple-background">
-                                    <div class="card-simple-content">
-                                        <h2><a href="listing-detail.html">Healthy Breakfast</a></h2>
-                                        <div class="card-simple-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div><!-- /.card-rating -->
-                                        <div class="card-simple-actions">
-                                            <a href="javascript:;" class="fa fa-bookmark-o"></a>
-                                            <a href="listing-detail.html" class="fa fa-search"></a>
-                                            <a href="javascript:;" class="fa fa-heart-o"></a>
-                                        </div><!-- /.card-simple-actions -->
-                                    </div><!-- /.card-simple-content -->
-                                    <div class="card-simple-label">Food</div>
-                                    <div class="card-simple-price">$12 / person</div>
-                                </div><!-- /.card-simple-background -->
-                            </div><!-- /.card-simple -->
-                        </div><!-- /.col-* -->
-                        <div class="col-sm-6 col-md-3">
-                            <div class="card-simple" data-background-image="/assets/img/tmp/product-4.jpg">
-                                <div class="card-simple-background">
-                                    <div class="card-simple-content">
-                                        <h2><a href="listing-detail.html">Coffee &amp; Newspaper</a></h2>
-                                        <div class="card-simple-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div><!-- /.card-rating -->
-                                        <div class="card-simple-actions">
-                                            <a href="javascript:;" class="fa fa-bookmark-o"></a>
-                                            <a href="listing-detail.html" class="fa fa-search"></a>
-                                            <a href="javascript:;" class="fa fa-heart-o"></a>
-                                        </div><!-- /.card-simple-actions -->
-                                    </div><!-- /.card-simple-content -->
-                                    <div class="card-simple-label">Restaurant</div>
-                                </div><!-- /.card-simple-background -->
-                            </div><!-- /.card-simple -->
-                        </div><!-- /.col-* -->
-                        <div class="col-sm-6 col-md-3">
-                            <div class="card-simple" data-background-image="/assets/img/tmp/product-5.jpg">
-                                <div class="card-simple-background">
-                                    <div class="card-simple-content">
-                                        <h2><a href="listing-detail.html">Boat Trip</a></h2>
-                                        <div class="card-simple-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div><!-- /.card-rating -->
-                                        <div class="card-simple-actions">
-                                            <a href="javascript:;" class="fa fa-bookmark-o"></a>
-                                            <a href="listing-detail.html" class="fa fa-search"></a>
-                                            <a href="javascript:;" class="fa fa-heart-o"></a>
-                                        </div><!-- /.card-simple-actions -->
-                                    </div><!-- /.card-simple-content -->
-                                    <div class="card-simple-label">Vacation</div>
-                                </div><!-- /.card-simple-background -->
-                            </div><!-- /.card-simple -->
-                        </div><!-- /.col-* -->
-                        <div class="col-sm-6 col-md-3">
-                            <div class="card-simple" data-background-image="/assets/img/tmp/product-6.jpg">
-                                <div class="card-simple-background">
-                                    <div class="card-simple-content">
-                                        <h2><a href="listing-detail.html">Italian Restaurant</a></h2>
-                                        <div class="card-simple-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div><!-- /.card-rating -->
-                                        <div class="card-simple-actions">
-                                            <a href="javascript:;" class="fa fa-bookmark-o"></a>
-                                            <a href="listing-detail.html" class="fa fa-search"></a>
-                                            <a href="javascript:;" class="fa fa-heart-o"></a>
-                                        </div><!-- /.card-simple-actions -->
-                                    </div><!-- /.card-simple-content -->
-                                    <div class="card-simple-label">Restaurant</div>
-                                    <div class="card-simple-price">$28 / person</div>
-                                </div><!-- /.card-simple-background -->
-                            </div><!-- /.card-simple -->
-                        </div><!-- /.col-* -->
-                        <div class="col-sm-6 col-md-3">
-                            <div class="card-simple" data-background-image="/assets/img/tmp/product-7.jpg">
-                                <div class="card-simple-background">
-                                    <div class="card-simple-content">
-                                        <h2><a href="listing-detail.html">Best Brazil Coffee</a></h2>
-                                        <div class="card-simple-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div><!-- /.card-rating -->
-                                        <div class="card-simple-actions">
-                                            <a href="javascript:;" class="fa fa-bookmark-o"></a>
-                                            <a href="listing-detail.html" class="fa fa-search"></a>
-                                            <a href="javascript:;" class="fa fa-heart-o"></a>
-                                        </div><!-- /.card-simple-actions -->
-                                    </div><!-- /.card-simple-content -->
-                                    <div class="card-simple-label">Pub</div>
-                                </div><!-- /.card-simple-background -->
-                            </div><!-- /.card-simple -->
-                        </div><!-- /.col-* -->
-                        <div class="col-sm-6 col-md-3">
-                            <div class="card-simple" data-background-image="/assets/img/tmp/product-8.jpg">
-                                <div class="card-simple-background">
-                                    <div class="card-simple-content">
-                                        <h2><a href="listing-detail.html">Retro Shop</a></h2>
-                                        <div class="card-simple-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div><!-- /.card-rating -->
-                                        <div class="card-simple-actions">
-                                            <a href="javascript:;" class="fa fa-bookmark-o"></a>
-                                            <a href="listing-detail.html" class="fa fa-search"></a>
-                                            <a href="javascript:;" class="fa fa-heart-o"></a>
-                                        </div><!-- /.card-simple-actions -->
-                                    </div><!-- /.card-simple-content -->
-                                    <div class="card-simple-label">Shop</div>
-                                    <div class="card-simple-price">$3 / cup</div>
-                                </div><!-- /.card-simple-background -->
-                            </div><!-- /.card-simple -->
-                        </div><!-- /.col-* -->
-                        <div class="col-sm-6 col-md-3">
-                            <div class="card-simple" data-background-image="/assets/img/tmp/product-9.jpg">
-                                <div class="card-simple-background">
-                                    <div class="card-simple-content">
-                                        <h2><a href="listing-detail.html">Wine Tasting</a></h2>
-                                        <div class="card-simple-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div><!-- /.card-rating -->
-                                        <div class="card-simple-actions">
-                                            <a href="javascript:;" class="fa fa-bookmark-o"></a>
-                                            <a href="listing-detail.html" class="fa fa-search"></a>
-                                            <a href="javascript:;" class="fa fa-heart-o"></a>
-                                        </div><!-- /.card-simple-actions -->
-                                    </div><!-- /.card-simple-content -->
-                                    <div class="card-simple-label">Event</div>
-                                    <div class="card-simple-price">$13 / ticket</div>
-                                </div><!-- /.card-simple-background -->
-                            </div><!-- /.card-simple -->
-                        </div><!-- /.col-* -->
+                        <% end %>
                     </div><!-- /.row -->
                 </div><!-- /.cards-simple-wrapper -->
                 <div class="block background-white fullwidth mt80">
@@ -434,7 +244,7 @@
                                 </div><!-- /.row -->
                             </div><!-- /.col-* -->
                             <div class="col-sm-4">
-                                <div class="card card-tall" data-background-image="/assets/img/tmp/product-1.jpg">
+                                <div class="card card-tall" data-background-image="/assets/img/tmp/product-11.jpg">
                                     <div class="card-label">
                                         <a href="listing-detail.html">Vacation</a>
                                     </div><!-- /.card-label -->
@@ -572,112 +382,20 @@
                 <div class="block background-white fullwidth mt80 mb-80">
                     <div class="categories">
                         <ul>
+                            <% categories.each do |category| %>
                             <li>
-                                <a href="javascript:;" class="categories-action">Submit</a>
-                                <a href="javascript:;" class="categories-link"><i class="fa fa-bed"></i> Stay</a>
+                                <a href="<%= search_path(search:{type: 'service', tag: category.name}) %>" class="categories-action">Submit</a>
+                                <a href="<%= search_path(search:{type: 'service', tag: category.name}) %>" class="categories-link"><i class="fa fa-<%= category[:icon] %>"></i>
+                                    <%= category.name %></a>
                                 <ul>
-                                    <li><a href="javascript:;">Homestay</a>,</li>
-                                    <li><a href="javascript:;">Hotel</a>,</li>
-                                    <li><a href="javascript:;">Camping</a>,</li>
-                                    <li><a href="javascript:;">Guesthouse,</a></li>
-                                    <li><a href="javascript:;">Hostel</a></li>
-                                    <li class="all"><a href="javascript:;">View All <i class="fa fa-chevron-right"></i></a></li>
+                                    <% category.tag_list.each do |tag| %>
+                                    <li><a href="<%= search_path(search:{type: 'service', tag: tag}) %>">
+                                            <%= tag %></a>,</li>
+                                    <% end %>
+                                    <li class="all"><a href="<%= search_path(search:{type: 'service', tag: category.name}) %>">View All <i class="fa fa-chevron-right"></i></a></li>
                                 </ul>
                             </li>
-                            <li>
-                                <a href="javascript:;" class="categories-action">Submit</a>
-                                <a href="javascript:;" class="categories-link"><i class="fa fa-car"></i> Automotive</a>
-                                <ul>
-                                    <li><a href="javascript:;">Mechanics</a>,</li>
-                                    <li><a href="javascript:;">Gas Stations</a>,</li>
-                                    <li><a href="javascript:;">Parts</a>,</li>
-                                    <li><a href="javascript:;">Repair</a>,</li>
-                                    <li><a href="javascript:;">Tires</a></li>
-                                    <li class="all"><a href="javascript:;">View All <i class="fa fa-chevron-right"></i></a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:;" class="categories-action">Submit</a>
-                                <a href="javascript:;" class="categories-link"><i class="fa fa-suitcase"></i> Jobs</a>
-                                <ul>
-                                    <li><a href="javascript:;">Cook</a>,</li>
-                                    <li><a href="javascript:;">Hairdrasser</a>,</li>
-                                    <li><a href="javascript:;">Management</a>,</li>
-                                    <li><a href="javascript:;">Waiter</a>,</li>
-                                    <li><a href="javascript:;">Worker</a></li>
-                                    <li class="all"><a href="javascript:;">View All <i class="fa fa-chevron-right"></i></a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:;" class="categories-action">Submit</a>
-                                <a href="javascript:;" class="categories-link"><i class="fa fa-heart"></i> Medicine</a>
-                                <ul>
-                                    <li><a href="javascript:;">Dental</a>,</li>
-                                    <li><a href="javascript:;">Dermatology</a>,</li>
-                                    <li><a href="javascript:;">Neurology</a>,</li>
-                                    <li><a href="javascript:;">Pediatrics</a></li>
-                                    <li class="all"><a href="javascript:;">View All <i class="fa fa-chevron-right"></i></a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:;" class="categories-action">Submit</a>
-                                <a href="javascript:;" class="categories-link"><i class="fa fa-glass"></i> Nightlife</a>
-                                <ul>
-                                    <li><a href="javascript:;">Bars &amp; Pubs</a>,</li>
-                                    <li><a href="javascript:;">Concert</a>,</li>
-                                    <li><a href="javascript:;">Cinemas</a>,</li>
-                                    <li><a href="javascript:;">Disco</a>,</li>
-                                    <li><a href="javascript:;">Theater</a></li>
-                                    <li class="all"><a href="javascript:;">View All <i class="fa fa-chevron-right"></i></a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:;" class="categories-action">Submit</a>
-                                <a href="javascript:;" class="categories-link"><i class="fa fa-home"></i> Real Estate</a>
-                                <ul>
-                                    <li><a href="javascript:;">Apartmant</a>,</li>
-                                    <li><a href="javascript:;">Building Area</a>,</li>
-                                    <li><a href="javascript:;">Condo</a>,</li>
-                                    <li><a href="javascript:;">House</a>,</li>
-                                    <li><a href="javascript:;">Villa</a></li>
-                                    <li class="all"><a href="javascript:;">View All <i class="fa fa-chevron-right"></i></a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:;" class="categories-action">Submit</a>
-                                <a href="javascript:;" class="categories-link"><i class="fa fa-cutlery"></i> Restaurant</a>
-                                <ul>
-                                    <li><a href="javascript:;">Bistro</a>,</li>
-                                    <li><a href="javascript:;">Brunch</a>,</li>
-                                    <li><a href="javascript:;">Caffee</a>,</li>
-                                    <li><a href="javascript:;">Dinning</a>,</li>
-                                    <li><a href="javascript:;">Fast Food</a></li>
-                                    <li class="all"><a href="javascript:;">View All <i class="fa fa-chevron-right"></i></a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:;" class="categories-action">Submit</a>
-                                <a href="javascript:;" class="categories-link"><i class="fa fa-futbol-o"></i> Sports</a>
-                                <ul>
-                                    <li><a href="javascript:;">Bistro</a>,</li>
-                                    <li><a href="javascript:;">Brunch</a>,</li>
-                                    <li><a href="javascript:;">Caffee</a>,</li>
-                                    <li><a href="javascript:;">Dinning</a>,</li>
-                                    <li><a href="javascript:;">Fast Food</a></li>
-                                    <li class="all"><a href="javascript:;">View All <i class="fa fa-chevron-right"></i></a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:;" class="categories-action">Submit</a>
-                                <a href="javascript:;" class="categories-link"><i class="fa fa-map-marker"></i> Travel</a>
-                                <ul>
-                                    <li><a href="javascript:;">Cruises</a>,</li>
-                                    <li><a href="javascript:;">Destinations</a>,</li>
-                                    <li><a href="javascript:;">Holidays</a>,</li>
-                                    <li><a href="javascript:;">Transportations</a></li>
-                                    <li class="all"><a href="javascript:;">View All <i class="fa fa-chevron-right"></i></a></li>
-                                </ul>
-                            </li>
+                            <% end %>
                         </ul>
                     </div><!-- /.categories -->
                 </div>
@@ -708,6 +426,73 @@
         </div><!-- /.content -->
     </div><!-- /.main-inner -->
 </div><!-- /.main -->
+<script type="text/javascript">
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+
+
+function showPosition(position) {
+    $lat = position.coords.latitude;
+    $long = position.coords.longitude;
+    alert("latitude: " + $lat + ", longitude: " + $long);
+}
+
+// getLocation();
+
+var directionsDisplay = new google.maps.DirectionsRenderer();
+var directionsService = new google.maps.DirectionsService();
+
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: { id: 'all-place-map' } }, function() {
+    // markers = handler.addMarkers([{
+    //     "lat": $lat,
+    //     "lng": $long,
+    //     "picture": {
+    //         "url": "/assets/img/logo.png",
+    //         "width": "35",
+    //         "height": "35"
+    //     },
+    //     "infowindow": "hello!"
+    // }]);
+
+    var markers = handler.addMarkers([
+        { lat: 43, lng: 3.5 },
+        { lat: 45, lng: 4 },
+        { lat: 47, lng: 3.5 },
+        { lat: 49, lng: 4 },
+        { lat: 51, lng: 3.5 }
+    ]);
+
+    //var marker = handler.addMarker({
+    //    lat: $lat,
+    //    lng: $long
+    //});
+    // handler.map.centerOn(marker);
+
+    // handler.bounds.extendWith(markers);
+    // handler.fitMapToBounds();
+    // var json_array = [
+    //     { lat: 40, lng: -80, name: 'Foo', infowindow: "I'm Foo" },
+    //     { lat: 45, lng: -90, name: 'Bar', infowindow: "I'm Bar" },
+    //     { lat: 50, lng: -85, name: 'Baz', infowindow: "I'm Baz" }
+    // ];
+
+    // var markers = handler.addMarkers(json_array);
+
+    // _.each(json_array, function(json, index) {
+    //     json.marker = markers[index];
+    // });
+
+    // createSidebar(json_array);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+});
+</script>
 <% content_for :foot_js do %>
 <script type="text/javascript">
 scrollHere(where_id = 'scroll-here');

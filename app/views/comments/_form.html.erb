@@ -2,11 +2,11 @@
 
     <div class="form-group input-rating">
         <div class="rating-title">Share your rate*</div>
-        <%= f.radio_button :vote_weight, 1, id: "rating-comment-1" %>
+        <%= f.radio_button :vote_weight, 1, id: "rating-comment-1", checked: true, selected: true %>
         <label for="rating-comment-1"></label>
         <%= f.radio_button :vote_weight, 2, id: "rating-comment-2" %>
         <label for="rating-comment-2"></label>
-        <%= f.radio_button :vote_weight, 3, id: "rating-comment-3", checked: true, selected: true %>
+        <%= f.radio_button :vote_weight, 3, id: "rating-comment-3" %>
         <label for="rating-comment-3"></label>
         <%= f.radio_button :vote_weight, 4, id: "rating-comment-4" %>
         <label for="rating-comment-4"></label>

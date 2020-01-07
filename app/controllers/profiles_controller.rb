@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  layout 'free'
+  layout 'users'
   
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
@@ -14,6 +14,7 @@ class ProfilesController < ApplicationController
   def show
     @tab = params[:tab]
     respond_to do |format|
+      format.html
       format.js
     end
   end

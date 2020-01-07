@@ -39,20 +39,19 @@ module ApplicationHelper
 	end
 
 	def activities
-		["Personal activity",
-		"Hospital",
-		"School",
-		"Bus stop",
-		"Hotel",
-		"Restaurant",
-		"Coffee",
-		"Cyber",
-		"Pub",
-		"Airport"]
+		categories
 	end
 
 	def categories
-		activities
+		Category.all.shuffle
+	end
+
+	def tags
+		t = []
+		activities.each do |activity|
+			t += activity.tags
+		end
+		return t
 	end
 
 	def reload(parent, item, votes_length, vote_type, item_list, div_form_id, new_item)

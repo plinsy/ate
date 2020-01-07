@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_01_01_185033) do
     t.bigint "user_id", null: false
     t.string "level", default: "Free", null: false
     t.string "price", default: "0 Ar/mois", null: false
-    t.datetime "deadline", default: "2070-01-01 21:06:37", null: false
+    t.datetime "deadline", default: "2070-01-07 19:55:52", null: false
     t.boolean "expired", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -66,6 +66,13 @@ ActiveRecord::Schema.define(version: 2020_01_01_185033) do
     t.index ["trackable_type", "trackable_id"], name: "index_activities_on_trackable_type_and_trackable_id"
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "icon"
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "comments", force: :cascade do |t|
     t.integer "commentable_id"
     t.string "commentable_type"
@@ -86,6 +93,7 @@ ActiveRecord::Schema.define(version: 2020_01_01_185033) do
 
   create_table "places", force: :cascade do |t|
     t.bigint "user_id", null: false
+    t.bigint "category_id", null: false
     t.string "title", default: "", null: false
     t.string "location", default: "", null: false
     t.float "longitude", default: 0.0, null: false
@@ -95,6 +103,7 @@ ActiveRecord::Schema.define(version: 2020_01_01_185033) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image"
+    t.index ["category_id"], name: "index_places_on_category_id"
     t.index ["user_id"], name: "index_places_on_user_id"
   end
 
@@ -180,6 +189,7 @@ ActiveRecord::Schema.define(version: 2020_01_01_185033) do
 
   add_foreign_key "accounts", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "places", "categories"
   add_foreign_key "places", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "services", "places"

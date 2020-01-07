@@ -1,7 +1,5 @@
-class ServicesController < ApplicationController
-  layout 'free'
-
-  before_action :get_place
+class ServicesController < PlacesController
+  before_action :get_place, :get_services
   before_action :set_service, only: [:show, :edit, :update, :destroy]
 
   # GET /services
@@ -9,6 +7,7 @@ class ServicesController < ApplicationController
   def index
     @services = @place.services.all
     respond_to do |format|
+      format.html
       format.js
     end
   end
@@ -75,6 +74,6 @@ class ServicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:place_id, :title, :category_list, :description, :price, :image)
+      params.require(:service).permit(:place_id, :title, :description, :price, :image, :tag_list)
     end
 end

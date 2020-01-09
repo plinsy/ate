@@ -27,5 +27,5 @@ class Place < ApplicationRecord
   include PublicActivity::Model
   tracked
 
-  searchkick word_start: [:title, :location], suggest: [:title, :location]
+  searchkick word_start: [:title, :location], suggest: [:title, :location, :name_tagged]
 end

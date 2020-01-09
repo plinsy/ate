@@ -47,7 +47,7 @@
             </div><!-- /.post-meta-date -->
             <div class="post-meta-categories">
                 <% tag = place.tag_list.sample %>
-                <i class="fa fa-tags"></i> <a href="<%= search_path(search: {tag: tag}) %>"><%= tag %></a>
+                <i class="fa fa-tags"></i> <a href="<%= search_path(tag: tag) %>"><%= tag %></a>
             </div><!-- /.post-meta-categories -->
             <div class="post-meta-comments"><i class="fa fa-comments"></i> <a href="#reviews">
                 <span class="place-<%= place.id %>-review-length">
@@ -62,7 +62,7 @@
             Tags:
             <ul>
                 <% place.tag_list.each do |tag| %>
-                <li class="tag"><a href="<%= search_path(search:{tag: tag}) %>">
+                <li class="tag"><a href="<%= search_path(tag: tag) %>">
                         <%= tag %></a></li>
                 <% end %>
             </ul>

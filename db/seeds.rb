@@ -11,6 +11,7 @@ include ApplicationHelper
 def create_user(admin=false, user_data=[])
 	data = user_data
 	user = User.new(
+		admin: admin,
 		email: data[0],
 		password: data[1],
 		password_confirmation: data[1]
@@ -89,7 +90,8 @@ def create_service(service_data=[])
 		title: data[1],
 		description: data[2],
 		price: data[3],
-		tag_list: category.tag_list
+		date: Faker::Date.forward,
+		tag_list: category.tag_list 
 	)
 	if service.save
 		File.open(data[4]) do |f|

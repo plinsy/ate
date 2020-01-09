@@ -18,3 +18,15 @@
 a, .btn-link {
 	cursor: pointer;
 }
+
+/* Social Share Button */
+$sbtn-size: 24px;
+
+.social-share-button {
+  .ssb-icon {
+    background-size: $sbtn-size $sbtn-size !important;
+    height: $sbtn-size !important;
+    width: $sbtn-size !important;
+    border-radius: 50%;
+  }
+}

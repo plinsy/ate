@@ -54,9 +54,8 @@
                                     </div><!-- /.detail-actions -->
                                 </div>
                                 <div class="widget">
-                                    <h2 class="widgettitle">My locations</h2>
+                                    <h2 class="widgettitle"><%= @place.location %></h2>
                                     <ul class="list-unstyled">
-                                        <% if action_name == "show" %>
                                         <li class="w-100">
                                             <a class="btn btn-primary w-100" href="<%= place_path(@place) %>">
                                                 <%= @place.title %></a>
@@ -64,6 +63,7 @@
                                         <li class="w-100">
                                             <a class="btn btn-primary w-100" href="<%= place_services_path(@place) %>">Its services</a>
                                         </li>
+                                        <% if current_user.has?(@place) %>
                                         <li class="w-100">
                                             <a class="btn btn-primary w-100" href="<%= edit_place_path(@place) %>">Edit
                                                 <%= @place.location %></a>
@@ -71,7 +71,6 @@
                                         <li class="w-100">
                                             <a class="btn btn-primary w-100" href="<%= new_place_service_path(@place) %>">New service</a>
                                         </li>
-                                        <% else %>
                                         <li class="w-100">
                                             <a class="btn btn-primary w-100" href="<%= new_place_path %>">Share a new location</a>
                                         </li>
@@ -80,7 +79,7 @@
                                 </div><!-- /.widget -->
                                 <div class="widget">
                                     <h2 class="widgettitle">Associated services</h2>
-                                    <% @services.each do |service| %>
+                                    <% @services.limit(5).each do |service| %>
                                     <div class="cards-small">
                                         <div class="card-small">
                                             <div class="card-small-image">
@@ -91,8 +90,8 @@
                                             <div class="card-small-content">
                                                 <h3><a href="<%= place_service_path(@place, service) %>">
                                                         <%= service.title %></a></h3>
-                                                <h4><a href="<%= place_path(@place) %>">
-                                                        <%= service.place.location %></a></h4>
+                                                <h4><a href="<%= go_to_path(@place) %>">
+                                                        <span class="fa fa-map-marker text-info"></span> <%= service.place.location %></a></h4>
                                                 <div class="card-small-price">
                                                     <%= service.price %>
                                                 </div>
@@ -100,51 +99,34 @@
                                         </div><!-- /.card-small -->
                                     </div><!-- /.cards-small -->
                                     <% end %>
-                                    <div class="w-100">
-                                        <a href="<%= place_services_path(@place) %>" class="text-center">See more</a>
+                                    <div class="w-100 text-center">
+                                        <a href="<%= place_services_path(@place) %>" class="btn btn-primary w-100">Load more</a>
                                     </div>
                                     <h2 class="widgettitle">Recent Locations</h2>
                                     <div class="cards-small">
-                                        <div class="card-small">
-                                            <div class="card-small-image">
-                                                <a href="listing-detail.html">
-                                                    <img src="/assets/img/tmp/product-2.jpg" alt="Tasty Brazil Coffee">
-                                                </a>
-                                            </div><!-- /.card-small-image -->
-                                            <div class="card-small-content">
-                                                <h3><a href="listing-detail.html">Tasty Brazil Coffee</a></h3>
-                                                <h4><a href="listing-detail.html">New York / Village</a></h4>
-                                                <div class="card-small-price">$180 / person</div>
-                                            </div><!-- /.card-small-content -->
-                                        </div><!-- /.card-small -->
-                                    </div><!-- /.cards-small -->
+                                        <% @most_famous_places.limit(3).each do |place| %>
                                     <div class="cards-small">
                                         <div class="card-small">
                                             <div class="card-small-image">
-                                                <a href="listing-detail.html">
-                                                    <img src="/assets/img/tmp/product-3.jpg" alt="Healthy Breakfast">
+                                                <a href="<%= place_path(place) %>">
+                                                    <img src="<%= place.image.url %>" alt="---">
                                                 </a>
                                             </div><!-- /.card-small-image -->
                                             <div class="card-small-content">
-                                                <h3><a href="listing-detail.html">Healthy Breakfast</a></h3>
-                                                <h4><a href="listing-detail.html">New York / Village</a></h4>
-                                                <div class="card-small-price">$180 / person</div>
+                                                <h3><a href="<%= place_path(place) %>">
+                                                        <%= place.title %></a></h3>
+                                                <h4><a href="<%= go_to_path(place) %>">
+                                                        <span class="fa fa-map-marker text-info"></span> <%= place.location %></a></h4>
+                                                <div class="card-small-price">
+                                                    <%# place.price %>
+                                                </div>
                                             </div><!-- /.card-small-content -->
                                         </div><!-- /.card-small -->
                                     </div><!-- /.cards-small -->
-                                    <div class="cards-small">
-                                        <div class="card-small">
-                                            <div class="card-small-image">
-                                                <a href="listing-detail.html">
-                                                    <img src="/assets/img/tmp/product-4.jpg" alt="Coffee &amp; Newspaper">
-                                                </a>
-                                            </div><!-- /.card-small-image -->
-                                            <div class="card-small-content">
-                                                <h3><a href="listing-detail.html">Coffee &amp; Newspaper</a></h3>
-                                                <h4><a href="listing-detail.html">New York / Village</a></h4>
-                                                <div class="card-small-price">$180 / person</div>
-                                            </div><!-- /.card-small-content -->
-                                        </div><!-- /.card-small -->
+                                    <% end %>
+                                    <div class="w-100 text-center">
+                                        <a href="<%= places_path %>" class="btn btn-primary w-100">Load more</a>
+                                    </div>
                                     </div><!-- /.cards-small -->
                                     <h2>Amenities</h2>
                                     <div class="background-white p20">

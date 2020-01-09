@@ -1,0 +1,8 @@
+<% tags.each_with_index do |tag, n| %>
+<li data-original-index="<%= n %>" >
+	<a tabindex="0" class="selected" data-tokens="null">
+		<span class="text"><%= tag %></span>
+		<span class="glyphicon glyphicon-ok check-mark"></span>
+	</a>
+</li>
+<% end %>

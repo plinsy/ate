@@ -14,6 +14,12 @@ module ApplicationHelper
 		end
 	end
 
+	def authenticate_admin!
+		unless @item.user.id == current_user.id
+			redirect_to "/404.html"
+		end
+	end
+
 	def set_page_id
     session[:page_id] = params[:page_id]
     session[:page_id] ||= 'page-content'
@@ -30,6 +36,10 @@ module ApplicationHelper
 
 	def get_place
 		@place = Place.find(params[:place_id])
+	end
+
+	def get_places
+		@most_famous_places = Place.order("created_at DESC")
 	end
 
 	def get_services

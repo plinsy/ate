@@ -16,8 +16,9 @@
             <div class="post-meta clearfix">
                 <div class="post-meta-author">By <a href="<%= profile_path(place.user.profile) %>"><%= place.user.fullname %></a></div><!-- /.post-meta-author -->
                 <div class="post-meta-date"><%= place.created_at.strftime("%d/%m/%Y") %></div><!-- /.post-meta-date -->
-                <div class="post-meta-categories"><i class="fa fa-tags"></i> <a href="<%= search_path(search:{tag: place.activity}) %>"><%= place.activity %></a></div><!-- /.post-meta-categories -->
-                <div class="post-meta-comments"><i class="fa fa-comments"></i> <a>3 comments</a></div><!-- /.post-meta-comments -->
+                <div class="post-meta-categories"><i class="fa fa-tags"></i> <a href="<%= search_path(tag: place.activity) %>"><%= place.activity %></a></div><!-- /.post-meta-categories -->
+                <div class="post-meta-comments"><i class="fa fa-comments"></i> <a href="<%= place_path(place) %>#reviews">
+                <%= place.reviews.length %> comments</a></div><!-- /.post-meta-comments -->
                 <div class="post-meta-more">
                     <%= link_to place do %>
                         Read More <i class="fa fa-chevron-right"></i>

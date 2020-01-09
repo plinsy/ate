@@ -1,14 +1,15 @@
 class PlacesController < ApplicationController
   layout 'places'
   
-  before_action :authenticate_user! 
+  before_action :authenticate_user!, :get_places 
   before_action :set_place, only: [:edit, :update, :destroy]
   before_action :get_services, only: %i[index new create edit update destroy]
-
+  before_action :set_item, :authenticate_admin!, only: %i[edit update destroy]
+  
   # GET /places
   # GET /places.json
   def index
-    @places = current_user.places
+    @places = @most_famous_places
   end
 
   # GET /places/1
@@ -84,7 +85,11 @@ class PlacesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_place
-      @place = current_user.places.find(params[:id])
+      @place = Place.find(params[:id])
+    end
+
+    def set_item
+      @item = set_place
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

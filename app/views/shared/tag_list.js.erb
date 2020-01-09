@@ -1,0 +1,5 @@
+$(`[id*="_tag_list"]`).html(`<%= render 'shared/tag_list', item: @item, tags: @tags %>`);
+$(`[data-id*="_tag_list"]`).html(`
+<span class="filter-option pull-left"><%= @tags.join(', ') %></span>&nbsp;<span class="caret"></span>`).attr('title', '<%= @tags.join(', ') %>');
+$(`[data-id*="_tag_list"]`).parents(`.bootstrap-select:first`).find(`[role="menu"]`).html(`<%= render 'shared/select-menu', tags: @tags %>`);
+$(`[id*="_tag_list"]`).selectpicker();

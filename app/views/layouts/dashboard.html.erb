@@ -19,50 +19,7 @@
                         <div class="header-content">
                             <div class="header-bottom">
                                 <ul class="header-nav-primary nav nav-pills collapse navbar-collapse">
-                                    <li>
-                                        <a href="#">Home <i class="fa fa-chevron-down"></i></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="/">Home</a></li>
-                                            <li><a href="/pages/pricing">Pricing</a></li>
-                                            <li><a href="/pages/contact">Contact</a></li>
-                                            <li><a href="/pages/terms-conditions">Terms &amp; conditions</a></li>
-                                        </ul>
-                                    </li>
-                                    <% if current_user.has_locations? %>
-                                    <li>
-                                        <a href="javascript:;">My locations <i class="fa fa-chevron-down"></i></a>
-                                        <ul class="sub-menu">
-                                            <% current_user.places.limit(5).each do |place| %>
-                                            <li><a href="<%= place_path(place) %>">
-                                                    <%= place.title %></a></li>
-                                            <% end %>
-                                            <li>
-                                                <a href="<%= dashboard_path %>">All</a>
-                                            </li>
-                                            <li><a href="<%= new_place_path %>">New place</a></li>
-                                        </ul>
-                                    </li>
-                                    <% end %>
-                                    <li class="active">
-                                        <a href="#">Admin <i class="fa fa-chevron-down"></i></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="/dashboard">Dashboard</a></li>
-                                            <li><a href="<%= dashboard_path(index: 'bookmark') %>">My favorites</a></li>
-                                            <li><a href="<%= dashboard_path(index: 'heart') %>">My loves</a></li>
-                                        </ul>
-                                    </li>
-                                    <% if current_user.is_admin? %>
-                                    <li>
-                                        <a href="#">Admin <i class="fa fa-chevron-down"></i></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="/admin">Dashboard</a></li>
-                                            <li><a href="admin-grid.html">Grid System</a></li>
-                                            <li><a href="admin-tables.html">Tables</a></li>
-                                            <li><a href="admin-forms.html">Forms</a></li>
-                                            <li><a href="admin-notifications.html">Notifications</a></li>
-                                        </ul>
-                                    </li>
-                                    <% end %>
+                                    <%= render 'shared/nav-list' %>
                                 </ul>
                                 <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".header-nav-primary">
                                     <span class="sr-only">Toggle navigation</span>
@@ -100,7 +57,9 @@
                         <div class="display-inline-block">
                             <div class="hidden-xs visible-lg">
                                 <div class="header-statusbar-search">
-                                    <input type="text" class="form-control" placeholder="Search for...">
+                                    <%= form_with(url: dashboard_searches_path, local: true, method: :get) do |f| %>
+                                    <%= f.text_field :q, class: "form-control", placeholder: "Search for..." %>
+                                    <% end %>
                                 </div><!-- /.header-search -->
                             </div>
                         </div>
@@ -121,12 +80,7 @@
                 <div class="wrapper-admin">
                     <div class="sidebar-admin">
                         <ul>
-                            <li><a href="#" data-remote="true"><i class="fa fa-search"></i></a></li>
-                            <li class="active"><a href="/dashboard" data-remote="true"><i class="fa fa-folder-o"></i></a></li>
-                            <li><a href="<%= dashboard_show_path %>" data-remote="true"><i class="fa fa-bar-chart"></i></a></li>
-                            <li><a href="<%= dashboard_edit_path %>" data-remote="true"><i class="fa fa-pencil"></i></a></li>
-                            <li><a href="#" data-remote="true"><i class="fa fa-flag-o"></i></a></li>
-                            <li><a href="#" data-remote="true"><i class="fa fa-cog"></i></a></li>
+                            <%= render 'dashboard/sidebar' %>
                         </ul>
                     </div><!-- /.sidebar-admin-->
                     <div id="dashboard-main-content">

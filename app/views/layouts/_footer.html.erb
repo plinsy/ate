@@ -22,17 +22,26 @@
                     </p>
                 </div><!-- /.col-* -->
                 <div class="col-sm-4">
-                    <h2>Stay Connected</h2>
-                    <ul class="social-links nav nav-pills">
-                        <li><a href="javascript:;"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="javascript:;"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="javascript:;"><i class="fa fa-dribbble"></i></a></li>
-                        <li><a href="javascript:;"><i class="fa fa-instagram"></i></a></li>
-                        <li><a href="javascript:;"><i class="fa fa-pinterest-p"></i></a></li>
-                    </ul><!-- /.header-nav-social -->
+                    <div class="row">
+                        <div class="col-12">
+                            <h2>Stay Connected</h2>
+                            <ul class="social-links nav nav-pills">
+                                <li><a href="javascript:;"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="javascript:;"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="javascript:;"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="javascript:;"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="javascript:;"><i class="fa fa-pinterest-p"></i></a></li>
+                            </ul><!-- /.header-nav-social -->
+                        </div>
+                    </div>
                 </div><!-- /.col-* -->
+                <div class="mt-5 col-sm-12">
+                    <h2>Share</h2>
+                    <%= render_shareable :turbolinks => true %>
+                    <%# social_share_button_tag("http://127.0.0.1:3000", url: "") %>
+                </div>
             </div><!-- /.row -->
         </div><!-- /.container -->
     </div><!-- /.footer-top -->

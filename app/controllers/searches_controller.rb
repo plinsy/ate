@@ -2,31 +2,27 @@ class SearchesController < ApplicationController
 	before_action :authenticate_user!, :reindex_all
 
   def index
-    if !params[:search].nil?
-      @keyword = params[:search][:keyword]
-      @type = params[:search][:type]
-      @tag = params[:search][:tag]
+    @q = params[:q]
+    @type = params[:type]
+    @tag = params[:tag]
 
-      if @type == "service"
-        @class = Service
-      elsif @type == "profile"
-        @class = Profile
-      end
+    if @type == "service"
+      @class = Service
+    elsif @type == "profile"
+      @class = Profile
     end
 
     @class ||= Place
+    @q ||= "*"
+    @tag ||= "*"
 
-    case @keyword
-    when nil || "" || " "
-      @keyword = "*"
+    if @q != "*" && @tag != "*" || @q == "*" && @tag == "*"
+      @search = @class.search([@q, @tag], fields: [:title, :location, :name_tagged], suggest: true, per_page: 12)
+    elsif @q != "*" && @tag == "*"
+      @search = @class.search(@q, fields: [:title, :location], suggest: true, per_page: 12)
+    elsif @q == "*" && @tag != "*"
+      @search = @class.search(@tag, fields: [:name_tagged], suggest: true, per_page: 12)
     end
-
-    case @tag
-    when nil || "" || " "
-      @tag = "*"
-    end
-
-    @search = @class.search([@keyword, @tag], fields: [:title, :location, :name_tagged], suggest: true, per_page: 12)
     
     if params[:page].nil?
       @pagy = Pagy.new_from_searchkick(@search, params: search_params)
@@ -51,6 +47,6 @@ class SearchesController < ApplicationController
 
   protected
   def search_params
-    params[:search].nil? ? {} : params.require(:search).permit(:keyword, :type, :tag)
+    params.permit(:q, :type, :tag)
   end
 end

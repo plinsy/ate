@@ -20,7 +20,7 @@
 <div class="row">
     <div class="form-group col-sm-12">
         <%= form.label :category_id %>
-        <%= collection_select(:place, :category_id, Category.all, :id, :name, {}, {class: 'form-control'}) %>
+        <%= collection_select(:place, :category_id, Category.all, :id, :name, {}, { data: {id: place.id}, class: 'form-control'}) %>
     </div>
     <div class="form-group col-sm-6">
         <%= form.label :title %>
@@ -29,11 +29,7 @@
     <div class="form-group col-sm-6">
         <%= form.label :tag_list %>
         <select class="form-control" title="Select Activity" name="place[tag_list]" id="place_tag_list" multiple="true">
-            <% categories.each do |category| %>
-            <option <%= action_name=="edit" && place.category == (category) ? 'selected=""' : "" %>>
-                <%= category.tag_list %>
-            </option>
-            <% end %>
+            <%= render 'shared/tag_list', item: place, tags: place.persisted? ? place.category.tag_list : categories.first.tag_list %>
         </select>
     </div>
     <div class="form-group col-sm-6">
@@ -66,3 +62,23 @@
     </div>
 </div><!-- /.row -->
 <% end %>
+<script type="text/javascript">
+    (function(){
+        $(`[id*="_category_id"]`).change(function(event) {
+            $id = $(this).val();
+            $item_type = $(this).attr('id').split('_')[0];
+            $item_id = $(this).data('id');
+
+            $.ajax({
+                url: '/tag_list/' + $item_type + '/' + $item_id + '/' + $id,
+                type: 'GET',
+                dataType: 'script',
+                data: {
+                    item_type: $item_type,
+                    item_id: $item_id,
+                    category_id: $id
+                }
+            });
+        });
+    })();
+</script>

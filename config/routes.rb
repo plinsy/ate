@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
-  get '/dashboard', to: 'dashboard#index', as: "dashboard"
-  get 'dashboard/show', as: "dashboard_show"
-  get 'dashboard/edit', as: "dashboard_edit"
-  patch 'dashboard/update', as: "dashboard_update"
-  delete 'dashboard/destroy', as: "dashboard_destroy"
+  scope :dashboard do
+    get '/reports', to: 'dashboard#reports', as: 'dashboard_reports'
+    get '/pricing', to: 'dashboard#pricing', as: 'dashboard_pricing'
+    get '/settings', to: 'dashboard#settings', as: 'dashboard_settings'
+
+    get '/', to: 'dashboard#index', as: "dashboard"
+    get '/show', to: 'dashboard#show', as: "dashboard_show"
+    get '/edit', to: 'dashboard#edit', as: "dashboard_edit"
+    patch '/update', to: 'dashboard#update', as: "dashboard_update"
+    delete '/destroy', to: 'dashboard#destroy', as: "dashboard_destroy"
+    get '/search', to: 'dashboard#search', as: 'dashboard_search'
+    post '/search', to: 'dashboard#search', as: 'dashboard_searches'
+  end
 
   get '/search', to: 'searches#index', as: 'search'
   post '/search', to: 'searches#index', as: 'searches'
@@ -25,17 +33,22 @@ Rails.application.routes.draw do
     passwords: 'users/passwords'
   }
 
-  get '/pages', to: 'pages#index'
-  get 'pages/pricing'
-  get 'pages/terms-conditions'
-  get 'pages/contact'
-  get 'pages/faq'
+  scope :pages do
+    get '/', to: 'pages#index', as: 'pages'
+    get '/pricing', to: 'pages#pricing', as: 'pricing'
+    get '/terms-conditions', to: 'pages#terms_conditions', as: 'terms_conditions'
+    get '/contact', to: 'pages#contact', as: 'contact'
+    get '/faq', to: 'pages#faq', as: 'faq'
+  end
 
   get '/my-profile', to: 'users#profile', as: 'my_profile'
   get '/user/edit', to: 'users#edit', as: 'user_edit'
 
   root to: 'pages#index'
   
+  # shared
+  get '/tag_list/:item_type/:item_id/:category_id', to: 'shared#tag_list', as: 'tag_list'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   mount RailsAdmin::Engine => '/super_admin', as: 'rails_admin'
 end

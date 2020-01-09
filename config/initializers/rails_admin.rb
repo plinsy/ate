@@ -5,14 +5,13 @@ RailsAdmin.config do |config|
   ## == Devise ==
   config.current_user_method(&:current_user)
   config.authenticate_with do
-    puts "A"*23
     warden.authenticate! scope: :user
+    puts current_user.email
     puts current_user.is_admin?
     if current_user.is_admin?
     else
       redirect_to "/404.html"
     end
-    puts "Z"*23
   end
 
   ## == CancanCan ==

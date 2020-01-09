@@ -58,9 +58,8 @@
 <script type="text/javascript" src="/assets/libraries/jquery-google-map/jquery-google-map.js"></script>
 <script type="text/javascript" src="/assets/libraries/owl.carousel/owl.carousel.js"></script>
 <script type="text/javascript" src="/assets/libraries/bootstrap-fileinput/fileinput.min.js"></script>
-<script type="text/javascript" src="/assets/js/superlist.js"></script>
 <script type="text/javascript">
-setInterval(function() {
+$(document).on('turbolinks:load', function() {
 
     // 'use strict';
 
@@ -346,5 +345,7 @@ setInterval(function() {
         overwriteInitial: true,
         initialCaption: "Your Uploaded Images"
     });
+
+    /* Stuff to do after the page is loaded */
 });
 </script>

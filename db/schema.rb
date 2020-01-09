@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_01_01_185033) do
     t.bigint "user_id", null: false
     t.string "level", default: "Free", null: false
     t.string "price", default: "0 Ar/mois", null: false
-    t.datetime "deadline", default: "2070-01-07 19:55:52", null: false
+    t.datetime "deadline", default: "2070-01-08 11:05:46", null: false
     t.boolean "expired", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -125,6 +125,9 @@ ActiveRecord::Schema.define(version: 2020_01_01_185033) do
     t.string "title", null: false
     t.text "description", null: false
     t.float "price", null: false
+    t.datetime "date", null: false
+    t.boolean "repeat", default: false, null: false
+    t.datetime "repeat_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image"

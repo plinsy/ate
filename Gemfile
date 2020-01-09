@@ -57,7 +57,6 @@ end
 gem "jquery-rails"
 gem 'bootstrap'
 gem "devise"
-gem "rails_admin"
 gem 'capistrano', '~> 3.11'
 gem 'capistrano-rails', '~> 1.4'
 gem 'capistrano-passenger', '~> 0.2.0'
@@ -78,7 +77,8 @@ gem 'pagy'
 gem 'autosuggest'
 gem 'font-awesome-rails'
 gem 'gmaps4rails'
-gem 'rails_admin'
+gem 'rails_admin', github: 'sferik/rails_admin'
+gem 'shareable'
 
 #B# TVM = [183.25, 695.25]
 # MATV = [487.25, 506.25]

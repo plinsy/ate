@@ -1,7 +1,7 @@
 <%= form_with(model: comment, html: { id: "comment-form", class: "background-white p20 add-review" }) do |f| %>
 
     <div class="form-group input-rating">
-        <div class="rating-title">Share your rate*</div>
+        <div class="rating-title">Share your rate <span class="required">*</span></div>
         <%= f.radio_button :vote_weight, 1, id: "rating-comment-1", checked: true, selected: true %>
         <label for="rating-comment-1"></label>
         <%= f.radio_button :vote_weight, 2, id: "rating-comment-2" %>
@@ -19,7 +19,7 @@
         <%= f.text_field :commentable_id, class: "form-control" %>
     </div><!-- /.col-sm-6 -->
     <div class="form-group col-sm-6">
-        <%= f.label :pos_body, "Pos*" %>
+        <%= f.label :pos_body do %>Pos <span class="required">*</span><% end %>
         <%= f.text_area :pos_body, class: "form-control", rows: 5 %>
     </div><!-- /.col-sm-6 -->
     <div class="form-group col-sm-6">

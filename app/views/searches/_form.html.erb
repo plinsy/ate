@@ -1,14 +1,14 @@
 <link rel="stylesheet" type="text/css" href="/assets/typeahead.css">
-<%= form_with(scope: :search, url: searches_path, data: {remote: false}, html: {class: "filter"}) do |f| %>
+<%= form_with(url: searches_path, method: :get, data: {remote: false}, html: {class: "filter"}) do |f| %>
 <div class="row">
     <div class="col-sm-12 col-md-4">
         <div class="form-group">
-            <%= f.text_field :keyword, placeholder: "Keyword", class: "form-control" %>
+            <%= f.text_field :q, placeholder: "Keyword", class: "form-control" %>
         </div><!-- /.form-group -->
     </div><!-- /.col-* -->
     <div class="col-sm-12 col-md-4">
         <div class="form-group">
-            <select name="search[type]" id="search_type" class="form-control" title="What are you looking for ?">
+            <select name="type" id="type" class="form-control" title="What are you looking for ?">
                 <option value="place">Location</option>
                 <option value="service">Service</option>
                 <option value="profile">Person</option>
@@ -17,7 +17,7 @@
     </div><!-- /.col-* -->
     <div class="col-sm-12 col-md-4">
         <div class="form-group">
-            <select name="search[tag]" id="search_tag" class="form-control" title="Select Tag">
+            <select name="tag" id="tag" class="form-control" title="Select Tag">
                 <% tags.each do |tag| %>
                 <option value="<%= tag %>">
                     <%= tag %>
@@ -45,14 +45,14 @@
         <%= items.length %></span> results found in <span class="result-took"><%= items.took %> ms</span>
     <div class="filter-sort">
         <div class="form-group">
-            <select name="search[sort_by]" id="search_sort_by" title="Sort by">
+            <select name="sort_by" id="sort_by" title="Sort by">
                 <option value="title" selected="">Title</option>
                 <option value="price">Price</option>
                 <option value="rating">Rating</option>
             </select>
         </div><!-- /.form-group -->
         <div class="form-group">
-            <select name="search[order]" id="search_order" title="Order">
+            <select name="order" id="order" title="Order">
                 <option value="ASC" selected="">Asc</option>
                 <option value="DESC">Desc</option>
             </select>
@@ -96,7 +96,7 @@
     // <% end %>
 
 
-    $('input#search_keyword').typeahead({
+    $('input#q').typeahead({
         hint: true,
         highlight: true,
         minLength: 1

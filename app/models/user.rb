@@ -18,6 +18,10 @@ class User < ApplicationRecord
   def is_admin?
   	return self.admin
   end
+  
+  def has?(item)
+    return item.user.id == self.id
+  end
 
   def complete_user
   	Profile.create(user_id: self.id)

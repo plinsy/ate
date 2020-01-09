@@ -2,14 +2,22 @@ class VotesController < ApplicationController
 	before_action :authenticate_user!, :set_item
 
   def create
-    @item.vote_by voter: current_user, vote_scope: @vote_type
+    if @item.get_upvotes(voter: current_user, vote_scope: @vote_type).any?
+      @item.unvote_by current_user, vote_scope: @vote_type
+    else
+      @item.vote_by voter: current_user, vote_scope: @vote_type
+    end
   	respond_to do |format|
   		format.js
   	end
   end
 
   def destroy
-    @item.dislike_by current_user, vote_scope: @vote_type
+    if @item.get_downvotes(voter: current_user, vote_scope: @vote_type).any?
+      @item.undisliked_by current_user, vote_scope: @vote_type
+    else
+      @item.dislike_by current_user, vote_scope: @vote_type
+    end
   	respond_to do |format|
   		format.js
   	end

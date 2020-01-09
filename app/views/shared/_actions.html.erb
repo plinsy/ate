@@ -1,0 +1,7 @@
+<a class="p-0 disabled fa" id="<%= item_type %>-<%= item.id %>-bookmark" style="border: 0 none;">
+    <%= render 'votes/short_vote', vote_type: "bookmark", item: item, item_type: item_type, vote_weight: 1, color: "info" %>
+</a>
+<a href="<%= item_url %>" class="fa fa-search"></a>
+<a class="p-0 disabled fa" id="<%= item_type %>-<%= item.id %>-heart" style="border: 0 none;">
+    <%= render 'votes/short_vote', vote_type: "heart", item: item, item_type: item_type, vote_weight: 1, color: "danger" %>
+</a>

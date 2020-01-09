@@ -24,12 +24,15 @@
                                 </div><!-- /.widget -->
                                 <div class="widget">
                                     <ul class="menu-advanced">
+                                        <li class="active"><a data-reload="false" href="<%= profile_path(current_user.profile) %>"><i class="fa fa-user"></i> <%= @user.fullname %></a></li>
+                                        <% if @user == current_user %>
+                                            
                                         <li><a data-reload="false" href="<%= places_path %>"><i class="fa fa-pencil"></i> My locations</a></li>
-                                        <li class="active"><a data-reload="false" href="<%= profile_path(current_user.profile) %>"><i class="fa fa-user"></i> My Profile</a></li>
                                         <li><a data-reload="false" href="<%= edit_profile_path(current_user.profile) %>"><i class="fa fa-edit"></i> Edit Profile</a></li>
                                         <li><a data-reload="false" href="<%= account_path(current_user.account) %>"><i class="fa fa-money"></i> My Account</a></li>
                                         <li><a data-reload="false" href="<%= edit_user_registration_path %>"><i class="fa fa-key"></i> Password</a></li>
                                         <li><a data-reload="false" href="<%= destroy_user_session_path %>" data-method="DELETE"><i class="fa fa-sign-out"></i> Logout</a></li>
+                                        <% end %>
                                     </ul>
                                 </div><!-- /.widget -->
                             </div><!-- /.sidebar -->
@@ -37,11 +40,6 @@
                         <div class="col-sm-8 col-lg-9">
                             <div id="page-content">
                                 <%= yield %>
-                                <% content_for :foot_js do %>
-                                    <script type="text/javascript">
-                                        loadPage(page_id = 'page-content', first_link = '<%= profile_path(current_user.profile) %>');
-                                    </script>
-                                <% end %>
                             </div>
                         </div><!-- /.col-* -->
                     </div><!-- /.row -->

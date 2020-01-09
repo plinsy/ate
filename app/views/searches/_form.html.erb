@@ -42,7 +42,8 @@
 <hr>
 <h2 class="page-title mt-0 mb-0">
     <span class="result-length">
-        <%= items.length %></span> results found in <span class="result-took"><%= items.took %> ms</span>
+        <%= items.length %></span> results found in <span class="result-took">
+        <%= items.took %> ms</span>
     <div class="filter-sort">
         <div class="form-group">
             <select name="sort_by" id="sort_by" title="Sort by">
@@ -62,7 +63,7 @@
 <% end %>
 <script src="/assets/typeahead.bundle.js"></script>
 <script>
-(function() {
+$(document).on('ready turbolinks:load', function() {
 
     let substringMatcher = function(strs) {
         return function findMatches(q, cb) {
@@ -89,12 +90,11 @@
     let states = [];
 
     // <% Place.all.each do |place| %>
-            states.push("<%= place.title %>");
+    states.push("<%= place.title %>");
     // <% end %>
     // <% Service.all.each do |place| %>
-            states.push("<%= place.title %>");
+    states.push("<%= place.title %>");
     // <% end %>
-
 
     $('input#q').typeahead({
         hint: true,
@@ -104,5 +104,5 @@
         name: 'states',
         source: substringMatcher(states)
     });
-})();
+});
 </script>

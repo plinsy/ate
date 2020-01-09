@@ -127,7 +127,7 @@ end
 
 def create_users
 	users = []
-	10.times { |n| users.push([Faker::Internet.email, '000000', Faker::Name.first_name_men, Faker::Name.last_name, Faker::PhoneNumber.phone_number, "#{Rails.root}/app/assets/one/img/tmp/agent-#{rand(1..5)}.jpg"])  }
+	5.times { |n| users.push([Faker::Internet.email, '000000', Faker::Name.first_name_men, Faker::Name.last_name, Faker::PhoneNumber.phone_number, "#{Rails.root}/app/assets/one/img/tmp/agent-#{rand(1..5)}.jpg"])  }
 	users.each do |user|
 		create_user(false, user)
 	end
@@ -153,7 +153,7 @@ end
 def create_places
 	User.all.each do |user|
 		places = []
-		7.times { |n| 
+		5.times { |n| 
 			names = [Faker::App.name, Faker::Restaurant.name]
 			descriptions = [Faker::Food.description, Faker::Restaurant.description]
 			places.push(
@@ -179,7 +179,7 @@ end
 def create_services
 	Place.all.each do |place|
 		services = []
-		7.times { |n| 
+		5.times { |n| 
 			descriptions = [Faker::Food.description, Faker::Restaurant.description]
 			services.push(
 			[
@@ -201,7 +201,7 @@ end
 def create_comments
 	Place.all.each do |place|
 		comments = []
-		7.times { |n| 
+		5.times { |n| 
 			comments.push(
 			[
 				place, 

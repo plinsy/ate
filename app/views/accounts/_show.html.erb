@@ -1,28 +1,20 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>User:</strong>
-  <%= account.user_id %>
-</p>
-
-<p>
-  <strong>Level:</strong>
-  <%= account.level %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= account.price %>
-</p>
-
-<p>
-  <strong>Deadline:</strong>
-  <%= account.deadline %>
-</p>
-
-<p>
-  <strong>Expired:</strong>
-  <%= account.expired %>
-</p>
-
-<% render template: 'pages/pricing' %>
+<div class="">
+    <div class="content">
+        <div class="mt-80">
+            <div class="page-header text-left">
+                <h1>Fair Pricing</h1>
+                <p>Our company offers best pricing options for field agents and companies. If you are interested <br>in special plan don't hesitate and contact our <a href="#">sales support</a>.</p>
+            </div><!-- /.page-header -->
+            <div class="pricings">
+                <% if true %>
+                <%= render 'accounts/personal' %>
+                <% elsif false %>
+                <%= render 'accounts/business' %>
+                <% elsif false %>
+                <%= render 'accounts/unlimited' %>
+                <% end %>
+            </div><!-- /.pricings -->
+        </div>
+    </div><!-- /.content -->
+</div><!-- /.container -->
+<%# render template: 'pages/pricing' %>

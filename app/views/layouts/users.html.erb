@@ -16,22 +16,44 @@
                             <div class="sidebar">
                                 <div class="widget">
                                     <div class="user-photo">
-                                        <a data-reload="false" href="#">
-                                            <img src="/assets/img/tmp/agent-2.jpg" alt="User Photo">
-                                            <span class="user-photo-action">Click here to reupload</span>
-                                        </a>
+                                        <%= form_with(scope: :profile, url: new_avatar_path(id: current_user.profile.id)) do |f| %>
+                                        <img src="<%= current_user.avatar %>" alt="User Photo" id="img-preview" class="avatar">
+                                        <label for="profile_avatar" class="user-photo-action">Click here to reupload</label>
+                                        <%= f.file_field :avatar, class: "collapse", style: "display: none;" %>
+                                        <%= f.submit "Submit", :disable_with => 'Submiting...', class: "collapse", style: "display: none;" %>
+                                        <% end %>
+                                        <script type="text/javascript">
+                                        $fileInput = $(`#profile_avatar`);
+                                        $fileInput.change(function(event) {
+                                            /* Act on the event */
+                                            $preview = $(`img.avatar:first`);
+                                            $input = $(event.currentTarget);
+                                            $form = $input.parents('form:first');
+                                            $submitBtn = $form.find('[type=submit]');
+                                            $file = $input[0].files[0];
+                                            $reader = new FileReader();
+                                            $reader.onload = function(e) {
+                                                image_base_64 = e.target.result;
+                                                $preview.attr('src', image_base_64);
+                                            }
+                                            $reader.readAsDataURL($file);
+
+                                            setTimeout(function(){
+                                                $submitBtn.click();
+                                            })
+                                        });
+                                        </script>
                                     </div><!-- /.user-photo -->
                                 </div><!-- /.widget -->
                                 <div class="widget">
                                     <ul class="menu-advanced">
-                                        <li class="active"><a data-reload="false" href="<%= profile_path(current_user.profile) %>"><i class="fa fa-user"></i> <%= @user.fullname %></a></li>
+                                        <li class="<%= (action_name=="show" && controller_name=="profiles") ? 'active' : '' %>"><a class="show-profile" data-remote="false" href="<%= profile_path(current_user.profile) %>"><i class="fa fa-user"></i>
+                                                <%= @user.fullname %></a></li>
                                         <% if @user == current_user %>
-                                            
-                                        <li><a data-reload="false" href="<%= places_path %>"><i class="fa fa-pencil"></i> My locations</a></li>
-                                        <li><a data-reload="false" href="<%= edit_profile_path(current_user.profile) %>"><i class="fa fa-edit"></i> Edit Profile</a></li>
-                                        <li><a data-reload="false" href="<%= account_path(current_user.account) %>"><i class="fa fa-money"></i> My Account</a></li>
-                                        <li><a data-reload="false" href="<%= edit_user_registration_path %>"><i class="fa fa-key"></i> Password</a></li>
-                                        <li><a data-reload="false" href="<%= destroy_user_session_path %>" data-method="DELETE"><i class="fa fa-sign-out"></i> Logout</a></li>
+                                        <li class="<%= action_name=="edit" && controller_name=="profiles" ? 'active' : '' %>"><a data-remote="false" href="<%= edit_profile_path(current_user.profile) %>"><i class="fa fa-edit"></i> Edit Profile</a></li>
+                                        <li class="<%= controller_name=="accounts" ? 'active' : '' %>"><a data-remote="false" href="<%= account_path(current_user.account) %>"><i class="fa fa-money"></i> My Account</a></li>
+                                        <li class="<%= action_name=="edit" && controller_name=="registrations" ? 'active' : '' %>"><a data-remote="false" href="<%= edit_user_registration_path %>"><i class="fa fa-key"></i> Password</a></li>
+                                        <li><a data-remote="false" href="<%= destroy_user_session_path %>" data-method="DELETE"><i class="fa fa-sign-out"></i> Logout</a></li>
                                         <% end %>
                                     </ul>
                                 </div><!-- /.widget -->

@@ -1,1 +1,4 @@
-$(`[href="<%= profile_path(current_user.profile) %>"]`).click();
+$(`img.avatar`).attr('src', '<%= current_user.avatar.url %>');
+setTimeout(function(){
+	window.location.href = "<%= profile_path(@profile) %>";
+})

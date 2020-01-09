@@ -38,7 +38,7 @@
                                                 <%= current_user.fullname %></span> <i class="fa fa-chevron-down"></i>
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                            <li><a href="<%= my_profile_path %>">My profile</a></li>
+                                            <li><a href="<%= profile_path(current_user.profile) %>">My profile</a></li>
                                             <li><a href="<%= destroy_user_session_path %>" data-method="DELETE">Logout</a></li>
                                         </ul>
                                     </div><!-- /.dropdown -->

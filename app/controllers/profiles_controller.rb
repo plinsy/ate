@@ -27,6 +27,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1/edit
   def edit
     respond_to do |format|
+      format.html
       format.js
     end
   end
@@ -81,6 +82,6 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:user_id, :firstname, :lastname, :gender, :phone, :reputation)
+      params.require(:profile).permit(:user_id, :firstname, :lastname, :gender, :phone, :avatar)
     end
 end

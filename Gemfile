@@ -79,6 +79,7 @@ gem 'font-awesome-rails'
 gem 'gmaps4rails'
 gem 'rails_admin', github: 'sferik/rails_admin'
 gem 'shareable'
+gem 'merit'
 
 #B# TVM = [183.25, 695.25]
 # MATV = [487.25, 506.25]

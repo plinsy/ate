@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_merit
+
   include PublicActivity::Model
   tracked
   
@@ -50,5 +52,20 @@ class User < ApplicationRecord
 
   def commented?(commentable_id)
     Comment.where(user_id: self.id, commentable_id: commentable_id).any?
+  end
+
+  def score
+    pos_score = 0
+    neg_score = 0
+    current_user.comments_thread.each do |comment|
+      pos_score += comment.get_upvotes.length
+      neg_score += comment.get_downvotes.length
+    end
+
+    current_user.places.each do |place|
+      pos_score += place.get_upvotes(vote_scope: 'heart').length
+      pos_score += place.get_upvotes(vote_scope: 'bookmark').length
+    end
+    score = pos_score - neg_score
   end
 end

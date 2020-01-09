@@ -27,7 +27,10 @@
     </div><!-- /.form-group -->
     <div class="form-group col-sm-6">
         <%= form.label :gender %>
-        <%= form.text_field :gender, class: "form-control" %>
+        <select id="profile_gender" name="profile[gender]" class="form-control">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
     </div><!-- /.form-group -->
     <div class="form-group col-sm-6">
         <%= form.label :phone %>

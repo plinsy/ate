@@ -41,7 +41,10 @@ Rails.application.routes.draw do
     get '/faq', to: 'pages#faq', as: 'faq'
   end
 
-  get '/my-profile', to: 'users#profile', as: 'my_profile'
+  scope :avatar do
+    post '/new/:id', to: 'profiles#update', as: 'new_avatar'
+  end
+
   get '/user/edit', to: 'users#edit', as: 'user_edit'
 
   root to: 'pages#index'

@@ -1,4 +1,5 @@
 class AccountsController < ApplicationController
+  layout 'users'
   before_action :set_account, only: [:show, :edit, :update, :destroy]
 
   # GET /accounts
@@ -11,6 +12,7 @@ class AccountsController < ApplicationController
   # GET /accounts/1.json
   def show
     respond_to do |format|
+      format.html
       format.js
     end
   end
@@ -68,6 +70,7 @@ class AccountsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_account
       @account = Account.find(params[:id])
+      @user = @account.user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

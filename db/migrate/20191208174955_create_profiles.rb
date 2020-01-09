@@ -6,7 +6,6 @@ class CreateProfiles < ActiveRecord::Migration[6.0]
       t.string :lastname,    default: ""
       t.string :gender,      default: "male"
       t.string :phone,       default: ""
-      t.integer :reputation, default: 5
 
       t.timestamps
     end
